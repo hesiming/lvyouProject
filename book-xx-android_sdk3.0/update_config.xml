@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<updateConfig data="2014/03/11">
+     
+     <channel name="JinRiChuanMei">
+    	<updata>true</updata>
+    	<version>1.3.0-SNAPSHOT</version>
+    	<trackViewUrl>https://dreambook.retechcorp.com/dreambook/download/android_dreambook_1.1.apk</trackViewUrl>
+    	<notes>备注</notes>
+    	<releaseNotes>更新信息</releaseNotes>
+    	<fileSizeBytes>文件大小</fileSizeBytes>
+    	<MD5>9d5c6e2518d041b8170290275c81b053</MD5>
+    </channel>
+     
+     <channel name="XiaoMi">
+    	<updata>true</updata>
+    	<version>1.2.0</version>
+    	<trackViewUrl>https://dreambook.retechcorp.com/dreambook/download/android_dreambook_1.1.apk</trackViewUrl>
+    	<notes>备注</notes>
+    	<releaseNotes>更新信息</releaseNotes>
+    	<fileSizeBytes>文件大小</fileSizeBytes>
+    	<MD5>96d335f5fcdd589c71d3a7f97e2bfbd0</MD5>
+    </channel>
+</updateConfig>

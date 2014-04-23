@@ -1,0 +1,10 @@
+<resources>
+
+    <!-- 设置页面相关参数 -->
+    <dimen name="option_layout_height">700dp</dimen>
+    <dimen name="option_logo_layout_height">300dp</dimen>
+    <dimen name="option_margin_bottom">15dp</dimen>
+    <dimen name="option_aboutText_size">18sp</dimen>
+    <dimen name="option_aboutLogo_marginTop">150dp</dimen>
+
+</resources>

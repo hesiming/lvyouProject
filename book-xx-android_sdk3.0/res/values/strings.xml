@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">今日书院</string>
+    <string name="action_settings">Settings</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="my_bookshelf">我的书架</string>
+    <string name="public_bookstore">书院</string>
+    <string name="public_bookstore_title">今日书院</string>
+    <string name="private_bookstore">企业</string>
+    <string name="option">设置</string>
+    <string name="private_bookstore_title">企业书院</string>
+    <string name="quite_login">退出登录</string>
+    <string name="downloading">重要数据下载...</string>
+    <string name="downloadError">下载失败。</string>
+    <!-- 导航条字体大小 -->
+    <string name="tabnavigation_text_size">16</string>
+    <!-- 导航条滑动距离算子 -->
+    <string name="tabnavigation_scroll_operator">2</string>
+    <!-- 导航条按钮数 -->
+    <string name="tabnavigation_button_number">3</string>
+    <!-- 未完成的进度圈的宽度 -->
+    <string name="progressStrokeWidth">3</string>
+    <!-- 已经完成的进度圈的宽度 -->
+    <string name="finishProgressStrokeWidth">2</string>
+    <!-- 每行显示的书本数 -->
+    <string name="eachColumnBookNumber">3</string>
+    <!-- 暂停按钮中两个竖线的间距 -->
+    <string name="pauseThePitch">5</string>
+
+    <bool name="isOpen">true</bool>
+    <!-- 判断是否支持屏幕横竖屏翻转的标识位 -->
+    <bool name="isLarge">false</bool>
+
+    <string name="option_companyName">今日书院</string>
+    <string name="option_prodectMessage">Copyright©2000–2014Retech Group Co.,Ltd</string>
+    <!--  -->
+
+    <string name="really_quit">您确定退出当前书籍？</string>
+    <string name="yes">是</string>
+    <string name="no">否</string>
+    <string name="error">Error</string>
+    <string name="ok">OK</string>
+    <string name="warning">WARNING</string>
+    <string name="file_not_found">FILE NOT FOUND</string>
+    <string name="notification">通知</string>
+    <string name="confirm">Confirm</string>
+    <string name="cancel">Cancel</string>
+    <string name="delete_contents_message">Do you really want to delete content?</string>
+    <string name="stop_download_message">Do you really want to stop downloading?</string>
+    <string name="downloading_contents">Downloading contents...</string>
+    <string name="contents_download_error">An error occurred during the download of content.</string>
+    <string name="contents_download_complete">Downloaded complete content</string>
+    <string name="contents_download_stop">Contents download has been stopped.</string>
+    <string name="contents_construct">Content are being configured.</string>
+    <string name="contents_construct_error">An error occurred during configuration of the content. After deletion, please re-download.</string>
+    <string name="contents_not_found_error">Ensure that the content file exists and try again please.</string>
+    <string name="progress_current">current</string>
+    <string name="progress_total">total</string>
+    <string name="content_configure_text">Content are being configured...</string>
+    <string name="sdcard_not_available">sd card is not available.</string>
+    <string name="object_version_mismatch">Generated content is higher. Please update the latest applications.</string>
+
+</resources>

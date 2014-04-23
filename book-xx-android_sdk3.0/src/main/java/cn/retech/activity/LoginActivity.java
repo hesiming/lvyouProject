@@ -1,0 +1,112 @@
+package cn.retech.activity;
+
+import android.app.Activity;
+import android.content.pm.ActivityInfo;
+import android.os.Bundle;
+import android.view.KeyEvent;
+import android.view.View;
+import android.widget.Button;
+import android.widget.Toast;
+import cn.retech.domainbean_model.login.LoginNetRequestBean;
+import cn.retech.domainbean_model.login.LoginNetRespondBean;
+import cn.retech.my_network_engine.IDomainBeanAsyncHttpResponseListener;
+import cn.retech.my_network_engine.INetRequestHandle;
+import cn.retech.my_network_engine.NetRequestHandleNilObject;
+import cn.retech.my_network_engine.SimpleNetworkEngineSingleton;
+import cn.retech.my_network_engine.net_error_handle.MyNetRequestErrorBean;
+import cn.retech.toolutils.DebugLog;
+
+import com.umeng.analytics.MobclickAgent;
+
+public class LoginActivity extends Activity {
+  private final String TAG = this.getClass().getSimpleName();
+  private INetRequestHandle netRequestHandleForLogin = new NetRequestHandleNilObject();
+
+  @Override
+  protected void onCreate(Bundle savedInstanceState) {
+    super.onCreate(savedInstanceState);
+    // 获取标识位，用来设置是否支持屏幕翻转(手机不支持屏幕翻转)
+    if (!getResources().getBoolean(R.bool.isLarge)) {
+      setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+    }
+
+    setContentView(R.layout.activity_login);
+
+    Button button = (Button) findViewById(R.id.button1);
+    button.setOnClickListener(new View.OnClickListener() {
+
+      @Override
+      public void onClick(View v) {
+        requestLogin("飞翔的熊猫", "198321");
+
+      }
+    });
+  }
+
+  private boolean requestLogin(final String userID, final String userPassWord) {
+    LoginNetRequestBean netRequestBean = new LoginNetRequestBean.Builder(userID, userPassWord).builder();
+    netRequestHandleForLogin = SimpleNetworkEngineSingleton.getInstance.requestDomainBean(netRequestBean, new IDomainBeanAsyncHttpResponseListener() {
+      @Override
+      public void onFailure(MyNetRequestErrorBean error) {
+        Toast.makeText(LoginActivity.this, error.toString(), Toast.LENGTH_SHORT).show();
+      }
+
+      @Override
+      public void onSuccess(final Object respondDomainBean) {
+        LoginNetRespondBean loginNetRespondBean = (LoginNetRespondBean) respondDomainBean;
+
+        Toast.makeText(LoginActivity.this, loginNetRespondBean.toString(), Toast.LENGTH_SHORT).show();
+
+      }
+    });
+
+    return !netRequestHandleForLogin.idle();
+  }
+
+  @Override
+  protected void onDestroy() {
+    DebugLog.i(TAG, "onDestroy");
+    super.onDestroy();
+  }
+
+  @Override
+  protected void onPause() {
+    DebugLog.i(TAG, "onPause");
+    super.onPause();
+    MobclickAgent.onPause(this);
+  }
+
+  @Override
+  protected void onRestart() {
+    DebugLog.i(TAG, "onRestart");
+    super.onRestart();
+  }
+
+  @Override
+  protected void onResume() {
+    DebugLog.i(TAG, "onResume");
+    super.onResume();
+    MobclickAgent.onResume(this);
+  }
+
+  @Override
+  protected void onStart() {
+    DebugLog.i(TAG, "onStart");
+    super.onStart();
+  }
+
+  @Override
+  protected void onStop() {
+    DebugLog.i(TAG, "onStop");
+    super.onStop();
+  }
+
+  @Override
+  public boolean onKeyDown(int keyCode, KeyEvent event) {
+    if (keyCode == KeyEvent.KEYCODE_BACK) {
+      return true;
+    }
+    return super.onKeyDown(keyCode, event);
+  }
+
+}

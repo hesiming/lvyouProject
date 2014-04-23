@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <item name="timer" type="id"/>
+    <item name="isMove" type="id"/>
+    <item name="bg" type="id"/>
+    <item name="window_X" type="id"/>
+    <item name="last_x" type="id"/>
+    <item name="last_y" type="id"/>
+    <item name="last_height" type="id"/>
+    <item name="isMoving" type="id"/>
+    <item name="isPreparing" type="id"/>
+    <item name="bookThumbnailView" type="id"/>
+</resources>

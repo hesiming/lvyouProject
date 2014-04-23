@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- 导航条字体大小 -->
+    <string name="tabnavigation_text_size">18</string>
+    <!-- 导航条按钮数 -->
+    <string name="tabnavigation_button_number">4</string>
+    <!-- 导航条滑动距离算子 -->
+    <string name="tabnavigation_scroll_operator">1</string>
+    <!-- 未完成的进度圈的宽度 -->
+    <string name="progressStrokeWidth">2</string>
+    <!-- 已经完成的进度圈的宽度 -->
+    <string name="finishProgressStrokeWidth">1</string>
+    <!-- 每行显示的书本数 -->
+    <string name="eachColumnBookNumber">4</string>
+
+</resources>
