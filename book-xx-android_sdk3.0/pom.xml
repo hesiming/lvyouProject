@@ -3,7 +3,7 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.retechcorp.dreambook</groupId>
-	<artifactId>book-android_1.0_3.0</artifactId>
+	<artifactId>book-xx-ui-android</artifactId>
 	<version>1.0-SNAPSHOT</version>
 	<packaging>apk</packaging>
 	<parent>

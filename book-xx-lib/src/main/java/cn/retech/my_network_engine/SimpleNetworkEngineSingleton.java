@@ -33,21 +33,22 @@ public enum SimpleNetworkEngineSingleton {
 
   private final String TAG = this.getClass().getSimpleName();
 
+  private Handler handler = new Handler(Looper.getMainLooper());
+
   /**
-   * 网络请求结果监听
+   * 网络请求结果枚举
    * 
    * @author skyduck
    * 
    */
-  public static interface OnNetRequestResultListener {
-    // 网络请求激活成功(如果发起一个网络请求失败的话, 是不会执行这个回调的)
-    public void onNetRequestAttached();
-
-    // 网络请求完成(成功或者失败都算完成)
-    public void onNetRequestCompleted();
+  public static enum NetRequestResultEnum {
+    // 成功
+    Succeed,
+    // 失败
+    Failure,
+    // 取消
+    Canceled
   }
-
-  private Handler handler = new Handler(Looper.getMainLooper());
 
   /**
    * 发起一个业务接口的网络请求(其实就是从服务器同步数据Bean到客户端, 数据Bean将采用常用的数据交换协议进行承载, 如JSON/XML)
@@ -164,6 +165,15 @@ public enum SimpleNetworkEngineSingleton {
                   } else {
                     DebugLog.i(TAG, "<<<<<<<<<<     发起的 DomainBean [" + abstractFactoryMappingKey + "] 网络请求, 已经被取消    >>>>>>>>>>");
                   }
+
+                  // 通知控制层, 本次网络请求彻底完成
+                  if (domainBeanAsyncHttpResponseListener instanceof IDomainBeanAsyncHttpResponseListenerWithUIControl) {
+                    if (netRequestIsCancelled.isCancelled()) {
+                      ((IDomainBeanAsyncHttpResponseListenerWithUIControl) domainBeanAsyncHttpResponseListener).onEnd(NetRequestResultEnum.Canceled);
+                    } else {
+                      ((IDomainBeanAsyncHttpResponseListenerWithUIControl) domainBeanAsyncHttpResponseListener).onEnd(NetRequestResultEnum.Succeed);
+                    }
+                  }
                 }
               });
 
@@ -189,6 +199,11 @@ public enum SimpleNetworkEngineSingleton {
               } else {
                 DebugLog.i(TAG, "<<<<<<<<<<     发起的 DomainBean [" + abstractFactoryMappingKey + "] 网络请求, 已经被取消    >>>>>>>>>>");
               }
+
+              // 通知控制层, 本次网络请求彻底完成
+              if (domainBeanAsyncHttpResponseListener instanceof IDomainBeanAsyncHttpResponseListenerWithUIControl) {
+                ((IDomainBeanAsyncHttpResponseListenerWithUIControl) domainBeanAsyncHttpResponseListener).onEnd(NetRequestResultEnum.Failure);
+              }
             }
           });
 
@@ -209,12 +224,22 @@ public enum SimpleNetworkEngineSingleton {
               } else {
                 DebugLog.i(TAG, "<<<<<<<<<<     发起的 DomainBean [" + abstractFactoryMappingKey + "] 网络请求, 已经被取消    >>>>>>>>>>");
               }
+
+              // 通知控制层, 本次网络请求彻底完成
+              if (domainBeanAsyncHttpResponseListener instanceof IDomainBeanAsyncHttpResponseListenerWithUIControl) {
+                ((IDomainBeanAsyncHttpResponseListenerWithUIControl) domainBeanAsyncHttpResponseListener).onEnd(NetRequestResultEnum.Failure);
+              }
             }
           });
         }
       });
 
       DebugLog.i(TAG, "         ----- 参数检验正确, 启动子线程进行异步访问.  -----          ");
+
+      // 通知控制层, 本次网络请求参数正确, 可以正常发起
+      if (domainBeanAsyncHttpResponseListener instanceof IDomainBeanAsyncHttpResponseListenerWithUIControl) {
+        ((IDomainBeanAsyncHttpResponseListenerWithUIControl) domainBeanAsyncHttpResponseListener).onBegin();
+      }
 
     } catch (Exception e) {
       DebugLog.e(TAG, "发起网络请求失败, 错误原因-->" + e.getLocalizedMessage());
@@ -224,7 +249,6 @@ public enum SimpleNetworkEngineSingleton {
 
     //
     DebugLog.i(TAG, " ");
-    DebugLog.i(TAG, "         ----- Request a domain bean end  -----          ");
     DebugLog.i(TAG, " ");
     DebugLog.i(TAG, " ");
     DebugLog.i(TAG, " ");

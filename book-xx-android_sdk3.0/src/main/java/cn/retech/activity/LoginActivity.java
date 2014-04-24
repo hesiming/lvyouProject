@@ -1,6 +1,7 @@
 package cn.retech.activity;
 
 import android.app.Activity;
+import android.content.DialogInterface;
 import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 import android.view.KeyEvent;
@@ -9,12 +10,14 @@ import android.widget.Button;
 import android.widget.Toast;
 import cn.retech.domainbean_model.login.LoginNetRequestBean;
 import cn.retech.domainbean_model.login.LoginNetRespondBean;
-import cn.retech.my_network_engine.IDomainBeanAsyncHttpResponseListener;
+import cn.retech.my_network_engine.IDomainBeanAsyncHttpResponseListenerWithUIControl;
 import cn.retech.my_network_engine.INetRequestHandle;
 import cn.retech.my_network_engine.NetRequestHandleNilObject;
 import cn.retech.my_network_engine.SimpleNetworkEngineSingleton;
+import cn.retech.my_network_engine.SimpleNetworkEngineSingleton.NetRequestResultEnum;
 import cn.retech.my_network_engine.net_error_handle.MyNetRequestErrorBean;
 import cn.retech.toolutils.DebugLog;
+import cn.retech.toolutils.SimpleProgressDialog;
 
 import com.umeng.analytics.MobclickAgent;
 
@@ -43,24 +46,43 @@ public class LoginActivity extends Activity {
     });
   }
 
-  private boolean requestLogin(final String userID, final String userPassWord) {
-    LoginNetRequestBean netRequestBean = new LoginNetRequestBean.Builder(userID, userPassWord).builder();
-    netRequestHandleForLogin = SimpleNetworkEngineSingleton.getInstance.requestDomainBean(netRequestBean, new IDomainBeanAsyncHttpResponseListener() {
+  private void requestLogin(final String username, final String password) {
+    LoginNetRequestBean netRequestBean = new LoginNetRequestBean.Builder(username, password).builder();
+    netRequestHandleForLogin = SimpleNetworkEngineSingleton.getInstance.requestDomainBean(netRequestBean, new IDomainBeanAsyncHttpResponseListenerWithUIControl() {
+
       @Override
-      public void onFailure(MyNetRequestErrorBean error) {
-        Toast.makeText(LoginActivity.this, error.toString(), Toast.LENGTH_SHORT).show();
+      public void onSuccess(Object respondDomainBean) {
+        LoginNetRespondBean loginNetRespondBean = (LoginNetRespondBean) respondDomainBean;
+
+        Toast.makeText(LoginActivity.this, "登录成功-->" + loginNetRespondBean.toString(), Toast.LENGTH_SHORT).show();
+
       }
 
       @Override
-      public void onSuccess(final Object respondDomainBean) {
-        LoginNetRespondBean loginNetRespondBean = (LoginNetRespondBean) respondDomainBean;
+      public void onFailure(MyNetRequestErrorBean error) {
+        Toast.makeText(LoginActivity.this, "登录失败-->" + error.toString(), Toast.LENGTH_SHORT).show();
 
-        Toast.makeText(LoginActivity.this, loginNetRespondBean.toString(), Toast.LENGTH_SHORT).show();
+      }
+
+      @Override
+      public void onEnd(final NetRequestResultEnum resultEnum) {
+        SimpleProgressDialog.dismiss(LoginActivity.this);
+      }
+
+      @Override
+      public void onBegin() {
+        SimpleProgressDialog.show(LoginActivity.this, new DialogInterface.OnCancelListener() {
+
+          @Override
+          public void onCancel(DialogInterface dialog) {
+            // 用户取消了本次网络请求
+            netRequestHandleForLogin.cancel();
+          }
+        });
 
       }
     });
 
-    return !netRequestHandleForLogin.idle();
   }
 
   @Override
