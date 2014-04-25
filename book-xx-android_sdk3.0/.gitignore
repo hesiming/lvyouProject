@@ -20,3 +20,6 @@ local.properties
 .project
 .settings/ 
 target/
+
+# MAC files
+.DS_Store
