@@ -108,6 +108,8 @@ public class LoginActivity extends Activity {
   protected void onResume() {
     DebugLog.i(TAG, "onResume");
     super.onResume();
+    
+    //sdfsdf
     MobclickAgent.onResume(this);
   }
 
