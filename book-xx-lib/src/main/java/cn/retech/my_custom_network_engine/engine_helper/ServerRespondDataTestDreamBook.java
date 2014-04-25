@@ -26,8 +26,10 @@ public final class ServerRespondDataTestDreamBook implements IServerRespondDataT
       if (respondJSON != null) {
         if (respondJSON.has("status")) {
           errorCode = respondJSON.getInt("status");
-          if (respondJSON.has("info")) {
-            errorMessage = respondJSON.getString("info");
+          if (errorCode != 0) {// 状态码, 不为0时, 证明服务器没有给客户端返回有效的数据
+            if (respondJSON.has("info")) {
+              errorMessage = respondJSON.getString("info");
+            }
           }
         }
       }
