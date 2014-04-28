@@ -76,7 +76,7 @@ public class MyApplication extends Application {
     // 读取本地缓存的重要数据
     GlobalDataCacheForNeedSaveToFileSystem.readAllCacheData();
     // 获取本地的渠道号
-    GlobalDataCacheForMemorySingleton.getInstance.setChannelName(ToolsFunctionForThisProgect.getUmengChannel());
+//    GlobalDataCacheForMemorySingleton.getInstance.setChannelName(ToolsFunctionForThisProgect.getUmengChannel());
     // 获取应用的版本号
     GlobalDataCacheForMemorySingleton.getInstance.setVersionName(ToolsFunctionForThisProgect.getVersionName());
 

@@ -1,60 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-
-    <color name="color_ec6b56">#ec6b56</color>
-    <color name="color_474747">#474747</color>
-    <color name="white">#ffffff</color>
-    <color name="gray">#CCCCCC</color>
-    <color name="book_shelf_button_click">#ffff9989</color>
-    <color name="orange">#FF3300</color>
-
-    <!-- 设置界面色值 -->
-    <color name="option_layout_bgColor">#f3f3f3</color>
-    <color name="option_logo_company_name_color">#484848</color>
-    <color name="option_item_text_color">#3a3a3a</color>
-    <color name="option_quit_button">#ec6b56</color>
-    <color name="option_quit_button_pressed">#d77063</color>
-
-    <!-- 主色调 -->
-    <color name="mainColor">#f0726d</color>
-    <!-- 主色调 文字 -->
-    <color name="mainTextColor">#ffffff</color>
-    <!-- 主背景色调 -->
-    <color name="mainBackgroundColor">#ffffff</color>
-    <!-- tabHost 焦点tab的文字颜色 -->
-    <color name="tabHostTextFocusColorInBookStore">#2fcc71</color>
-    <!-- tabHost 非焦点tab的文字颜色 -->
-    <color name="tabHostTextDefaultColorInBookStore">#000000</color>
-    <!-- tabHost tab下面的背景色 -->
-    <color name="tabHostBackgroundColorInBookStore">#ffffff</color>
-    <!-- tabHost tab下面的直线 -->
-    <color name="tabHostLineColorInBookStore">#2fcc71</color>
-    <!-- tabHost 焦点tab指示器 -->
-    <color name="tabHostPageIndicatorColorInBookStore">#2fcc71</color>
-    <!-- 退出按钮 默认背景颜色 -->
-    <color name="logoutButtonBackgroundColorDefault">#2fcc71</color>
-    <!-- 退出按钮 高亮背景颜色 -->
-    <color name="logoutButtonBackgroundColorHighlight">#29b664</color>
-
-    <!-- 取消按钮 默认背景颜色 -->
-    <color name="cancelButtonBackgroundColorDefault">#ffffff</color>
-    <!-- 取消按钮 高亮背景颜色 -->
-    <color name="cancelButtonBackgroundColorHighlight">#75e9a6</color>
-    <!-- 设置界面 logo 下面的文字颜色 -->
-    <color name="logoTextColorInSetting">#484848</color>
-
-    <!-- 书城界面的 返回按钮 -->
-    <color name="backButtonHighlightedInBookStoreColor">#484848</color>
-
-    <!-- 新手动画色值 -->
-    <color name="explain_phoneScreen_bgColor">#efeeed</color>
-    <color name="explain_delete_upperLayout_bgColor">#99C868</color>
-    <color name="explain_delete_lowerLayout_bgColor">#7B9F55</color>
-    <color name="explain_create_upperLayout_bgColor">#486286</color>
-    <color name="explain_create_lowerLayout_bgColor">#3E5270</color>
-    <color name="explain_change_upperLayout_bgColor">#50B6DA</color>
-    <color name="explain_change_lowerLayout_bgColor">#499EBB</color>
-    <color name="explain_finish_upperLayout_bgColor">#D4644C</color>
-    <color name="explain_finish_lowerLayout_bgColor">#B85744</color>
-    <color name="explain_change_navigatorLine">#B1AFB0</color>
-</resources>
+    
+        <color name="list_item_title">#fff</color>
+    <color name="list_background">#303030</color>
+    <color name="list_background_pressed">#992416</color>
+    <color name="list_divider">#272727</color>
+    <color name="counter_text_bg">#626262</color>
+    <color name="counter_text_color">#c5c4c4</color>
+    
+    <color name="select_text_color">#ff0000</color>
+    
+    <color name="whilte">#ffffff</color>
+</resources>
