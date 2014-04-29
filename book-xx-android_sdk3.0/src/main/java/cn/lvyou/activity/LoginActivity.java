@@ -4,7 +4,6 @@ import android.app.Activity;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.KeyEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
@@ -28,10 +27,6 @@ public class LoginActivity extends Activity {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		// 获取标识位，用来设置是否支持屏幕翻转(手机不支持屏幕翻转)
-//		if (!getResources().getBoolean(R.bool.isLarge)) {
-//			setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
-//		}
 
 		setContentView(R.layout.activity_login);
 
@@ -112,7 +107,6 @@ public class LoginActivity extends Activity {
 		DebugLog.i(TAG, "onResume");
 		super.onResume();
 
-		// sdfsdf
 		MobclickAgent.onResume(this);
 	}
 
@@ -126,14 +120,6 @@ public class LoginActivity extends Activity {
 	protected void onStop() {
 		DebugLog.i(TAG, "onStop");
 		super.onStop();
-	}
-
-	@Override
-	public boolean onKeyDown(int keyCode, KeyEvent event) {
-		if (keyCode == KeyEvent.KEYCODE_BACK) {
-			return true;
-		}
-		return super.onKeyDown(keyCode, event);
 	}
 
 }

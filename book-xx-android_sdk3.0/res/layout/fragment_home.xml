@@ -1,24 +1,47 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent" >
+    android:layout_height="match_parent"
+    android:background="@color/base_background" >
 
-    <android.support.v4.view.ViewPager
-        android:id="@+id/mViewPager"
+    <LinearLayout
+        android:id="@+id/titlebar"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" >
-        
-        <android.support.v4.view.PagerTabStrip    
-            android:id="@+id/mPagerTabStrip"    
-            android:layout_width="wrap_content"    
-            android:layout_height="wrap_content"    
-            android:layout_gravity="top"/>    
-        
-<!--         <android.support.v4.view.PagerTitleStrip
-            android:id="@+id/mPagerTitleStrip"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="top" /> -->
-    </android.support.v4.view.ViewPager>
+        android:layout_height="wrap_content"
+        android:layout_weight="0"
+        android:gravity="center_vertical"
+        android:orientation="vertical" >
+
+        <RelativeLayout
+            android:id="@+id/lyTitleBar"
+            android:layout_width="fill_parent"
+            android:layout_height="50dip"
+            android:layout_gravity="top"
+            android:background="@drawable/bg_lm_titlebar"
+            android:gravity="center_vertical" >
+
+            <ImageButton
+                android:id="@+id/titleBtnLeft"
+                android:layout_width="60dip"
+                android:layout_height="fill_parent"
+                android:layout_alignParentLeft="true"
+                android:layout_centerInParent="true"
+                android:background="@drawable/btn_titlebar_noline_selector"
+                android:gravity="center"
+                android:src="@drawable/ic_sliding_menu" />
+
+            <ImageView
+                android:id="@+id/titleText"
+                android:layout_width="wrap_content"
+                android:layout_height="fill_parent"
+                android:layout_centerHorizontal="true"
+                android:layout_marginBottom="8dp"
+                android:layout_marginRight="40dp"
+                android:layout_marginTop="8dp"
+                android:gravity="center"
+                android:scaleType="fitCenter"
+                android:src="@drawable/ic_titlebar_logo" />
+        </RelativeLayout>
+    </LinearLayout>
 
 </RelativeLayout>

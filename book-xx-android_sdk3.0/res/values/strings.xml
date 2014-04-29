@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="app_name">仿网易新闻客户端</string>
+    <string name="app_name">测试项目</string>
     <string name="refresh">刷新</string>
     <string name="person">个人中心</string>
     <string name="sliding_title">SlidingMenu Demo</string>

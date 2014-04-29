@@ -1,16 +1,248 @@
-<?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mRlLeftMenuFragment"
     android:layout_width="match_parent"
-    android:layout_height="match_parent" >
-    
-    <ListView  
-        android:id="@+id/left_menu"  
-        android:layout_width="match_parent"  
-        android:layout_height="match_parent"  
-        android:layout_gravity="start"  
-        android:choiceMode="singleChoice"  
-        android:divider="@android:color/transparent"  
-        android:dividerHeight="0dp"  
-        android:background="#111"/>  
+    android:layout_height="match_parent"
+    android:background="#2f3843"
+    tools:context=".SplashActivity" >
+
+    <!-- 穷游Icon -->
+
+    <RelativeLayout
+        android:id="@+id/btn_qyer_icon"
+        android:layout_width="@dimen/cliding_menu_behind_width"
+        android:layout_height="48dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:background="@drawable/bg_sliding_menu_btn_selector"
+        android:orientation="vertical" >
+
+        <!-- android:layout_marginLeft="24dp" -->
+
+        <ImageView
+            android:id="@+id/iv_qyer_icon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:src="@drawable/qyer_icon" />
+
+        <View
+            android:layout_width="195dp"
+            android:layout_height="5dp"
+            android:layout_alignParentBottom="true"
+            android:background="@drawable/slide_line" />
+    </RelativeLayout>
+
+    <!-- 全部折扣 -->
+
+    <RelativeLayout
+        android:id="@+id/btn_all_deal"
+        android:layout_width="@dimen/cliding_menu_behind_width"
+        android:layout_height="@dimen/cliding_menu_behind_height"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/btn_qyer_icon"
+        android:background="@drawable/bg_sliding_menu_btn_selector"
+        android:orientation="vertical" >
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_gravity="center_vertical"
+            android:layout_weight="1" >
+
+            <ImageView
+                android:id="@+id/iv_all_deal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:paddingLeft="@dimen/cliding_menu_item_left"
+                android:src="@drawable/ic_deal_normal" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:paddingLeft="@dimen/cliding_menu_item_text_left"
+                android:text="全部折扣"
+                android:textColor="@color/left_menu_text_color"
+                android:textSize="15dp" />
+        </LinearLayout>
+
+        <View
+            android:layout_width="195dp"
+            android:layout_height="5dp"
+            android:layout_alignParentBottom="true"
+            android:background="@drawable/slide_line" />
+    </RelativeLayout>
+
+    <!-- 我的订单 -->
+
+    <RelativeLayout
+        android:id="@+id/btn_my_order"
+        android:layout_width="@dimen/cliding_menu_behind_width"
+        android:layout_height="@dimen/cliding_menu_behind_height"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/btn_all_deal"
+        android:background="@drawable/bg_sliding_menu_btn_selector"
+        android:gravity="center"
+        android:visibility="visible" >
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_gravity="center_vertical"
+            android:layout_weight="1" >
+
+            <ImageView
+                android:id="@+id/iv_my_order"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:paddingLeft="@dimen/cliding_menu_item_left"
+                android:src="@drawable/ic_order" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:paddingLeft="@dimen/cliding_menu_item_text_left"
+                android:text="我的订单"
+                android:textColor="@color/left_menu_text_color"
+                android:textSize="15dp" />
+        </LinearLayout>
+
+        <View
+            android:layout_width="195dp"
+            android:layout_height="5dp"
+            android:layout_alignParentBottom="true"
+            android:background="@drawable/slide_line" />
+    </RelativeLayout>
+
+    <!-- 我的收藏 -->
+
+    <RelativeLayout
+        android:id="@+id/btn_my_favor"
+        android:layout_width="@dimen/cliding_menu_behind_width"
+        android:layout_height="@dimen/cliding_menu_behind_height"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/btn_my_order"
+        android:background="@drawable/bg_sliding_menu_btn_selector"
+        android:orientation="vertical" >
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_gravity="center_vertical"
+            android:layout_weight="1" >
+
+            <ImageView
+                android:id="@+id/iv_my_favor"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:paddingLeft="@dimen/cliding_menu_item_left"
+                android:src="@drawable/ic_favor" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:paddingLeft="@dimen/cliding_menu_item_text_left"
+                android:text="我的收藏"
+                android:textColor="@color/left_menu_text_color"
+                android:textSize="15dp" />
+        </LinearLayout>
+
+        <View
+            android:layout_width="195dp"
+            android:layout_height="5dp"
+            android:layout_alignParentBottom="true"
+            android:background="@drawable/slide_line" />
+    </RelativeLayout>
+
+    <!-- 我的提醒 -->
+
+    <RelativeLayout
+        android:id="@+id/btn_my_notification"
+        android:layout_width="@dimen/cliding_menu_behind_width"
+        android:layout_height="@dimen/cliding_menu_behind_height"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/btn_my_favor"
+        android:background="@drawable/bg_sliding_menu_btn_selector"
+        android:orientation="vertical" >
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_gravity="center_vertical"
+            android:layout_weight="1" >
+
+            <ImageView
+                android:id="@+id/iv_my_notifi"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:paddingLeft="@dimen/cliding_menu_item_left"
+                android:src="@drawable/ic_notifi" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:paddingLeft="@dimen/cliding_menu_item_text_left"
+                android:text="我的提醒"
+                android:textColor="@color/left_menu_text_color"
+                android:textSize="15dp" />
+        </LinearLayout>
+
+        <View
+            android:layout_width="195dp"
+            android:layout_height="5dp"
+            android:layout_alignParentBottom="true"
+            android:background="@drawable/slide_line" />
+    </RelativeLayout>
+
+    <!-- 更多设置 -->
+
+    <RelativeLayout
+        android:id="@+id/btn_more_setting"
+        android:layout_width="@dimen/cliding_menu_behind_width"
+        android:layout_height="@dimen/cliding_menu_behind_height"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/btn_my_notification"
+        android:background="@drawable/bg_sliding_menu_btn_bottom_selector"
+        android:orientation="vertical" >
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_gravity="center_vertical"
+            android:layout_weight="1" >
+
+            <ImageView
+                android:id="@+id/iv_setting"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:paddingLeft="@dimen/cliding_menu_item_left"
+                android:src="@drawable/ic_setting" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:paddingLeft="@dimen/cliding_menu_item_text_left"
+                android:text="更多设置"
+                android:textColor="@color/left_menu_text_color"
+                android:textSize="15dp" />
+        </LinearLayout>
+
+        <View
+            android:layout_width="195dp"
+            android:layout_height="5dp"
+            android:layout_alignParentBottom="true"
+            android:background="@drawable/slide_line" />
+    </RelativeLayout>
 
 </RelativeLayout>

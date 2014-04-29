@@ -2,6 +2,19 @@
 
     <!-- Default screen margins, per the Android Design guidelines. -->
     <dimen name="shadow_width">3dp</dimen>
-    <dimen name="slidingmenu_offset">50dp</dimen>
+    <dimen name="slidingmenu_offset">150dp</dimen>
+    <!-- sliemenu width 和 height -->
+    <dimen name="cliding_menu_behind_width">195dp</dimen>
+    <dimen name="cliding_menu_behind_height">59dp</dimen>
+    <!-- sliemenu marigin left -->
+    <dimen name="cliding_menu_item_left">24dp</dimen>
+    <dimen name="cliding_menu_item_text_left">6dp</dimen>
+    <dimen name="dp_space_big">12dp</dimen>
+    <dimen name="dp_space_big_half">6dp</dimen>
+    <dimen name="dp_space_normal">10dp</dimen>
+    <dimen name="dp_space_normal_half">5dp</dimen>
+    <dimen name="dp_text_big">18dp</dimen>
+    <dimen name="radio_width">60dp</dimen>
+    <dimen name="main_deal_header_textview_h">33dp</dimen>
 
 </resources>
