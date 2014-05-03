@@ -1,5 +1,7 @@
 package cn.retech.domainbean_model.categorys;
 
+import com.google.common.collect.Maps;
+
 import java.util.Map;
 
 import cn.retech.my_network_engine.domainbean_tools.IParseDomainBeanToDataDictionary;
@@ -8,8 +10,8 @@ public class CategorysParseDomainBeanToDD implements IParseDomainBeanToDataDicti
 
   @Override
   public Map<String, String> parseDomainBeanToDataDictionary(Object netRequestDomainBean) {
-    // TODO Auto-generated method stub
-    return null;
+    Map<String, String> returnMap = Maps.newHashMap();
+    return returnMap;
   }
 
 }

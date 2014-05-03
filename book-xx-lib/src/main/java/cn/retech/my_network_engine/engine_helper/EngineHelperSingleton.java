@@ -3,7 +3,7 @@ package cn.retech.my_network_engine.engine_helper;
 import cn.retech.my_custom_network_engine.engine_helper.DomainBeanRequestPublicParameterForDreamBook;
 import cn.retech.my_custom_network_engine.engine_helper.NetRequestEntityDataPackageForDreamBook;
 import cn.retech.my_custom_network_engine.engine_helper.NetRespondEntityDataUnpackDreamBook;
-import cn.retech.my_custom_network_engine.engine_helper.ServerRespondDataTestDreamBook;
+import cn.retech.my_custom_network_engine.engine_helper.ServerRespondDataTestLvyou;
 import cn.retech.my_custom_network_engine.engine_helper.SpliceFullUrlByDomainBeanSpecialPathForDreamBook;
 import cn.retech.my_network_engine.engine_helper.interfaces.IDomainBeanRequestPublicParameter;
 import cn.retech.my_network_engine.engine_helper.interfaces.INetRequestEntityDataPackage;
@@ -31,7 +31,7 @@ public enum EngineHelperSingleton implements IEngineHelper {
 
   @Override
   public IServerRespondDataTest getServerRespondDataTestStrategyObject() {
-    return new ServerRespondDataTestDreamBook();
+    return new ServerRespondDataTestLvyou();
   }
 
   @Override

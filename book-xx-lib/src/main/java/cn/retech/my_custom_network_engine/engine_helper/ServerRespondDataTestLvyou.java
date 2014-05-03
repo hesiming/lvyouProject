@@ -12,7 +12,7 @@ import cn.retech.my_network_engine.net_error_handle.MyNetRequestErrorBean;
  * @author skyduck
  * 
  */
-public final class ServerRespondDataTestDreamBook implements IServerRespondDataTest {
+public final class ServerRespondDataTestLvyou implements IServerRespondDataTest {
 
   @Override
   public MyNetRequestErrorBean testServerRespondDataError(final Object netUnpackedData) {
