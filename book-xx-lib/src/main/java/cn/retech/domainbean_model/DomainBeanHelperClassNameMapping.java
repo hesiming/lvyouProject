@@ -1,5 +1,9 @@
 package cn.retech.domainbean_model;
 
+import cn.retech.domainbean_model.categorys.CategorysDomainBeanToolsFactory;
+
+import cn.retech.domainbean_model.categorys.CategorysNetRequestBean;
+
 import cn.retech.domainbean_model.login.LoginDomainBeanToolsFactory;
 import cn.retech.domainbean_model.login.LoginNetRequestBean;
 import cn.retech.my_network_engine.domainbean_strategy_mapping.StrategyClassNameMappingBase;
@@ -22,5 +26,9 @@ public final class DomainBeanHelperClassNameMapping extends StrategyClassNameMap
      */
     strategyClassesNameMappingList.put(LoginNetRequestBean.class.getName(), LoginDomainBeanToolsFactory.class.getName());
 
+    /**
+     * 筛选分类
+     */
+    strategyClassesNameMappingList.put(CategorysNetRequestBean.class.getName(), CategorysDomainBeanToolsFactory.class.getName());
   }
 }
