@@ -2,22 +2,26 @@ package cn.lvyou.fragment;
 
 import java.util.List;
 
+import android.graphics.drawable.BitmapDrawable;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.view.ViewGroup.LayoutParams;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
+import android.widget.ListView;
 import android.widget.PopupWindow;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 import cn.lvyou.activity.MainActivity;
 import cn.lvyou.activity.R;
+import cn.lvyou.adapter.FilterAdapter;
 import cn.retech.domainbean_model.categorys.CategorysNetRequestBean;
 import cn.retech.domainbean_model.categorys.CategorysNetRespondBean;
 import cn.retech.domainbean_model.categorys.categorybeans.ICategoryItem;
@@ -40,7 +44,7 @@ public class HomeFragment extends Fragment {
 	private CategorysNetRespondBean categoryNetRespondBean;
 	private LinearLayout categoryLayout;
 	private PopupWindow categoryPopupWindow;
-	private LinearLayout listViewInCategoryPopupWindow;
+	private ListView filterListView;
 	// 主界面筛选的文字TextView
 	// 折扣类型
 	private TextView discountTypeTextView;
@@ -70,40 +74,37 @@ public class HomeFragment extends Fragment {
 			if (null != categoryPopupWindow && categoryPopupWindow.isShowing()) {
 				categoryPopupWindow.dismiss();
 
-				if (listViewInCategoryPopupWindow.getTag() != null && (Integer) listViewInCategoryPopupWindow.getTag() == v.getId()) {
+				if (filterListView.getTag() != null && (Integer) filterListView.getTag() == v.getId()) {
 					return;
 				}
 			}
 
-			listViewInCategoryPopupWindow.removeAllViews();
-			listViewInCategoryPopupWindow.setTag(v.getId());
-
 			List<ICategoryItem> categoryItems = Lists.newArrayList();
 
 			switch (v.getId()) {
-			case R.id.travel_date_textView:
+			case R.id.travel_date_layout:// 旅行时间
 				categoryItems = categoryNetRespondBean.getDates();
 				break;
-			case R.id.discount_type_textView:
+			case R.id.discount_type_layout:// 折扣类型
 				categoryItems = categoryNetRespondBean.getTypes();
 				break;
-			case R.id.departure_place_textView:
+			case R.id.departure_place_layout:// 出发地
 				categoryItems = categoryNetRespondBean.getOriginPlace();
 				break;
-			case R.id.destination_place_textView:
+			case R.id.destination_place_layout:// 目的地
 				categoryItems = categoryNetRespondBean.getPlaces();
 				break;
 			}
 
-			for (ICategoryItem categoryDate : categoryItems) {
-				TextView textView = new TextView(getActivity());
-				textView.setTextSize(19f);
-				textView.setGravity(Gravity.CENTER_VERTICAL);
-				textView.setTextColor(getResources().getColor(android.R.color.black));
-				textView.setText(categoryDate.getDescription());
-				listViewInCategoryPopupWindow.addView(textView, new LinearLayout.LayoutParams(LayoutParams.MATCH_PARENT, 85));
-			}
+			final FilterAdapter adapter = new FilterAdapter(getActivity(), categoryItems);
+			filterListView.setAdapter(adapter);
+			filterListView.setOnItemClickListener(new OnItemClickListener() {
 
+				@Override
+				public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+					adapter.setSelectedPosition(position + "");
+				}
+			});
 			categoryPopupWindow.showAsDropDown(categoryLayout);
 		}
 	};
@@ -113,8 +114,12 @@ public class HomeFragment extends Fragment {
 	 */
 	private void initFilterView() {
 		View popupWindowView = getActivity().getLayoutInflater().inflate(R.layout.categorys_popupwindow_content, null, false);
-		categoryPopupWindow = new PopupWindow(popupWindowView, LayoutParams.MATCH_PARENT, LayoutParams.WRAP_CONTENT, false);
-		listViewInCategoryPopupWindow = (LinearLayout) popupWindowView.findViewById(R.id.categoryContentList);
+		categoryPopupWindow = new PopupWindow(popupWindowView, LayoutParams.MATCH_PARENT, LayoutParams.WRAP_CONTENT, true);
+		// 下面两步必须一起调用,否则点击窗外无法关闭popupwindow
+		categoryPopupWindow.setOutsideTouchable(true);
+		categoryPopupWindow.setBackgroundDrawable(new BitmapDrawable());// 点击窗口外消失
+
+		filterListView = (ListView) popupWindowView.findViewById(R.id.lv_selection);
 
 		categoryLayout = (LinearLayout) getView().findViewById(R.id.filter_layout);
 		// 加载筛选列表的布局
@@ -159,6 +164,12 @@ public class HomeFragment extends Fragment {
 		super.onStart();
 	}
 
+	@Override
+	public void onStop() {
+		super.onStop();
+		netRequestHandleForCategroys.cancel();
+	}
+
 	private void requestCategroys() {
 		CategorysNetRequestBean categorysNetRequestBean = new CategorysNetRequestBean();
 		netRequestHandleForCategroys = SimpleNetworkEngineSingleton.getInstance.requestDomainBean(categorysNetRequestBean, new IDomainBeanAsyncHttpResponseListener() {
@@ -171,16 +182,17 @@ public class HomeFragment extends Fragment {
 				categoryNetRespondBean = (CategorysNetRespondBean) respondDomainBean;
 
 				// categoryDatesTextView.setText("时间");
-				travelDateTextView.setOnClickListener(onCategoryClickListener);
+				discountTypeLayout.setOnClickListener(onCategoryClickListener);
 
 				// categoryOriginPlaceTextView.setText("出发地");
-				departurePlaceTextView.setOnClickListener(onCategoryClickListener);
+				departurePlaceLayout.setOnClickListener(onCategoryClickListener);
 
 				// categoryPlaceTextView.setText("目的地");
-				destinationPlaceTextView.setOnClickListener(onCategoryClickListener);
+				destinationPlaceLayout.setOnClickListener(onCategoryClickListener);
 
 				// categoryTypesTextView.setText("机票");
-				discountTypeTextView.setOnClickListener(onCategoryClickListener);
+				travelDateLayout.setOnClickListener(onCategoryClickListener);
+
 			}
 		});
 	}

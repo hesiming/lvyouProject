@@ -1,19 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- 注意这里的细节，若要PopuWindow与ScrollView正常搭配使用，需要在ScrollView外层再嵌套一个ViewGroup -->
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent" >
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:layout_gravity="top"
+    android:background="@android:color/transparent"
+    android:gravity="center_vertical"
+    android:paddingBottom="80dp" >
 
-    <ScrollView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent" >
-
-        <LinearLayout
-            android:id="@+id/categoryContentList"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical" >
-        </LinearLayout>
-    </ScrollView>
+    <ListView
+        android:id="@+id/lv_selection"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:cacheColorHint="#00000000"
+        android:choiceMode="singleChoice"
+        android:divider="#c4c4c4"
+        android:dividerHeight="1px"
+        android:fadingEdge="none"
+        android:listSelector="@drawable/bg_item_pop_selector"
+        android:scrollbars="none" >
+    </ListView>
 
 </RelativeLayout>
