@@ -49,9 +49,6 @@ public class MainActivity extends SlidingFragmentActivity implements SLMenuListO
 		fragmentTransaction.replace(R.id.content, new HomeFragment());
 		fragmentTransaction.commit();
 
-		// 使用左上方icon可点，这样在onOptionsItemSelected里面才可以监听到R.id.home
-		// getActionBar().setDisplayHomeAsUpEnabled(true);
-		// getActionBar().setLogo(R.drawable.ic_logo);
 	}
 
 	@Override
@@ -60,13 +57,19 @@ public class MainActivity extends SlidingFragmentActivity implements SLMenuListO
 		case android.R.id.home:
 
 			toggle(); // 动态判断自动关闭或开启SlidingMenu
-			// getSlidingMenu().showMenu();//显示SlidingMenu
-			// getSlidingMenu().showContent();//显示内容
+			getSlidingMenu().showMenu();// 显示SlidingMenu
+			getSlidingMenu().showContent();// 显示内容
 			return true;
 		default:
 			return super.onOptionsItemSelected(item);
 		}
 
+	}
+
+	public void showMenuContent() {
+		if (mSlidingMenu != null) {
+			mSlidingMenu.showMenu();
+		}
 	}
 
 	@Override

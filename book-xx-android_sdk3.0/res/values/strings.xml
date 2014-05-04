@@ -6,5 +6,10 @@
     <string name="person">个人中心</string>
     <string name="sliding_title">SlidingMenu Demo</string>
     <string name="desc_list_item_icon">SlidingMenu</string>
+    <!-- 折扣主界面筛选条件 -->
+    <string name="discount_type">折扣类型</string>
+    <string name="departure_place">出发地</string>
+    <string name="destination_place">目的地</string>
+    <string name="travel_date">旅行时间</string>
 
 </resources>

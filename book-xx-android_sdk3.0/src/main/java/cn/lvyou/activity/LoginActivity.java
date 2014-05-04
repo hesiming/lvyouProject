@@ -18,8 +18,6 @@ import cn.retech.my_network_engine.net_error_handle.MyNetRequestErrorBean;
 import cn.retech.toolutils.DebugLog;
 import cn.retech.toolutils.SimpleProgressDialog;
 
-import com.umeng.analytics.MobclickAgent;
-
 public class LoginActivity extends Activity {
 	private final String TAG = this.getClass().getSimpleName();
 	private INetRequestHandle netRequestHandleForLogin = new NetRequestHandleNilObject();
@@ -93,7 +91,6 @@ public class LoginActivity extends Activity {
 	protected void onPause() {
 		DebugLog.i(TAG, "onPause");
 		super.onPause();
-		MobclickAgent.onPause(this);
 	}
 
 	@Override
@@ -107,7 +104,6 @@ public class LoginActivity extends Activity {
 		DebugLog.i(TAG, "onResume");
 		super.onResume();
 
-		MobclickAgent.onResume(this);
 	}
 
 	@Override
