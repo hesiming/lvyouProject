@@ -4,6 +4,7 @@ import java.util.List;
 
 import android.content.Context;
 import android.graphics.Color;
+import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -56,7 +57,7 @@ public class FilterAdapter extends BaseAdapter {
 
 		holder.textView.setText(categoryItems.get(position).getDescription());
 
-		if (ToolsFunctionForThisProgect.isEmpty(this.selectedItemId)) {
+		if (TextUtils.isEmpty(this.selectedItemId)) {
 			if (position == 0) {
 				convertView.setBackgroundColor(Color.parseColor("#e5e5e5"));
 				holder.imageView.setVisibility(View.VISIBLE);

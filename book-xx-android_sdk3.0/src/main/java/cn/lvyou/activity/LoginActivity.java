@@ -19,103 +19,102 @@ import cn.retech.toolutils.DebugLog;
 import cn.retech.toolutils.SimpleProgressDialog;
 
 public class LoginActivity extends Activity {
-	private final String TAG = this.getClass().getSimpleName();
-	private INetRequestHandle netRequestHandleForLogin = new NetRequestHandleNilObject();
+  private final String TAG = this.getClass().getSimpleName();
+  private INetRequestHandle netRequestHandleForLogin = new NetRequestHandleNilObject();
 
-	@Override
-	protected void onCreate(Bundle savedInstanceState) {
-		super.onCreate(savedInstanceState);
+  @Override
+  protected void onCreate(Bundle savedInstanceState) {
+    super.onCreate(savedInstanceState);
 
-		setContentView(R.layout.activity_login);
+    setContentView(R.layout.activity_login);
 
-		Button button = (Button) findViewById(R.id.button1);
-		button.setOnClickListener(new View.OnClickListener() {
+    Button button = (Button) findViewById(R.id.button1);
+    button.setOnClickListener(new View.OnClickListener() {
 
-			@Override
-			public void onClick(View v) {
-				requestLogin("飞翔的熊猫", "198321");
+      @Override
+      public void onClick(View v) {
+        requestLogin("飞翔的熊猫", "198321");
 
-			}
-		});
-	}
+      }
+    });
+  }
 
-	private void requestLogin(final String username, final String password) {
-		LoginNetRequestBean netRequestBean = new LoginNetRequestBean.Builder(username, password).builder();
-		netRequestHandleForLogin = SimpleNetworkEngineSingleton.getInstance.requestDomainBean(netRequestBean, new IDomainBeanAsyncHttpResponseListenerWithUIControl() {
+  private void requestLogin(final String username, final String password) {
+    LoginNetRequestBean netRequestBean = new LoginNetRequestBean.Builder(username, password).builder();
+    netRequestHandleForLogin = SimpleNetworkEngineSingleton.getInstance.requestDomainBean(netRequestBean, new IDomainBeanAsyncHttpResponseListenerWithUIControl() {
 
-			@Override
-			public void onSuccess(Object respondDomainBean) {
-				LoginNetRespondBean loginNetRespondBean = (LoginNetRespondBean) respondDomainBean;
+      @Override
+      public void onSuccess(Object respondDomainBean) {
+        LoginNetRespondBean loginNetRespondBean = (LoginNetRespondBean) respondDomainBean;
 
-				Toast.makeText(LoginActivity.this, "登录成功-->" + loginNetRespondBean.toString(), Toast.LENGTH_SHORT).show();
-				Intent intent = new Intent();
-				intent.setClass(LoginActivity.this, MainActivity.class);
-				LoginActivity.this.startActivity(intent);
+        Toast.makeText(LoginActivity.this, "登录成功-->" + loginNetRespondBean.toString(), Toast.LENGTH_SHORT).show();
+        Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+        startActivity(intent);
 
-			}
+      }
 
-			@Override
-			public void onFailure(MyNetRequestErrorBean error) {
-				Toast.makeText(LoginActivity.this, "登录失败-->" + error.toString(), Toast.LENGTH_SHORT).show();
+      @Override
+      public void onFailure(MyNetRequestErrorBean error) {
+        Toast.makeText(LoginActivity.this, "登录失败-->" + error.toString(), Toast.LENGTH_SHORT).show();
 
-			}
+      }
 
-			@Override
-			public void onEnd(final NetRequestResultEnum resultEnum) {
-				SimpleProgressDialog.dismiss(LoginActivity.this);
-			}
+      @Override
+      public void onEnd(final NetRequestResultEnum resultEnum) {
+        SimpleProgressDialog.dismiss(LoginActivity.this);
+      }
 
-			@Override
-			public void onBegin() {
-				SimpleProgressDialog.show(LoginActivity.this, new DialogInterface.OnCancelListener() {
+      @Override
+      public void onBegin() {
+        SimpleProgressDialog.show(LoginActivity.this, new DialogInterface.OnCancelListener() {
 
-					@Override
-					public void onCancel(DialogInterface dialog) {
-						// 用户取消了本次网络请求
-						netRequestHandleForLogin.cancel();
-					}
-				});
+          @Override
+          public void onCancel(DialogInterface dialog) {
+            // 用户取消了本次网络请求
+            netRequestHandleForLogin.cancel();
+          }
+        });
 
-			}
-		});
+      }
+    });
 
-	}
+  }
 
-	@Override
-	protected void onDestroy() {
-		DebugLog.i(TAG, "onDestroy");
-		super.onDestroy();
-	}
+  @Override
+  protected void onDestroy() {
+    DebugLog.i(TAG, "onDestroy");
+    super.onDestroy();
+  }
 
-	@Override
-	protected void onPause() {
-		DebugLog.i(TAG, "onPause");
-		super.onPause();
-	}
+  @Override
+  protected void onPause() {
+    DebugLog.i(TAG, "onPause");
+    super.onPause();
+  }
 
-	@Override
-	protected void onRestart() {
-		DebugLog.i(TAG, "onRestart");
-		super.onRestart();
-	}
+  @Override
+  protected void onRestart() {
+    DebugLog.i(TAG, "onRestart");
+    super.onRestart();
+  }
 
-	@Override
-	protected void onResume() {
-		DebugLog.i(TAG, "onResume");
-		super.onResume();
+  @Override
+  protected void onResume() {
+    DebugLog.i(TAG, "onResume");
+    super.onResume();
 
-	}
+  }
 
-	@Override
-	protected void onStart() {
-		DebugLog.i(TAG, "onStart");
-		super.onStart();
-	}
+  @Override
+  protected void onStart() {
+    DebugLog.i(TAG, "onStart");
+    super.onStart();
+  }
 
-	@Override
-	protected void onStop() {
-		DebugLog.i(TAG, "onStop");
-		super.onStop();
-	}
+  @Override
+  protected void onStop() {
+    DebugLog.i(TAG, "onStop");
+    super.onStop();
+  }
 
 }

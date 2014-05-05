@@ -1,45 +1,47 @@
 package cn.lvyou.activity;
 
+import java.util.Timer;
+import java.util.TimerTask;
+
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.Handler;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
+import cn.retech.toolutils.SimpleBitmapTools;
+import cn.retech.toolutils.ToolsFunctionForThisProgect;
 
 public class SplashActivity extends Activity {
 
-  private static int START_ACT_MAIN = 1;
+  private Timer timer = new Timer();
+  private TimerTask timerTaskForGotoMainActivity = new TimerTask() {
 
-  private Handler handler = new Handler() {
-    public void handleMessage(android.os.Message msg) {
-      if (msg.what == START_ACT_MAIN) {
-        //startMainTabsActivity();
-        finish();
-      }
-    };
+    @Override
+    public void run() {
+      Intent intent = new Intent(SplashActivity.this, MainActivity.class);
+      startActivity(intent);
+      finish();
+    }
   };
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
-//    setContentView(R.layout.activity_splash);
-//
-//    handler.sendEmptyMessageDelayed(START_ACT_MAIN, 1000);
-//
-//    if (QyerApplication.hasChannelIcon()) {
-//      ImageView iv = (ImageView) findViewById(R.id.imageView1);
-//      iv.setImageBitmap(getImageFromAssetsFile(QyerApplication.getChannelName() + ".png"));
-//      iv.setVisibility(View.VISIBLE);
-//    }
-//
-//    ((TextView) findViewById(R.id.textView1)).setText(QyerApplication.getChannelText());
-  }
+    setContentView(R.layout.activity_splash);
 
-//  private void startMainTabsActivity() {
-//    Intent intent = MainActivity.newInstance(this, MainActivity.FRAGMENT_MAIN_DEAL);
-//    startActivity(intent);
-//  }
+    // TODO : 检测是否需要显示渠道icon和渠道名称
+    // 渠道icon
+    if (ToolsFunctionForThisProgect.hasChannelIcon()) {
+      ImageView iv = (ImageView) findViewById(R.id.channel_icon_ImageView);
+      iv.setImageBitmap(SimpleBitmapTools.getBitmapFromAssetsDirectory(ToolsFunctionForThisProgect.getUmengChannel() + ".png"));
+      iv.setVisibility(View.VISIBLE);
+    }
+    // 渠道name
+    ((TextView) findViewById(R.id.channel_name_TextView)).setText(ToolsFunctionForThisProgect.getChannelText());
+
+    // 延迟一段时间后, 进入主界面
+    timer.schedule(timerTaskForGotoMainActivity, 3 * 1000);
+  }
 
 }
