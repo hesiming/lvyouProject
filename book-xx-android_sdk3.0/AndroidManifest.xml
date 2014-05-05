@@ -30,7 +30,7 @@
 
         <!-- 应用主Activity, 欢迎界面 ! -->
         <activity
-            android:name="LoginActivity"
+            android:name="SplashActivity"
             android:label="@string/app_name"
             android:launchMode="singleTask"
             android:screenOrientation="portrait"
@@ -46,6 +46,14 @@
             android:launchMode="singleTask"
             android:screenOrientation="portrait"
             android:theme="@style/windownotitle" />
+
+        <meta-data
+            android:name="UMENG_APPKEY"
+            android:value="51ac37f5527015c8a7000004" >
+        </meta-data>
+        <meta-data
+            android:name="UMENG_CHANNEL"
+            android:value="taobao" />
     </application>
 
 </manifest>
