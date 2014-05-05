@@ -6,14 +6,9 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.util.Log;
 import android.view.MenuItem;
-import cn.lvyou.fragment.CommunityFragment;
-import cn.lvyou.fragment.FindPeopleFragment;
 import cn.lvyou.fragment.HomeFragment;
 import cn.lvyou.fragment.MenuFragment;
 import cn.lvyou.fragment.MenuFragment.SLMenuListOnItemClickListener;
-import cn.lvyou.fragment.PagesFragment;
-import cn.lvyou.fragment.PhotosFragment;
-import cn.lvyou.fragment.WhatsHotFragment;
 import cn.lvyou.slidingmenu.SlidingMenu;
 import cn.lvyou.slidingmenu.app.SlidingFragmentActivity;
 
@@ -31,7 +26,7 @@ public class MainActivity extends SlidingFragmentActivity implements SLMenuListO
 		// 设置只有左侧可以划出,如果需要设置左右都能划LEFT_RIGHT
 		mSlidingMenu.setMode(SlidingMenu.LEFT);
 		// 设置阴影图片
-		mSlidingMenu.setShadowDrawable(R.drawable.drawer_shadow);
+		//mSlidingMenu.setShadowDrawable(R.drawable.drawer_shadow);
 		// 设置阴影图片的宽度
 		mSlidingMenu.setShadowWidthRes(R.dimen.shadow_width);
 		// SlidingMenu划出时主页面显示的剩余宽度
@@ -76,28 +71,28 @@ public class MainActivity extends SlidingFragmentActivity implements SLMenuListO
 	public void selectItem(int position, String title) {
 		// update the main content by replacing fragments
 		Fragment fragment = null;
-		switch (position) {
-		case 0:
-			fragment = new HomeFragment();
-			break;
-		case 1:
-			fragment = new FindPeopleFragment();
-			break;
-		case 2:
-			fragment = new PhotosFragment();
-			break;
-		case 3:
-			fragment = new CommunityFragment();
-			break;
-		case 4:
-			fragment = new PagesFragment();
-			break;
-		case 5:
-			fragment = new WhatsHotFragment();
-			break;
-		default:
-			break;
-		}
+//		switch (position) {
+//		case 0:
+//			fragment = new HomeFragment();
+//			break;
+//		case 1:
+//			fragment = new FindPeopleFragment();
+//			break;
+//		case 2:
+//			fragment = new PhotosFragment();
+//			break;
+//		case 3:
+//			fragment = new CommunityFragment();
+//			break;
+//		case 4:
+//			fragment = new PagesFragment();
+//			break;
+//		case 5:
+//			fragment = new WhatsHotFragment();
+//			break;
+//		default:
+//			break;
+//		}
 
 		if (fragment != null) {
 			FragmentManager fragmentManager = getSupportFragmentManager();

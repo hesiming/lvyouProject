@@ -28,15 +28,7 @@ public class LoginActivity extends Activity {
 
     setContentView(R.layout.activity_login);
 
-    Button button = (Button) findViewById(R.id.button1);
-    button.setOnClickListener(new View.OnClickListener() {
-
-      @Override
-      public void onClick(View v) {
-        requestLogin("飞翔的熊猫", "198321");
-
-      }
-    });
+     
   }
 
   private void requestLogin(final String username, final String password) {

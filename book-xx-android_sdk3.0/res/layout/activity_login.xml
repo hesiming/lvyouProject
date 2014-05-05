@@ -1,13 +1,180 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical" >
+    android:background="@color/base_background"
+    android:paddingTop="49dp" >
 
-    <Button
-        android:id="@+id/button1"
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Button" />
+        android:gravity="center_horizontal"
+        android:orientation="vertical"
+        android:paddingBottom="@dimen/dp_space_normal"
+        android:paddingTop="@dimen/dp_space_normal" >
 
-</LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="35dp"
+            android:layout_marginRight="35dp"
+            android:orientation="vertical" >
+
+            <Button
+                android:id="@+id/mBtnWeiboLogin"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/btn_weibo_login_selector"
+                android:drawableLeft="@drawable/ic_sinaweibo"
+                android:gravity="center_vertical"
+                android:paddingLeft="16dp"
+                android:text="@string/account_sinaweibo_login"
+                android:textColor="@color/white"
+                android:textSize="16dp" />
+
+            <Button
+                android:id="@+id/mBtnQQLogin"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:background="@drawable/btn_qq_login_selector"
+                android:drawableLeft="@drawable/ic_qq"
+                android:gravity="center_vertical"
+                android:paddingLeft="16dp"
+                android:text="@string/account_qq_login"
+                android:textColor="@color/white"
+                android:textSize="16dp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="28dp"
+            android:layout_marginTop="40dp"
+            android:gravity="center_vertical"
+            android:orientation="horizontal" >
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1px"
+                android:layout_weight="1"
+                android:background="#adadad" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/dp_space_normal"
+                android:layout_marginRight="@dimen/dp_space_normal"
+                android:layout_weight="0"
+                android:text="@string/account_united_tip"
+                android:textColor="#adadad"
+                android:textSize="16dp" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1px"
+                android:layout_weight="1"
+                android:background="#adadad" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="35dp"
+            android:layout_marginRight="35dp"
+            android:orientation="vertical" >
+
+            <EditText
+                android:id="@+id/mEtUsername"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:background="@drawable/bg_edittext_selector"
+                android:hint="@string/username_input"
+                android:singleLine="true"
+                android:textSize="16dp" />
+
+            <EditText
+                android:id="@+id/mEtPwd"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_marginTop="5dp"
+                android:background="@drawable/bg_edittext_selector"
+                android:ems="10"
+                android:hint="@string/pwd_input"
+                android:inputType="textPassword"
+                android:singleLine="true"
+                android:textSize="16dp" >
+
+                <requestFocus />
+            </EditText>
+        </LinearLayout>
+
+        <RelativeLayout
+            android:id="@+id/mRlLogin"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_centerHorizontal="true"
+            android:layout_marginLeft="35dp"
+            android:layout_marginRight="35dp"
+            android:layout_marginTop="21dp"
+            android:background="@drawable/btn_login_selector" >
+
+            <TextView
+                android:id="@+id/mTvLogin"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:text="登录"
+                android:textColor="#ffffff"
+                android:textSize="20dp" />
+
+            <ProgressBar
+                android:id="@+id/mPbLoading"
+                style="@style/@android:style/Widget.ProgressBar.Small"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="5dp"
+                android:layout_toRightOf="@+id/mTvLogin"
+                android:indeterminate="true"
+                android:visibility="invisible" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/mRlRegister"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_centerHorizontal="true"
+            android:layout_marginLeft="35dp"
+            android:layout_marginRight="35dp"
+            android:layout_marginTop="21dp"
+            android:background="@drawable/btn_register_selector" >
+
+            <TextView
+                android:id="@+id/mTvLogin"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:text="注册"
+                android:textColor="#00b081"
+                android:textSize="20dp" />
+        </RelativeLayout>
+
+        <TextView
+            android:id="@+id/mTvFindPwd"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="50dp"
+            android:layout_marginRight="50dp"
+            android:layout_marginTop="5dp"
+            android:autoLink="all"
+            android:autoText="true"
+            android:gravity="right"
+            android:linksClickable="true"
+            android:soundEffectsEnabled="true"
+            android:textColor="#0090ff"
+            android:textSize="16dp" />
+    </LinearLayout>
+
+</ScrollView>

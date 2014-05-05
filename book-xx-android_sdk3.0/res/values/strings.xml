@@ -12,4 +12,240 @@
     <string name="destination_place">目的地</string>
     <string name="travel_date">旅行时间</string>
 
+    <!-- 错误提示 -->
+    <string name="exception_no_http_data">网络请求错误，无数据返回</string>
+    <string name="exception_no_json_data">暂无数据</string>
+    <string name="exception_net_bad">网络异常</string>
+    <string name="exception_net_timeout">网络链接超时</string>
+    <string name="no_network">没有检测到网络链接</string>
+    <!-- 布局中显示的文案 -->
+    <string name="register_login">登录注册</string>
+    <string name="discount_browsing">折扣浏览</string>
+    <string name="favorite">我的收藏</string>
+    <string name="more">更多</string>
+    <string name="setting">设置</string>
+    <string name="today_discounts">今日精选</string>
+    <string name="all_discounts">所有折扣</string>
+    <string name="all_category">全部分类</string>
+    <string name="all_place">目的地</string>
+    <string name="all_date">全部时间</string>
+    <string name="cancel">取消</string>
+    <string name="hint_please_input_search_word">请输入要搜索的关键字</string>
+    <string name="please_input">请输入</string>
+    <string name="username">用户名</string>
+    <string name="password">密码</string>
+    <string name="error_username_pwd">帐号或密码错误</string>
+    <string name="error_username_pwd2">帐号不能小于6位</string>
+    <string name="login">登录</string>
+    <string name="opinionWe">评价我们</string>
+    <string name="appShare">应用分享</string>
+    <string name="idea_feedBack">意见反馈</string>
+    <string name="downLoad_more_qyer_app">更多穷游应用</string>
+    <string name="recommendApp">更多推荐应用</string>
+    <string name="about_content">\t\t穷游折扣，不是团购，更不卖广告，我们只发布关于旅行的各种超值信息，这里不仅有机票、酒店、机加酒和邮轮等特惠优选，还有精心为你准备的超级给力的穷游er独享折扣，时不时还能有几张0元机票。如果去旅行，先来穷游折扣搜搜信息，总能给你惊喜！</string>
+    <string name="about_url">www.qyer.com</string>
+    <!-- <string name="about_info" formatted="false">穷游折扣  Android版\n版本%s\nCopyright © 2004-2014 QYER.inc</string> -->
+    <string name="about">关于穷游折扣</string>
+    <string name="rightNowUpdateNewVersion">立即更新到新版本</string>
+    <string name="login_secceed">登录成功</string>
+    <string name="send">发送</string>
+    <string name="sending">正在发送...</string>
+    <string name="send_succeed">发送成功</string>
+    <string name="send_failed">发送失败，请检查网络</string>
+    <string name="send_too_more" formatted="false">发送内容必须在%s字以内</string>
+    <string name="send_content" formatted="false">设备名称：%s|系统版本：android %s|应用版本：%s|用户：%s|内容：%s</string>
+    <string name="feedback">意见反馈</string>
+    <string name="feedback_hint">请留下你的宝贵建议...</string>
+    <string name="feedback_saved">内容保存至草稿箱</string>
+    <string name="please_input_feedback_content">请输入意见反馈的内容</string>
+    <string name="no_name">游客</string>
+    <string name="login_by_weibo">使用新浪微博登录</string>
+    <string name="login_by_qq">使用腾讯QQ登录</string>
+    <string name="account_sinaweibo_login">&#160;&#160;使用新浪微博登录</string>
+    <string name="account_qq_login">&#160;&#160;使用QQ账号登录</string>
+    <string name="account_login">账号登录</string>
+    <string name="account_united_tip">或使用穷游账号登录</string>
+    <string name="username_input">请输入邮箱或用户名</string>
+    <string name="pwd_input">请输入密码</string>
+    <string name="find_pwd">忘记密码?</string>
+    <string name="title_recommend_app">穷游推荐应用</string>
+    <string name="toast_no_recommendApp">暂无推荐应用</string>
+    <string name="loading_now">加载中&#8230;</string>
+    <string name="pull_to_refresh">下拉即可刷新</string>
+    <string name="pull_release_refresh">松开即可刷新</string>
+    <string name="empty_text"></string>
+    <string name="xlistview_header_hint_normal">下拉刷新</string>
+    <string name="xlistview_header_hint_ready">松开刷新</string>
+    <string name="xlistview_header_hint_loading">正在加载</string>
+    <string name="xlistview_header_last_time">上次更新时间：</string>
+    <string name="xlistview_footer_hint_normal">加载数据</string>
+    <string name="xlistview_footer_hint_ready">松开载入更多</string>
+    <string name="deal_detail">折扣详情</string>
+    <string name="deal_login">登录后预订</string>
+    <string name="deal_link">在线预订</string>
+    <string name="deal_call">电话预订</string>
+    <string name="hot_deal">热门折扣</string>
+    <string name="relation_deal">相关折扣</string>
+    <string name="register">注册</string>
+    <string name="regist_login_succeed">注册并登录成功</string>
+
+    <!-- for share -->
+    <string name="toast_network_failed">网络连接失败</string>
+    <string name="share_app_weibo">我刚安装了一个超赞的应用@穷游折扣 App，每天都有旅行超值折扣信息更新，还都很给力，时不时还有0元机票，旅行必备！下载请戳：http://t.cn/zRJQKvb</string>
+    <string name="share_app_weixin">【穷游折扣APP】有一堆机票酒店特价，每天更新，旅行必看！快来下载！</string>
+    <string name="share_app_weixin_friend">我刚安装了一个超赞的应用【穷游折扣】App，每天都有旅行超值折扣信息更新，还都很给力，时不时还有0元机票，旅行必备！下载请戳：http://app.qyer.com/lastminute/?campaign=app_share&amp;category=lm_read_detail#jtss-pengyouquan</string>
+    <string name="share_app_mail_title">旅行必备应用【穷游折扣】分享给你</string>
+    <string name="share_app_mail">推荐你个超赞的应用 – 穷游网的 【穷游折扣】，每天都有旅行超值折扣信息更新，还都很给力，旅行必备有木有！下载链接: http://app.qyer.com/lastminute/?campaign=app_share&amp;category=lm_read_detail#jtss-email \n\r\n\r 关于穷游折扣：\n\r\n\r 穷游折扣（http://www.qyer.com/lastminute）不是团购，更不卖广告，我们只发布关于旅行的各种超值信息，这里不仅有机票、酒店、机加酒和邮轮等特惠优选，还有精心为你准备的超级给力的穷游er独享折扣，时不时还能有几张0元机票。如果去旅行，先来穷游折扣搜搜信息，总能给你惊喜！</string>
+    <string name="share_app_sms">推荐你个好应用【穷游折扣】，每天都有旅行超值折扣信息更新，还都很给力，旅行必备！快去下载：http://app.qyer.com/lastminute/?campaign=app_share&amp;category=lm_read_detail#jtss-sms</string>
+    <string name="share_app_qzone_title">穷游折扣</string>
+    <string name="share_app_qzone">我刚安装了一个超赞的应用【穷游折扣】App，每天都有旅行超值折扣信息更新，还都很给力，时不时还有0元机票，旅行必备！下载请猛戳！</string>
+    <string name="share_app_qzone_url">http://app.qyer.com/lastminute/?campaign=app_share&amp;category=lm_read_detail#jtss-qzone</string>
+    <string name="share_deal_weibo" formatted="false">我在@穷游折扣 发现了一条超值特价，【%s %s】 预订链接: %s?campaign=app_share&amp;category=lm_read_detail#jtss-tsina （分享自穷游折扣APP：http://t.cn/zRJQKvb ）</string>
+    <string name="share_deal_weixin" formatted="false">【%s %s】</string>
+    <string name="share_deal_weixin_friend" formatted="false">我在穷游折扣发现了一条超值特价，【%s %s】 预订链接:%s?campaign=app_share&amp;category=lm_read_detail#jtss-pengyouquan</string>
+    <string name="share_deal_mail_title" formatted="false">特价来了，我发现【%s %s】好划算！</string>
+    <string name="share_deal_mail" formatted="false">%s %s \n\r\n\r
+
+预订链接： \n\r\n\r
+%s?campaign=app_share&amp;category=lm_read_detail#jtss-email  \n\r\n\r
+
+折扣简介： \n\r\n\r
+%s  \n\r\n\r
+
+折扣详情： \n\r\n\r
+%s           \n\r\n\r                                                      
+
+关于穷游折扣： \n\r\n\r
+穷游折扣（http://www.qyer.com/lastminute）不是团购，更不卖广告，我们只发布关于旅行的各种超值信息，这里不仅有机票、酒店、机加酒和邮轮等特惠优选，还有精心为你准备的超级给力的穷游er独享折扣，时不时还能有几张0元机票。如果去旅行，先来穷游折扣搜搜信息，总能给你惊喜！
+下载穷游折扣APP，链接：http://app.qyer.com/lastminute/?campaign=app_share&amp;category=lm_read_detail#jtss-email</string>
+    <string name="share_deal_sms" formatted="false">我发现【%s %s】真的好划算！ 预订链接：%s?campaign=app_share&amp;category=lm_read_detail#jtss-sms</string>
+    <string name="share_deal_qzone" formatted="false">【%s %s】预订请猛戳！</string>
+    <string name="about_info" formatted="false">穷游折扣  Android版\n版本%s\nCopyright © 2004-2014 QYER.inc</string>
+    <string name="share_more">更多</string>
+    <string name="toast_share_weixin_version">亲！要升级到微信4.2才能分享到朋友圈哦~</string>
+    <string name="toast_share_weixin">亲！您还没安装微信哦 ~</string>
+    <string name="toast_share_already">您已经分享过啦！</string>
+    <string name="toast_share_token_useless">验证过期啦！</string>
+    <string name="toast_share_succeed">分享成功啦！</string>
+    <string name="toast_weibo_failed">分享失败</string>
+    <string name="toast_weibo_repeat">提交重复内容</string>
+    <string name="toast_weibo_similarty">提交相似内容</string>
+    <string name="toast_weibo_out_limit">发布内容过于频繁</string>
+    <string name="toast_weibo_token_expired">账号过期，请重新登录</string>
+    <string name="deal_order_call">拨打电话</string>
+    <string name="deal_order_link">在线预订</string>
+    <string name="deal_pic_detail">图片详情</string>
+    <string name="makesure_logout">确定登出账号吗？</string>
+    <string name="sure">确定</string>
+    <string name="add_notifi">添加提醒</string>
+    <string name="zhuanti">专题</string>
+
+    <!-- deal detail -->
+    <string name="deal_detail_tostart">离折扣开始还有</string>
+    <string name="deal_detail_toend">离折扣结束还有</string>
+    <string name="deal_detail_bttext0">提前通知我</string>
+    <string name="deal_detail_bttext1">类似折扣提醒我</string>
+    <string name="deal_detail_bttext2">立即抢购</string>
+    <string name="deal_notifi_toast0">操作成功，折扣开始前15分钟会提前通知你…</string>
+    <string name="deal_notifi_toast1">还有不到15分钟就开始了哦~</string>
+
+    <!-- Dilog -->
+    <string name="dialog_alarm">我的提醒</string>
+    <string name="delete_notifi_item">确定删除此提醒吗？</string>
+    <string name="confirm_ding">确定</string>
+
+    <!-- order 填写 -->
+    <string name="order_total">总额</string>
+    <string name="order_yuan">元</string>
+    <string name="order_buyerConfirm_title">确认购买人信息</string>
+    <string name="order_confirm_title">确认订单</string>
+
+    <!-- confirm -->
+    <string name="order_type">未知</string>
+    <!-- order info -->
+    <string name="order_type_status_0">预付款已支付成功</string>
+    <string name="order_type_status_1">全款已支付成功</string>
+    <string name="order_type_status_2">余款已支付成功</string>
+    <string name="order_type_status_3">余款支付已过期</string>
+    <string name="order_type_status_4">订单支付时间已经过期 </string>
+    <string name="order_type_status_5">订单支付时间已经过期! 产品已售罄!</string>
+    <string name="order_type_status_6">订单已经过期</string>
+
+    <!-- order type -->
+    <string name="order_type_0">全款</string>
+    <string name="order_type_1">预付款</string>
+    <string name="order_type_2">余款</string>
+    <!-- Order info of shop type -->
+    <string name="shop_type_0">认证商家</string>
+    <string name="shop_type_1">非认证商家</string>
+    <!-- order status -->
+    <string name="order_status_1_0">订单已确认,请在</string>
+    <string name="order_status_1_1">内完成支付!</string>
+    <string name="order_status_2">订单时间已过期，请重新购买!</string>
+    <string name="order_status_3">订单时间已过期，产品已售罄!</string>
+
+    <!-- button order text -->
+    <string name="bt_order_text_0">立即支付</string>
+    <string name="bt_order_text_1">重新购买</string>
+    <string name="bt_order_text_2">再有类似折扣提醒我</string>
+
+    <!-- pay status -->
+    <string name="pay_status_0">全款支付成功</string>
+    <string name="pay_status_1">预付款支付成功</string>
+    <string name="pay_status_2">余款支付成功</string>
+
+    <!-- Pay Dilog -->
+    <string name="pay_dialog_title">提示</string>
+    <string name="pay_dialog_item">马上要预订成功了，确定要退出么？</string>
+    <string name="confirm_out">确定</string>
+    <string name="confirm_in">继续支付</string>
+
+    <!-- delete Orders  Dilog -->
+    <string name="del_order_dialog_title">提示</string>
+    <string name="del_order_dialog_title2">选择提醒时间</string>
+    <string name="del_order_dialog_item">确认删除此订单吗？</string>
+    <string name="del_order_dialog_item2">确认取消此订单吗？</string>
+    <string name="del_order_yes">确定</string>
+    <string name="del_order_no">取消</string>
+
+    <!-- alipay 支付宝 -->
+    <string name="update">升级</string>
+    <string name="check_update">查询升级</string>
+    <string name="download">下载</string>
+    <string name="install">安装</string>
+    <string name="result">返回值</string>
+    <string name="launch_preferences">启动设置</string>
+    <string name="preference_attributes">属性设置</string>
+    <string name="global_preference">全局设置</string>
+    <string name="global_preference_summary">安全支付服务和DEMO的通用设置</string>
+    <string name="remote_call_failed">Failure calling remote service</string>
+
+    <string-array name="launch_list_entries">
+        <item>外部商户订单</item>
+        <item>远程订单</item>
+    </string-array>
+
+    <string name="order_mode">订单模式</string>
+    <string name="popup_result">显示返回值</string>
+    <string name="result_status_title">Result Status : </string>
+    <string name="memo_title">Memo : </string>
+    <string name="result_title">Result : </string>
+    <string name="check_result_title">Check Sign Result : </string>
+    <string name="external_token_title">External Token</string>
+    <string name="trade_number_title">Trade Number</string>
+    <string name="payPhaseId_title">Pay PhaseId</string>
+    <string name="taobao_pay">订单支付</string>
+    <string name="taobao_add">增加订单</string>
+    <string name="taobao_reset">订单重置</string>
+    <string name="start_order">打开订单页面</string>
+    <string name="not_null">不能为空</string>
+    <string name="extern_partner">外部商户订单</string>
+    <string name="pay_type_client">支付宝钱包</string>
+    <string name="pay_type_web">支付宝</string>
+    <string name="invalid_token">帐号异常，重新登录</string>
+    <string name="no_alipay">您没有安装支付宝钱包，也还可以选择用web支付</string>
+    <string name="exit_item">确定要退出穷游折扣吗?</string>
+    <string name="pay_check_ok">请您选择同意预订说明</string>
+    <string name="pay_order_status">订单已经过期</string>
+    <string name="pay_status_error_0">支付失败，如果你的支付宝账户显示已完成付款，请联系折扣客服</string>
 </resources>
