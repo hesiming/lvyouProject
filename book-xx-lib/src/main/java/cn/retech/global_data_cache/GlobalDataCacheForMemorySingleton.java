@@ -89,7 +89,7 @@ public enum GlobalDataCacheForMemorySingleton {
   }
 
   /**
-   * 记录用户登录成功后的重要信息
+   * 当用户登录成功时, 调用此方法, 保存和 "登录" 相关的全部信息(如用户名和密码, 还有服务器返回的 响应数据)
    * 
    * @param logonNetRespondBean
    * @param usernameForLastSuccessfulLogon
@@ -111,12 +111,14 @@ public enum GlobalDataCacheForMemorySingleton {
     this.passwordForLastSuccessfulLogon = passwordForLastSuccessfulLogon;
     // 保存用户最后一次登录之后的信息Bean
     this.latestLogonNetRespondBean = latestLogonNetRespondBean;
-    // 必须手动设置当前用户的登录密码到 LogonNetRespondBean 中, 因为服务器不会给我们返回这个字段
-    //this.latestLogonNetRespondBean.setPassword(passwordForLastSuccessfulLogon);
+
     // 保存到文件系统中
     GlobalDataCacheForNeedSaveToFileSystem.writeUserLoginInfoToFileSystem();
   }
 
+  /**
+   * 当用户推出登录时, 调用此方法来清空和 "登录" 相关的信息
+   */
   public void noteSignOutSuccessfulInfo() {
     // 用户登出了
     this.isLogged = false;
@@ -124,30 +126,9 @@ public enum GlobalDataCacheForMemorySingleton {
     this.usernameForLastSuccessfulLogon = null;
     this.passwordForLastSuccessfulLogon = null;
     this.latestLogonNetRespondBean = null;
+
     // 保存到文件系统中
     GlobalDataCacheForNeedSaveToFileSystem.writeUserLoginInfoToFileSystem();
-  }
-
-  // 从配置文件中获取的渠道名称
-  private String channelName;
-
-  public String getChannelName() {
-    return channelName;
-  }
-
-  public void setChannelName(String channelName) {
-    this.channelName = channelName;
-  }
-
-  // 从配置文件中获取的版本名称
-  private String versionName;
-
-  public String getVersionName() {
-    return versionName;
-  }
-
-  public void setVersionName(String versionName) {
-    this.versionName = versionName;
   }
 
 }
