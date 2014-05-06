@@ -8,6 +8,11 @@ import android.util.Log;
 import android.view.MenuItem;
 import cn.lvyou.fragment.HomeFragment;
 import cn.lvyou.fragment.LeftMenuFragment;
+import cn.lvyou.fragment.main_left_menu.DiscountFragment;
+import cn.lvyou.fragment.main_left_menu.FavorFragment;
+import cn.lvyou.fragment.main_left_menu.NotificationFragment;
+import cn.lvyou.fragment.main_left_menu.OrderFragment;
+import cn.lvyou.fragment.main_left_menu.SettingFragment;
 import cn.lvyou.slidingmenu.SlidingMenu;
 import cn.lvyou.slidingmenu.app.SlidingFragmentActivity;
 
@@ -47,42 +52,37 @@ public class MainActivity extends SlidingFragmentActivity {
         Fragment fragment = null;
         switch (position) {
         case 0:
-          // fragment = new HomeFragment();
+          fragment = new DiscountFragment();
           break;
         case 1:
-
+          fragment = new OrderFragment();
           break;
         case 2:
-
+          fragment = new FavorFragment();
           break;
         case 3:
-
+          fragment = new NotificationFragment();
           break;
         case 4:
-
+          fragment = new SettingFragment();
           break;
         default:
           break;
         }
 
-        if (fragment != null)
-          extracted(fragment);
-        else {
+        if (fragment != null) {
+          final FragmentManager fragmentManager = getSupportFragmentManager();
+          fragmentManager.beginTransaction().replace(R.id.content, fragment).commit();
+          // update selected item and title, then close the drawer
+          // setTitle(title);
+          getSlidingMenu().showContent();
+        } else {
           // error in creating fragment
           Log.e("MainActivity", "Error in creating fragment");
         }
 
       }
 
-      private void extracted(Fragment fragment) {
-        {
-          final FragmentManager fragmentManager = getSupportFragmentManager();
-          fragmentManager.beginTransaction().replace(R.id.content, fragment).commit();
-          // update selected item and title, then close the drawer
-          // setTitle(title);
-          getSlidingMenu().showContent();
-        }
-      }
     });
   }
 
