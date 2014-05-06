@@ -10,7 +10,6 @@ import cn.retech.global_data_cache.GlobalDataCacheForNeedSaveToFileSystem;
 import cn.retech.global_data_cache.LocalCacheDataPathConstant;
 import cn.retech.image_loader.MyImageDownloader;
 import cn.retech.toolutils.DebugLog;
-import cn.retech.toolutils.ToolsFunctionForThisProgect;
 
 import com.nostra13.universalimageloader.cache.disc.impl.UnlimitedDiscCache;
 import com.nostra13.universalimageloader.cache.disc.naming.HashCodeFileNameGenerator;
@@ -75,11 +74,6 @@ public class MyApplication extends Application {
 
     // 读取本地缓存的重要数据
     GlobalDataCacheForNeedSaveToFileSystem.readAllCacheData();
-    // 获取本地的渠道号
-//    GlobalDataCacheForMemorySingleton.getInstance.setChannelName(ToolsFunctionForThisProgect.getUmengChannel());
-    // 获取应用的版本号
-    GlobalDataCacheForMemorySingleton.getInstance.setVersionName(ToolsFunctionForThisProgect.getVersionName());
-
   }
 
   @Override
@@ -93,13 +87,11 @@ public class MyApplication extends Application {
   public void onConfigurationChanged(Configuration newConfig) {
     DebugLog.i(TAG, "onConfigurationChanged");
     super.onConfigurationChanged(newConfig);
-
   }
 
   @Override
   public void onLowMemory() {
     DebugLog.i(TAG, "onLowMemory");
     super.onLowMemory();
-
   }
 }
