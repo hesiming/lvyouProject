@@ -2,7 +2,7 @@
 
     <!-- Default screen margins, per the Android Design guidelines. -->
     <dimen name="shadow_width">3dp</dimen>
-    <dimen name="slidingmenu_offset">150dp</dimen>
+    <dimen name="slidingmenu_offset">60dp</dimen>
     <!-- sliemenu width 和 height -->
     <dimen name="cliding_menu_behind_width">195dp</dimen>
     <dimen name="cliding_menu_behind_height">59dp</dimen>

@@ -34,166 +34,166 @@ import cn.retech.my_network_engine.net_error_handle.MyNetRequestErrorBean;
 import com.google.common.collect.Lists;
 
 /**
- * 主界面
+ * 主界面碎片
  * 
  * @author hesiming
  * 
  */
 public class HomeFragment extends Fragment {
-	private INetRequestHandle netRequestHandleForCategroys = new NetRequestHandleNilObject();
-	private CategorysNetRespondBean categoryNetRespondBean;
-	private LinearLayout categoryLayout;
-	private PopupWindow categoryPopupWindow;
-	private ListView filterListView;
-	// 主界面筛选的文字TextView
-	// 折扣类型
-	private TextView discountTypeTextView;
-	// 出发地
-	private TextView departurePlaceTextView;
-	// 目的地
-	private TextView destinationPlaceTextView;
-	// 旅行时间
-	private TextView travelDateTextView;
-	// 主界面筛选的布局,用于响应监听事件
-	// 折扣类型
-	private RelativeLayout discountTypeLayout;
-	// 出发地
-	private RelativeLayout departurePlaceLayout;
-	// 目的地
-	private RelativeLayout destinationPlaceLayout;
-	// 旅行时间
-	private RelativeLayout travelDateLayout;
+  private INetRequestHandle netRequestHandleForCategroys = new NetRequestHandleNilObject();
+  private CategorysNetRespondBean categoryNetRespondBean;
+  private LinearLayout categoryLayout;
+  private PopupWindow categoryPopupWindow;
+  private ListView filterListView;
+  // 主界面筛选的文字TextView
+  // 折扣类型
+  private TextView discountTypeTextView;
+  // 出发地
+  private TextView departurePlaceTextView;
+  // 目的地
+  private TextView destinationPlaceTextView;
+  // 旅行时间
+  private TextView travelDateTextView;
+  // 主界面筛选的布局,用于响应监听事件
+  // 折扣类型
+  private RelativeLayout discountTypeLayout;
+  // 出发地
+  private RelativeLayout departurePlaceLayout;
+  // 目的地
+  private RelativeLayout destinationPlaceLayout;
+  // 旅行时间
+  private RelativeLayout travelDateLayout;
 
-	private final OnClickListener onCategoryClickListener = new OnClickListener() {
-		@Override
-		public void onClick(View v) {
-			if (null == categoryNetRespondBean) {
-				Toast.makeText(getActivity(), "筛选类型仍在努力加载，请稍后再试!", Toast.LENGTH_LONG).show();
-			}
+  private final OnClickListener onCategoryClickListener = new OnClickListener() {
+    @Override
+    public void onClick(View v) {
+      if (null == categoryNetRespondBean) {
+        Toast.makeText(getActivity(), "筛选类型仍在努力加载，请稍后再试!", Toast.LENGTH_LONG).show();
+      }
 
-			if (null != categoryPopupWindow && categoryPopupWindow.isShowing()) {
-				categoryPopupWindow.dismiss();
+      if (null != categoryPopupWindow && categoryPopupWindow.isShowing()) {
+        categoryPopupWindow.dismiss();
 
-				if (filterListView.getTag() != null && (Integer) filterListView.getTag() == v.getId()) {
-					return;
-				}
-			}
+        if (filterListView.getTag() != null && (Integer) filterListView.getTag() == v.getId()) {
+          return;
+        }
+      }
 
-			List<ICategoryItem> categoryItems = Lists.newArrayList();
+      List<ICategoryItem> categoryItems = Lists.newArrayList();
 
-			switch (v.getId()) {
-			case R.id.travel_date_layout:// 旅行时间
-				categoryItems = categoryNetRespondBean.getDates();
-				break;
-			case R.id.discount_type_layout:// 折扣类型
-				categoryItems = categoryNetRespondBean.getTypes();
-				break;
-			case R.id.departure_place_layout:// 出发地
-				categoryItems = categoryNetRespondBean.getOriginPlace();
-				break;
-			case R.id.destination_place_layout:// 目的地
-				categoryItems = categoryNetRespondBean.getPlaces();
-				break;
-			}
+      switch (v.getId()) {
+      case R.id.travel_date_layout:// 旅行时间
+        categoryItems = categoryNetRespondBean.getDates();
+        break;
+      case R.id.discount_type_layout:// 折扣类型
+        categoryItems = categoryNetRespondBean.getTypes();
+        break;
+      case R.id.departure_place_layout:// 出发地
+        categoryItems = categoryNetRespondBean.getOriginPlace();
+        break;
+      case R.id.destination_place_layout:// 目的地
+        categoryItems = categoryNetRespondBean.getPlaces();
+        break;
+      }
 
-			final FilterAdapter adapter = new FilterAdapter(getActivity(), categoryItems);
-			filterListView.setAdapter(adapter);
-			filterListView.setOnItemClickListener(new OnItemClickListener() {
+      final FilterAdapter adapter = new FilterAdapter(getActivity(), categoryItems);
+      filterListView.setAdapter(adapter);
+      filterListView.setOnItemClickListener(new OnItemClickListener() {
 
-				@Override
-				public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-					adapter.setSelectedPosition(position + "");
-				}
-			});
-			categoryPopupWindow.showAsDropDown(categoryLayout);
-		}
-	};
+        @Override
+        public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+          adapter.setSelectedPosition(position + "");
+        }
+      });
+      categoryPopupWindow.showAsDropDown(categoryLayout);
+    }
+  };
 
-	/**
-	 * 初始化筛选列表
-	 */
-	private void initFilterView() {
-		View popupWindowView = getActivity().getLayoutInflater().inflate(R.layout.categorys_popupwindow_content, null, false);
-		categoryPopupWindow = new PopupWindow(popupWindowView, LayoutParams.MATCH_PARENT, LayoutParams.WRAP_CONTENT, true);
-		// 下面两步必须一起调用,否则点击窗外无法关闭popupwindow
-		categoryPopupWindow.setOutsideTouchable(true);
-		categoryPopupWindow.setBackgroundDrawable(new BitmapDrawable());// 点击窗口外消失
+  /**
+   * 初始化筛选列表
+   */
+  private void initFilterView() {
+    View popupWindowView = getActivity().getLayoutInflater().inflate(R.layout.categorys_popupwindow_content, null, false);
+    categoryPopupWindow = new PopupWindow(popupWindowView, LayoutParams.MATCH_PARENT, LayoutParams.WRAP_CONTENT, true);
+    // 下面两步必须一起调用,否则点击窗外无法关闭popupwindow
+    categoryPopupWindow.setOutsideTouchable(true);
+    categoryPopupWindow.setBackgroundDrawable(new BitmapDrawable());// 点击窗口外消失
 
-		filterListView = (ListView) popupWindowView.findViewById(R.id.lv_selection);
+    filterListView = (ListView) popupWindowView.findViewById(R.id.lv_selection);
 
-		categoryLayout = (LinearLayout) getView().findViewById(R.id.filter_layout);
-		// 加载筛选列表的布局
-		discountTypeLayout = (RelativeLayout) getView().findViewById(R.id.discount_type_layout);// 全部分类
-		departurePlaceLayout = (RelativeLayout) getView().findViewById(R.id.departure_place_layout);// 出发地
-		destinationPlaceLayout = (RelativeLayout) getView().findViewById(R.id.destination_place_layout);// 目的地
-		travelDateLayout = (RelativeLayout) getView().findViewById(R.id.travel_date_layout);// 旅行时间
+    categoryLayout = (LinearLayout) getView().findViewById(R.id.filter_layout);
+    // 加载筛选列表的布局
+    discountTypeLayout = (RelativeLayout) getView().findViewById(R.id.discount_type_layout);// 全部分类
+    departurePlaceLayout = (RelativeLayout) getView().findViewById(R.id.departure_place_layout);// 出发地
+    destinationPlaceLayout = (RelativeLayout) getView().findViewById(R.id.destination_place_layout);// 目的地
+    travelDateLayout = (RelativeLayout) getView().findViewById(R.id.travel_date_layout);// 旅行时间
 
-		// 加载筛选列表的TextView
-		discountTypeTextView = (TextView) getView().findViewById(R.id.discount_type_textView);// 全部分类
-		departurePlaceTextView = (TextView) getView().findViewById(R.id.departure_place_textView);// 出发地
-		destinationPlaceTextView = (TextView) getView().findViewById(R.id.destination_place_textView);// 目的地
-		travelDateTextView = (TextView) getView().findViewById(R.id.travel_date_textView);// 全部时间
-	}
+    // 加载筛选列表的TextView
+    discountTypeTextView = (TextView) getView().findViewById(R.id.discount_type_textView);// 全部分类
+    departurePlaceTextView = (TextView) getView().findViewById(R.id.departure_place_textView);// 出发地
+    destinationPlaceTextView = (TextView) getView().findViewById(R.id.destination_place_textView);// 目的地
+    travelDateTextView = (TextView) getView().findViewById(R.id.travel_date_textView);// 全部时间
+  }
 
-	@Override
-	public void onActivityCreated(Bundle savedInstanceState) {
-		super.onActivityCreated(savedInstanceState);
-		initFilterView();
-		// 添加点击显示SlidingMenu
-		ImageButton titleBtnLeft = (ImageButton) getView().findViewById(R.id.titleBtnLeft);
-		titleBtnLeft.setOnClickListener(new View.OnClickListener() {
+  @Override
+  public void onActivityCreated(Bundle savedInstanceState) {
+    super.onActivityCreated(savedInstanceState);
+    initFilterView();
+    // 添加点击显示SlidingMenu
+    ImageButton titleBtnLeft = (ImageButton) getView().findViewById(R.id.titleBtnLeft);
+    titleBtnLeft.setOnClickListener(new View.OnClickListener() {
 
-			@Override
-			public void onClick(View v) {
-				((MainActivity) getActivity()).showMenuContent();
-			}
-		});
-		requestCategroys();
-	}
+      @Override
+      public void onClick(View v) {
+        ((MainActivity) getActivity()).showMenuContent();
+      }
+    });
+    requestCategroys();
+  }
 
-	@Override
-	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+  @Override
+  public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
-		View rootView = inflater.inflate(R.layout.fragment_home, container, false);
+    View rootView = inflater.inflate(R.layout.fragment_home, container, false);
 
-		return rootView;
-	}
+    return rootView;
+  }
 
-	@Override
-	public void onStart() {
-		super.onStart();
-	}
+  @Override
+  public void onStart() {
+    super.onStart();
+  }
 
-	@Override
-	public void onStop() {
-		super.onStop();
-		netRequestHandleForCategroys.cancel();
-	}
+  @Override
+  public void onStop() {
+    super.onStop();
+    netRequestHandleForCategroys.cancel();
+  }
 
-	private void requestCategroys() {
-		CategorysNetRequestBean categorysNetRequestBean = new CategorysNetRequestBean();
-		netRequestHandleForCategroys = SimpleNetworkEngineSingleton.getInstance.requestDomainBean(categorysNetRequestBean, new IDomainBeanAsyncHttpResponseListener() {
-			@Override
-			public void onFailure(MyNetRequestErrorBean error) {
-			}
+  private void requestCategroys() {
+    CategorysNetRequestBean categorysNetRequestBean = new CategorysNetRequestBean();
+    netRequestHandleForCategroys = SimpleNetworkEngineSingleton.getInstance.requestDomainBean(categorysNetRequestBean, new IDomainBeanAsyncHttpResponseListener() {
+      @Override
+      public void onFailure(MyNetRequestErrorBean error) {
+      }
 
-			@Override
-			public void onSuccess(Object respondDomainBean) {
-				categoryNetRespondBean = (CategorysNetRespondBean) respondDomainBean;
+      @Override
+      public void onSuccess(Object respondDomainBean) {
+        categoryNetRespondBean = (CategorysNetRespondBean) respondDomainBean;
 
-				// categoryDatesTextView.setText("时间");
-				discountTypeLayout.setOnClickListener(onCategoryClickListener);
+        // categoryDatesTextView.setText("时间");
+        discountTypeLayout.setOnClickListener(onCategoryClickListener);
 
-				// categoryOriginPlaceTextView.setText("出发地");
-				departurePlaceLayout.setOnClickListener(onCategoryClickListener);
+        // categoryOriginPlaceTextView.setText("出发地");
+        departurePlaceLayout.setOnClickListener(onCategoryClickListener);
 
-				// categoryPlaceTextView.setText("目的地");
-				destinationPlaceLayout.setOnClickListener(onCategoryClickListener);
+        // categoryPlaceTextView.setText("目的地");
+        destinationPlaceLayout.setOnClickListener(onCategoryClickListener);
 
-				// categoryTypesTextView.setText("机票");
-				travelDateLayout.setOnClickListener(onCategoryClickListener);
+        // categoryTypesTextView.setText("机票");
+        travelDateLayout.setOnClickListener(onCategoryClickListener);
 
-			}
-		});
-	}
+      }
+    });
+  }
 }
