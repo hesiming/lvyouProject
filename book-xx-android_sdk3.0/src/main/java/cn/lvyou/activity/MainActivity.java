@@ -6,7 +6,6 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.util.Log;
 import android.view.MenuItem;
-import cn.lvyou.fragment.HomeFragment;
 import cn.lvyou.fragment.LeftMenuFragment;
 import cn.lvyou.fragment.main_left_menu.DiscountFragment;
 import cn.lvyou.fragment.main_left_menu.FavorFragment;
@@ -15,6 +14,7 @@ import cn.lvyou.fragment.main_left_menu.OrderFragment;
 import cn.lvyou.fragment.main_left_menu.SettingFragment;
 import cn.lvyou.slidingmenu.SlidingMenu;
 import cn.lvyou.slidingmenu.app.SlidingFragmentActivity;
+import cn.retech.global_data_cache.GlobalDataCacheForMemorySingleton;
 
 public class MainActivity extends SlidingFragmentActivity {
   private LeftMenuFragment leftMenuFragment = new LeftMenuFragment();
@@ -48,7 +48,12 @@ public class MainActivity extends SlidingFragmentActivity {
 
       @Override
       public void onItemClick(int position) {
-        // update the main content by replacing fragments
+        if (position != 0) {
+          if (!GlobalDataCacheForMemorySingleton.getInstance.isLogged()) {
+
+          }
+        }
+
         Fragment fragment = null;
         switch (position) {
         case 0:
@@ -97,7 +102,7 @@ public class MainActivity extends SlidingFragmentActivity {
     // 设置 SlidingMenu 内容
     FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
     fragmentTransaction.replace(R.id.left_menu, leftMenuFragment);
-    fragmentTransaction.replace(R.id.content, new HomeFragment());
+    fragmentTransaction.replace(R.id.content, new DiscountFragment());
     fragmentTransaction.commit();
 
   }

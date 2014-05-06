@@ -1,6 +1,5 @@
 package cn.lvyou.fragment;
 
-import android.app.Activity;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -26,16 +25,6 @@ public class LeftMenuFragment extends Fragment {
 
   public void setMenuListOnClickListener(MenuListOnItemClickListener l) {
     mOnItemClickListener = l;
-  }
-
-  @Override
-  public void onAttach(Activity activity) {
-    super.onAttach(activity);
-  }
-
-  @Override
-  public void onCreate(Bundle savedInstanceState) {
-    super.onCreate(savedInstanceState);
   }
 
   private View.OnClickListener mOnClickListener = new View.OnClickListener() {
