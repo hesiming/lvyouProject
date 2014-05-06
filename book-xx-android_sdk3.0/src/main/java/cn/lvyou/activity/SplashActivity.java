@@ -12,6 +12,12 @@ import android.widget.TextView;
 import cn.retech.toolutils.SimpleBitmapTools;
 import cn.retech.toolutils.ToolsFunctionForThisProgect;
 
+/**
+ * 闪屏界面(欢迎界面)
+ * 
+ * @author zhihuatang
+ * 
+ */
 public class SplashActivity extends Activity {
 
   private Timer timer = new Timer();
