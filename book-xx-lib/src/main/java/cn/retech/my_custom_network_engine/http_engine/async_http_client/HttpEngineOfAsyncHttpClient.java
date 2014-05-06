@@ -39,23 +39,24 @@ public class HttpEngineOfAsyncHttpClient implements IHttpRequestForDomainBean, I
   }
 
   @Override
-  public INetRequestHandle requestDomainBean(final String url, final Map<String, String> dataDictionary, final IDomainBeanRequestAsyncHttpResponseListener domainBeanRequestAsyncHttpResponseListener) {
+  public INetRequestHandle requestDomainBean(final String url, final Map<String, String> dataDictionary,
+      final IDomainBeanRequestAsyncHttpResponseListener domainBeanRequestAsyncHttpResponseListener) {
     DebugLog.i(TAG, "短连接 : sendHttpRequest->url=" + url + ",dataDictionary=" + dataDictionary);
     RequestHandle requestHandle = null;
 
     // 定义异步HTTP网络响应处理监听器
     final AsyncHttpResponseHandler responseHandler = new HttpRequestHandleOfAsyncHttpClient() {
       @Override
-      public void onSuccess(int statusCode, Header[] headers, byte[] response) {
-        domainBeanRequestAsyncHttpResponseListener.onSuccess(this, response);
-        
+      public void onFailure(int statusCode, Header[] headers, byte[] errorResponse, Throwable e) {
+        domainBeanRequestAsyncHttpResponseListener.onFailure(this, statusCode, e);
+
         this.setFinished(true);
       }
 
       @Override
-      public void onFailure(int statusCode, Header[] headers, byte[] errorResponse, Throwable e) {
-        domainBeanRequestAsyncHttpResponseListener.onFailure(this, statusCode, e);
-        
+      public void onSuccess(int statusCode, Header[] headers, byte[] response) {
+        domainBeanRequestAsyncHttpResponseListener.onSuccess(this, response);
+
         this.setFinished(true);
       }
 
@@ -63,13 +64,15 @@ public class HttpEngineOfAsyncHttpClient implements IHttpRequestForDomainBean, I
 
     // 如果dataDictionary不为空, 我们就使用 POST方式发送数据到服务器, 否则就是用GET方式访问服务器
     if (dataDictionary != null && dataDictionary.size() > 0) {
-      RequestParams requestParams = (RequestParams) EngineHelperSingleton.getInstance.getNetRequestEntityDataPackageStrategyObject().packageNetRequestEntityData(dataDictionary);
+      RequestParams requestParams =
+          (RequestParams) EngineHelperSingleton.getInstance.getNetRequestEntityDataPackageStrategyObject().packageNetRequestEntityData(
+              dataDictionary);
       requestHandle = asyncHttpClient.post(url, requestParams, responseHandler);
     } else {
       requestHandle = asyncHttpClient.get(url, responseHandler);
     }
 
-    // 定义 AsyncHttpClient 定制的 HttpRequestHandle
+    // 因为发现AsyncHttpClient原生的 HttpRequestHandle的isFinished标志位有所异常（开始任务时便默认为true），所以在此做一个自定义分装
     HttpRequestHandleOfAsyncHttpClient httpRequestHandleOfAsyncHttpClient = (HttpRequestHandleOfAsyncHttpClient) responseHandler;
     httpRequestHandleOfAsyncHttpClient.setRequestHandle(requestHandle);
     httpRequestHandleOfAsyncHttpClient.setFinished(false);
@@ -77,8 +80,8 @@ public class HttpEngineOfAsyncHttpClient implements IHttpRequestForDomainBean, I
   }
 
   @Override
-  public INetRequestHandle requestFile(final String url, final boolean isNeedContinuingly, final Map<String, String> dataDictionary, final File downLoadFile,
-      final IFileRequestAsyncHttpResponseListener fileRequestAsyncHttpResponseListener) {
+  public INetRequestHandle requestFile(final String url, final boolean isNeedContinuingly, final Map<String, String> dataDictionary,
+      final File downLoadFile, final IFileRequestAsyncHttpResponseListener fileRequestAsyncHttpResponseListener) {
     DebugLog.i(TAG, "文件请求 : sendHttpRequest->url=" + url + ",dataDictionary=" + dataDictionary);
 
     // effective for java 38 检查参数有效性, 对于共有的方法,
@@ -102,27 +105,30 @@ public class HttpEngineOfAsyncHttpClient implements IHttpRequestForDomainBean, I
     }
 
     try {
-      final RandomAccessFileAsyncHttpResponseHandler fileAsyncHttpResponseHandler = new RandomAccessFileAsyncHttpResponseHandler(downLoadFile, seekPos) {
+      final RandomAccessFileAsyncHttpResponseHandler fileAsyncHttpResponseHandler =
+          new RandomAccessFileAsyncHttpResponseHandler(downLoadFile, seekPos) {
 
-        @Override
-        public void onSuccess(int statusCode, Header[] headers, File file) {
-          fileRequestAsyncHttpResponseListener.onSuccess(file);
-        }
+            @Override
+            public void onFailure(int statusCode, Header[] headers, byte[] errorResponse, Throwable e) {
+              fileRequestAsyncHttpResponseListener.onFailure(statusCode, e);
+            }
 
-        @Override
-        public void onFailure(int statusCode, Header[] headers, byte[] errorResponse, Throwable e) {
-          fileRequestAsyncHttpResponseListener.onFailure(statusCode, e);
-        }
+            @Override
+            public void onProgress(int bytesWritten, int totalSize) {
+              fileRequestAsyncHttpResponseListener.onProgress(bytesWritten, totalSize);
+            }
 
-        @Override
-        public void onProgress(int bytesWritten, int totalSize) {
-          fileRequestAsyncHttpResponseListener.onProgress(bytesWritten, totalSize);
-        }
+            @Override
+            public void onSuccess(int statusCode, Header[] headers, File file) {
+              fileRequestAsyncHttpResponseListener.onSuccess(file);
+            }
 
-      };
+          };
       // 如果dataDictionary不为空, 我们就使用 POST方式发送数据到服务器, 否则就是用GET方式访问服务器
       if (dataDictionary != null && dataDictionary.size() > 0) {
-        RequestParams requestParams = (RequestParams) EngineHelperSingleton.getInstance.getNetRequestEntityDataPackageStrategyObject().packageNetRequestEntityData(dataDictionary);
+        RequestParams requestParams =
+            (RequestParams) EngineHelperSingleton.getInstance.getNetRequestEntityDataPackageStrategyObject().packageNetRequestEntityData(
+                dataDictionary);
         requestHandle = asyncHttpClient.post(url, requestParams, fileAsyncHttpResponseHandler);
       } else {
         requestHandle = asyncHttpClient.get(url, fileAsyncHttpResponseHandler);

@@ -1,4 +1,4 @@
-package cn.retech.domainbean_model.categorys;
+package cn.retech.domainbean_model.optionTop;
 
 import cn.retech.global_data_cache.UrlConstantForThisProject;
 import cn.retech.my_network_engine.domainbean_tools.IDomainBeanAbstractFactory;
@@ -8,22 +8,21 @@ import cn.retech.my_network_engine.domainbean_tools.IParseNetRespondDataToDomain
 /**
  * 筛选分类
  */
-public final class CategorysDomainBeanToolsFactory implements IDomainBeanAbstractFactory {
+public final class OptionTopDomainBeanToolsFactory implements IDomainBeanAbstractFactory {
   @Override
   public IParseDomainBeanToDataDictionary getParseDomainBeanToDDStrategyObject() {
-    return new CategorysParseDomainBeanToDD();
+    return new OptionTopParseDomainBeanToDD();
   }
 
   @Override
   public IParseNetRespondDataToDomainBean getParseNetRespondDataToDomainBeanStrategyObject() {
-    return new CategorysParseNetRespondStringToDomainBean();
+    return new OptionTopParseNetRespondStringToDomainBean();
   }
 
   @Override
   public String getSpecialPath(final Object netRequestDomainBean) {
-    // public static final String kUrlConstant_SpecialPath_CATEGORYS =
-    // "lastminute/get_all_categorys";
+    // public static final String kUrlConstant_SpecialPath_OPERATION_TOP = "operation/get_top";
 
-    return UrlConstantForThisProject.kUrlConstant_SpecialPath_CATEGORYS;
+    return UrlConstantForThisProject.kUrlConstant_SpecialPath_OPERATION_TOP;
   }
 }

@@ -1,5 +1,9 @@
 package cn.retech.domainbean_model;
 
+import cn.retech.domainbean_model.optionTop.OptionTopDomainBeanToolsFactory;
+
+import cn.retech.domainbean_model.optionTop.OptionTopNetRequestBean;
+
 import cn.retech.domainbean_model.categorys.CategorysDomainBeanToolsFactory;
 
 import cn.retech.domainbean_model.categorys.CategorysNetRequestBean;
@@ -20,7 +24,6 @@ public final class DomainBeanHelperClassNameMapping extends StrategyClassNameMap
   // Key : 网络请求业务Bean
   // Value : 是该网络接口对应的抽象工厂类
   public DomainBeanHelperClassNameMapping() {
-
     /**
      * 用户登录
      */
@@ -30,5 +33,10 @@ public final class DomainBeanHelperClassNameMapping extends StrategyClassNameMap
      * 筛选分类
      */
     strategyClassesNameMappingList.put(CategorysNetRequestBean.class.getName(), CategorysDomainBeanToolsFactory.class.getName());
+
+    /**
+     * 顶部索引图片
+     */
+    strategyClassesNameMappingList.put(OptionTopNetRequestBean.class.getName(), OptionTopDomainBeanToolsFactory.class.getName());
   }
 }

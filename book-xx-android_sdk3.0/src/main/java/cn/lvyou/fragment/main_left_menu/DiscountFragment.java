@@ -1,30 +1,19 @@
 package cn.lvyou.fragment.main_left_menu;
 
-import java.util.List;
-
-import cn.lvyou.activity.MainActivity;
-import cn.lvyou.activity.R;
-import cn.lvyou.adapter.FilterAdapter;
-import cn.retech.domainbean_model.categorys.CategorysNetRequestBean;
-import cn.retech.domainbean_model.categorys.CategorysNetRespondBean;
-import cn.retech.domainbean_model.categorys.categorybeans.ICategoryItem;
-import cn.retech.my_network_engine.IDomainBeanAsyncHttpResponseListener;
-import cn.retech.my_network_engine.INetRequestHandle;
-import cn.retech.my_network_engine.NetRequestHandleNilObject;
-import cn.retech.my_network_engine.SimpleNetworkEngineSingleton;
-import cn.retech.my_network_engine.net_error_handle.MyNetRequestErrorBean;
-
 import com.google.common.collect.Lists;
+
+import java.util.List;
 
 import android.graphics.drawable.BitmapDrawable;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
 import android.view.View.OnClickListener;
+import android.view.ViewGroup;
 import android.view.ViewGroup.LayoutParams;
 import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.ListView;
@@ -32,11 +21,25 @@ import android.widget.PopupWindow;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
-import android.widget.AdapterView.OnItemClickListener;
+import cn.lvyou.activity.MainActivity;
+import cn.lvyou.activity.R;
+import cn.lvyou.adapter.FilterAdapter;
+import cn.retech.domainbean_model.categorys.CategorysNetRequestBean;
+import cn.retech.domainbean_model.categorys.CategorysNetRespondBean;
+import cn.retech.domainbean_model.categorys.categorybeans.ICategoryItem;
+import cn.retech.domainbean_model.optionTop.OptionTopNetRequestBean;
+import cn.retech.domainbean_model.optionTop.OptionTopNetRespondBean;
+import cn.retech.my_network_engine.IDomainBeanAsyncHttpResponseListener;
+import cn.retech.my_network_engine.INetRequestHandle;
+import cn.retech.my_network_engine.NetRequestHandleNilObject;
+import cn.retech.my_network_engine.SimpleNetworkEngineSingleton;
+import cn.retech.my_network_engine.net_error_handle.MyNetRequestErrorBean;
 
 public class DiscountFragment extends Fragment {
   private INetRequestHandle netRequestHandleForCategroys = new NetRequestHandleNilObject();
+  private INetRequestHandle netRequestHandleForOptionTop = new NetRequestHandleNilObject();
   private CategorysNetRespondBean categoryNetRespondBean;
+  private OptionTopNetRespondBean optionTopNetRespondBean;
   private LinearLayout categoryLayout;
   private PopupWindow categoryPopupWindow;
   private ListView filterListView;
@@ -77,18 +80,18 @@ public class DiscountFragment extends Fragment {
       List<ICategoryItem> categoryItems = Lists.newArrayList();
 
       switch (v.getId()) {
-      case R.id.travel_date_layout:// 旅行时间
-        categoryItems = categoryNetRespondBean.getDates();
-        break;
-      case R.id.discount_type_layout:// 折扣类型
-        categoryItems = categoryNetRespondBean.getTypes();
-        break;
-      case R.id.departure_place_layout:// 出发地
-        categoryItems = categoryNetRespondBean.getOriginPlace();
-        break;
-      case R.id.destination_place_layout:// 目的地
-        categoryItems = categoryNetRespondBean.getPlaces();
-        break;
+        case R.id.travel_date_layout:// 旅行时间
+          categoryItems = categoryNetRespondBean.getDates();
+          break;
+        case R.id.discount_type_layout:// 折扣类型
+          categoryItems = categoryNetRespondBean.getTypes();
+          break;
+        case R.id.departure_place_layout:// 出发地
+          categoryItems = categoryNetRespondBean.getOriginPlace();
+          break;
+        case R.id.destination_place_layout:// 目的地
+          categoryItems = categoryNetRespondBean.getPlaces();
+          break;
       }
 
       final FilterAdapter adapter = new FilterAdapter(getActivity(), categoryItems);
@@ -103,6 +106,43 @@ public class DiscountFragment extends Fragment {
       categoryPopupWindow.showAsDropDown(categoryLayout);
     }
   };
+
+  @Override
+  public void onActivityCreated(Bundle savedInstanceState) {
+    super.onActivityCreated(savedInstanceState);
+    initFilterView();
+    // 添加点击显示SlidingMenu
+    ImageButton titleBtnLeft = (ImageButton) getView().findViewById(R.id.titleBtnLeft);
+    titleBtnLeft.setOnClickListener(new View.OnClickListener() {
+
+      @Override
+      public void onClick(View v) {
+        ((MainActivity) getActivity()).showMenuContent();
+      }
+    });
+
+    requestCategroys();
+    requestOptionTop();
+  }
+
+  @Override
+  public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+
+    View rootView = inflater.inflate(R.layout.fragment_home, container, false);
+
+    return rootView;
+  }
+
+  @Override
+  public void onStart() {
+    super.onStart();
+  }
+
+  @Override
+  public void onStop() {
+    super.onStop();
+    netRequestHandleForCategroys.cancel();
+  }
 
   /**
    * 初始化筛选列表
@@ -130,65 +170,47 @@ public class DiscountFragment extends Fragment {
     travelDateTextView = (TextView) getView().findViewById(R.id.travel_date_textView);// 全部时间
   }
 
-  @Override
-  public void onActivityCreated(Bundle savedInstanceState) {
-    super.onActivityCreated(savedInstanceState);
-    initFilterView();
-    // 添加点击显示SlidingMenu
-    ImageButton titleBtnLeft = (ImageButton) getView().findViewById(R.id.titleBtnLeft);
-    titleBtnLeft.setOnClickListener(new View.OnClickListener() {
-
-      @Override
-      public void onClick(View v) {
-        ((MainActivity) getActivity()).showMenuContent();
-      }
-    });
-    requestCategroys();
-  }
-
-  @Override
-  public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-
-    View rootView = inflater.inflate(R.layout.fragment_home, container, false);
-
-    return rootView;
-  }
-
-  @Override
-  public void onStart() {
-    super.onStart();
-  }
-
-  @Override
-  public void onStop() {
-    super.onStop();
-    netRequestHandleForCategroys.cancel();
-  }
-
   private void requestCategroys() {
     CategorysNetRequestBean categorysNetRequestBean = new CategorysNetRequestBean();
-    netRequestHandleForCategroys = SimpleNetworkEngineSingleton.getInstance.requestDomainBean(categorysNetRequestBean, new IDomainBeanAsyncHttpResponseListener() {
-      @Override
-      public void onFailure(MyNetRequestErrorBean error) {
-      }
+    netRequestHandleForCategroys =
+        SimpleNetworkEngineSingleton.getInstance.requestDomainBean(categorysNetRequestBean, new IDomainBeanAsyncHttpResponseListener() {
+          @Override
+          public void onFailure(MyNetRequestErrorBean error) {
+          }
 
-      @Override
-      public void onSuccess(Object respondDomainBean) {
-        categoryNetRespondBean = (CategorysNetRespondBean) respondDomainBean;
+          @Override
+          public void onSuccess(Object respondDomainBean) {
+            categoryNetRespondBean = (CategorysNetRespondBean) respondDomainBean;
 
-        // categoryDatesTextView.setText("时间");
-        discountTypeLayout.setOnClickListener(onCategoryClickListener);
+            // categoryDatesTextView.setText("时间");
+            discountTypeLayout.setOnClickListener(onCategoryClickListener);
 
-        // categoryOriginPlaceTextView.setText("出发地");
-        departurePlaceLayout.setOnClickListener(onCategoryClickListener);
+            // categoryOriginPlaceTextView.setText("出发地");
+            departurePlaceLayout.setOnClickListener(onCategoryClickListener);
 
-        // categoryPlaceTextView.setText("目的地");
-        destinationPlaceLayout.setOnClickListener(onCategoryClickListener);
+            // categoryPlaceTextView.setText("目的地");
+            destinationPlaceLayout.setOnClickListener(onCategoryClickListener);
 
-        // categoryTypesTextView.setText("机票");
-        travelDateLayout.setOnClickListener(onCategoryClickListener);
+            // categoryTypesTextView.setText("机票");
+            travelDateLayout.setOnClickListener(onCategoryClickListener);
 
-      }
-    });
+          }
+        });
+  }
+
+  private void requestOptionTop() {
+    OptionTopNetRequestBean optionTopNetRequestBean = new OptionTopNetRequestBean();
+    netRequestHandleForOptionTop =
+        SimpleNetworkEngineSingleton.getInstance.requestDomainBean(optionTopNetRequestBean, new IDomainBeanAsyncHttpResponseListener() {
+          @Override
+          public void onFailure(MyNetRequestErrorBean error) {
+            // TODO Auto-generated method stub
+          }
+
+          @Override
+          public void onSuccess(Object respondDomainBean) {
+            optionTopNetRespondBean = (OptionTopNetRespondBean) respondDomainBean;
+          }
+        });
   }
 }
