@@ -1,59 +1,35 @@
 package cn.retech.domainbean_model.optionTop;
 
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
-
 import java.util.ArrayList;
 
+import org.json.JSONArray;
+import org.json.JSONObject;
+
 import cn.retech.my_network_engine.domainbean_tools.IParseNetRespondDataToDomainBean;
+import cn.retech.toolutils.JSONTools;
 
 public class OptionTopParseNetRespondStringToDomainBean implements IParseNetRespondDataToDomainBean {
 
-  public static Integer getIntegerFromJson(JSONObject jsonObject, String key) throws JSONException {
-    Integer ret = 0;
-    if (jsonObject.has(key)) {
-      ret = jsonObject.getInt(key);
-    }
-    return ret;
-  }
+	@Override
+	public Object parseNetRespondDataToDomainBean(Object netRespondData) throws Exception {
+		JSONObject jsonObject = new JSONObject((String) netRespondData);
+		JSONArray jsonArray = jsonObject.getJSONArray(OptionTopDatabaseFiledsConstant.RespondBean.data.name());
+		ArrayList<Operation> operations = new ArrayList<Operation>();
+		for (int i = 0; i < jsonArray.length(); i++) {
+			JSONObject jObj = jsonArray.getJSONObject(i);
+			Operation op = new Operation();
+			op.setOpenType(JSONTools.safeParseJSONObjectForValueIsInteger(jObj, OptionTopDatabaseFiledsConstant.RespondBean.open_type.name(), 0));
+			op.setTitle(JSONTools.safeParseJSONObjectForValueIsString(jObj, OptionTopDatabaseFiledsConstant.RespondBean.title.name(), ""));
+			op.setContent(JSONTools.safeParseJSONObjectForValueIsString(jObj, OptionTopDatabaseFiledsConstant.RespondBean.content.name(), ""));
+			op.setIds(JSONTools.safeParseJSONObjectForValueIsString(jObj, OptionTopDatabaseFiledsConstant.RespondBean.ids.name(), ""));
+			op.setUrl(JSONTools.safeParseJSONObjectForValueIsString(jObj, OptionTopDatabaseFiledsConstant.RespondBean.url.name(), ""));
+			op.setPic(JSONTools.safeParseJSONObjectForValueIsString(jObj, OptionTopDatabaseFiledsConstant.RespondBean.pic.name(), ""));
+			op.setBigPic(JSONTools.safeParseJSONObjectForValueIsString(jObj, OptionTopDatabaseFiledsConstant.RespondBean.big_pic.name(), ""));
+			operations.add(op);
+		}
 
-  public static JSONArray getJsonArrayFromJson(JSONObject jsonObject, String key) throws JSONException {
-    JSONArray ret = new JSONArray();
-    if (jsonObject.has(key)) {
-      ret = jsonObject.getJSONArray(key);
-    }
-    return ret;
-  }
+		OptionTopNetRespondBean optionTopNetRespondBean = new OptionTopNetRespondBean(operations);
 
-  public static String getStringFromJson(JSONObject jsonObject, String key) throws JSONException {
-    String ret = "";
-    if (jsonObject.has(key)) {
-      ret = jsonObject.getString(key);
-    }
-    return ret;
-  }
-
-  @Override
-  public Object parseNetRespondDataToDomainBean(Object netRespondData) throws JSONException {
-    JSONObject jsonObject = new JSONObject((String) netRespondData);
-    JSONArray jsonArray = jsonObject.getJSONArray("data");
-    ArrayList<Operation> operations = new ArrayList<Operation>();
-    for (int i = 0; i < jsonArray.length(); i++) {
-      JSONObject jObj = jsonArray.getJSONObject(i);
-      Operation op = new Operation();
-      op.setOpenType(getIntegerFromJson(jObj, "open_type"));
-      op.setTitle(getStringFromJson(jObj, "title"));
-      op.setContent(getStringFromJson(jObj, "content"));
-      op.setIds(getStringFromJson(jObj, "ids"));
-      op.setUrl(getStringFromJson(jObj, "url"));
-      op.setPic(getStringFromJson(jObj, "pic"));
-      op.setBigPic(getStringFromJson(jObj, "big_pic"));
-      operations.add(op);
-    }
-
-    OptionTopNetRespondBean optionTopNetRespondBean = new OptionTopNetRespondBean(operations);
-
-    return optionTopNetRespondBean;
-  }
+		return optionTopNetRespondBean;
+	}
 }
