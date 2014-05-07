@@ -23,7 +23,7 @@ public final class MyNetRequestErrorBean implements Serializable, Cloneable {
   }
 
   public MyNetRequestErrorBean(int errorCode, String errorMessage) {
-    this(MyNetErrorCodeEnum.valueOfErrorCode(errorCode), errorMessage);
+    this(MyNetErrorCodeEnum.valueOfCode(errorCode), errorMessage);
   }
 
   public MyNetRequestErrorBean(MyNetErrorCodeEnum errorCodeEnum, String errorMessage) {
@@ -51,7 +51,7 @@ public final class MyNetRequestErrorBean implements Serializable, Cloneable {
   }
 
   public int getErrorCode() {
-    return errorCodeEnum.getErrorCode();
+    return errorCodeEnum.getCode();
   }
 
   public void setErrorCodeEnum(MyNetErrorCodeEnum errorCodeEnum) {
@@ -69,7 +69,8 @@ public final class MyNetRequestErrorBean implements Serializable, Cloneable {
   public MyNetRequestErrorBean clone() {
     MyNetRequestErrorBean o = null;
     try {
-      o = (MyNetRequestErrorBean) super.clone();// Object 中的clone()识别出你要复制的是哪一个对象。
+      o = (MyNetRequestErrorBean) super.clone();// Object
+                                                // 中的clone()识别出你要复制的是哪一个对象。
       o.errorCodeEnum = this.errorCodeEnum;
       o.errorMessage = this.errorMessage;
     } catch (CloneNotSupportedException e) {
