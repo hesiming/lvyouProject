@@ -3,9 +3,9 @@ package cn.retech.my_custom_network_engine.engine_helper;
 import cn.retech.global_data_cache.UrlConstantForThisProject;
 import cn.retech.my_network_engine.engine_helper.interfaces.ISpliceFullUrlByDomainBeanSpecialPath;
 
-public class SpliceFullUrlByDomainBeanSpecialPathForDreamBook implements ISpliceFullUrlByDomainBeanSpecialPath {
+public class SpliceFullUrlByDomainBeanSpecialPathForLvyou implements ISpliceFullUrlByDomainBeanSpecialPath {
 
-  public SpliceFullUrlByDomainBeanSpecialPathForDreamBook() {
+  public SpliceFullUrlByDomainBeanSpecialPathForLvyou() {
   }
 
   @Override

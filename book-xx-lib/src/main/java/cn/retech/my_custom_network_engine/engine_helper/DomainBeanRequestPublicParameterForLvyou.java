@@ -6,9 +6,9 @@ import com.google.common.collect.Maps;
 
 import cn.retech.my_network_engine.engine_helper.interfaces.IDomainBeanRequestPublicParameter;
 
-public class DomainBeanRequestPublicParameterForDreamBook implements IDomainBeanRequestPublicParameter {
+public class DomainBeanRequestPublicParameterForLvyou implements IDomainBeanRequestPublicParameter {
 
-  public DomainBeanRequestPublicParameterForDreamBook() {
+  public DomainBeanRequestPublicParameterForLvyou() {
     // TODO Auto-generated constructor stub
   }
 

@@ -10,7 +10,7 @@ import cn.retech.toolutils.DebugLog;
  * @author skyduck
  *
  */
-public final class NetRespondEntityDataUnpackDreamBook implements INetRespondRawEntityDataUnpack {
+public final class NetRespondEntityDataUnpackForLvyou implements INetRespondRawEntityDataUnpack {
   private final String TAG = this.getClass().getSimpleName();
 
   @Override

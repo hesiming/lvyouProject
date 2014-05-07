@@ -1,10 +1,10 @@
 package cn.retech.my_network_engine.engine_helper;
 
-import cn.retech.my_custom_network_engine.engine_helper.DomainBeanRequestPublicParameterForDreamBook;
-import cn.retech.my_custom_network_engine.engine_helper.NetRequestEntityDataPackageForDreamBook;
-import cn.retech.my_custom_network_engine.engine_helper.NetRespondEntityDataUnpackDreamBook;
-import cn.retech.my_custom_network_engine.engine_helper.ServerRespondDataTestLvyou;
-import cn.retech.my_custom_network_engine.engine_helper.SpliceFullUrlByDomainBeanSpecialPathForDreamBook;
+import cn.retech.my_custom_network_engine.engine_helper.DomainBeanRequestPublicParameterForLvyou;
+import cn.retech.my_custom_network_engine.engine_helper.NetRequestEntityDataPackageForLvyou;
+import cn.retech.my_custom_network_engine.engine_helper.NetRespondEntityDataUnpackForLvyou;
+import cn.retech.my_custom_network_engine.engine_helper.ServerRespondDataTestForLvyou;
+import cn.retech.my_custom_network_engine.engine_helper.SpliceFullUrlByDomainBeanSpecialPathForLvyou;
 import cn.retech.my_network_engine.engine_helper.interfaces.IDomainBeanRequestPublicParameter;
 import cn.retech.my_network_engine.engine_helper.interfaces.INetRequestEntityDataPackage;
 import cn.retech.my_network_engine.engine_helper.interfaces.INetRespondRawEntityDataUnpack;
@@ -21,27 +21,27 @@ public enum EngineHelperSingleton implements IEngineHelper {
 
   @Override
   public INetRequestEntityDataPackage getNetRequestEntityDataPackageStrategyObject() {
-    return new NetRequestEntityDataPackageForDreamBook();
+    return new NetRequestEntityDataPackageForLvyou();
   }
 
   @Override
   public INetRespondRawEntityDataUnpack getNetRespondEntityDataUnpackStrategyObject() {
-    return new NetRespondEntityDataUnpackDreamBook();
+    return new NetRespondEntityDataUnpackForLvyou();
   }
 
   @Override
   public IServerRespondDataTest getServerRespondDataTestStrategyObject() {
-    return new ServerRespondDataTestLvyou();
+    return new ServerRespondDataTestForLvyou();
   }
 
   @Override
   public ISpliceFullUrlByDomainBeanSpecialPath getSpliceFullUrlByDomainBeanSpecialPathStrategyObject() {
-    return new SpliceFullUrlByDomainBeanSpecialPathForDreamBook();
+    return new SpliceFullUrlByDomainBeanSpecialPathForLvyou();
   }
 
   @Override
   public IDomainBeanRequestPublicParameter getDomainBeanRequestPublicParameterStrategyObject() {
-    return new DomainBeanRequestPublicParameterForDreamBook();
+    return new DomainBeanRequestPublicParameterForLvyou();
   }
 
 }

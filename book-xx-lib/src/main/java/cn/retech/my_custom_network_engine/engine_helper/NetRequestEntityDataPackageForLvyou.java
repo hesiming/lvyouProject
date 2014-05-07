@@ -11,7 +11,7 @@ import com.loopj.android.http.RequestParams;
  * @author skyduck
  * 
  */
-public class NetRequestEntityDataPackageForDreamBook implements INetRequestEntityDataPackage {
+public class NetRequestEntityDataPackageForLvyou implements INetRequestEntityDataPackage {
 
 	@Override
 	public RequestParams packageNetRequestEntityData(final Map<String, String> domainDD) {

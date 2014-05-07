@@ -12,7 +12,7 @@ import cn.retech.my_network_engine.net_error_handle.MyNetRequestErrorBean;
  * @author skyduck
  * 
  */
-public final class ServerRespondDataTestLvyou implements IServerRespondDataTest {
+public final class ServerRespondDataTestForLvyou implements IServerRespondDataTest {
 
   @Override
   public MyNetRequestErrorBean testServerRespondDataError(final Object netUnpackedData) {
@@ -35,6 +35,7 @@ public final class ServerRespondDataTestLvyou implements IServerRespondDataTest 
           errorCode = MyNetErrorCodeEnum.kNetErrorCodeEnum_Server_NoResult.getCode();
           break;
         case 1:// 访问成功
+          errorCode = MyNetErrorCodeEnum.kNetErrorCodeEnum_Success.getCode();
           break;
         default:
           break;
