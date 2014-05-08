@@ -12,8 +12,8 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 import cn.lvyou.activity.R;
-import cn.retech.domainbean_model.categorys.categorybeans.ICategoryItem;
-import cn.retech.toolutils.ToolsFunctionForThisProgect;
+import cn.lvyou.domainbean_model.categorys.categorybeans.ICategoryItem;
+import cn.lvyou.toolutils.ToolsFunctionForThisProgect;
 
 public class FilterAdapter extends BaseAdapter {
 	private Context context;

@@ -54,19 +54,6 @@
         </RelativeLayout>
     </LinearLayout>
 
-    <com.androidex.view.Listview.XListView
-        android:id="@+id/listView1"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_below="@+id/titlebar"
-        android:background="@android:color/transparent"
-        android:cacheColorHint="#00000000"
-        android:divider="@null"
-        android:fadingEdge="none"
-        android:footerDividersEnabled="false"
-        android:listSelector="@android:color/transparent"
-        android:scrollingCache="false" />
-
     <RelativeLayout
         android:id="@+id/mRlEmpty"
         android:layout_width="match_parent"

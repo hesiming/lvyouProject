@@ -9,8 +9,8 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
-import cn.retech.toolutils.SimpleBitmapTools;
-import cn.retech.toolutils.ToolsFunctionForThisProgect;
+import cn.lvyou.toolutils.SimpleBitmapTools;
+import cn.lvyou.toolutils.ToolsFunctionForThisProgect;
 
 /**
  * 闪屏界面(欢迎界面)

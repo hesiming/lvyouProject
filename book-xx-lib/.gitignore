@@ -23,4 +23,4 @@ target/
 
 # MAC files
 .DS_Store
-src/main/java/cn/retech/global_data_cache/UrlConstantForThisProject.java
+src/main/java/cn/lvyou/global_data_cache/UrlConstantForThisProject.java

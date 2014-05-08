@@ -5,11 +5,11 @@ import java.io.File;
 import android.app.Application;
 import android.content.res.Configuration;
 import android.graphics.Bitmap.CompressFormat;
-import cn.retech.global_data_cache.GlobalDataCacheForMemorySingleton;
-import cn.retech.global_data_cache.GlobalDataCacheForNeedSaveToFileSystem;
-import cn.retech.global_data_cache.LocalCacheDataPathConstant;
-import cn.retech.image_loader.MyImageDownloader;
-import cn.retech.toolutils.DebugLog;
+import cn.lvyou.global_data_cache.GlobalDataCacheForMemorySingleton;
+import cn.lvyou.global_data_cache.GlobalDataCacheForNeedSaveToFileSystem;
+import cn.lvyou.global_data_cache.LocalCacheDataPathConstant;
+import cn.lvyou.image_loader.MyImageDownloader;
+import cn.lvyou.toolutils.DebugLog;
 
 import com.nostra13.universalimageloader.cache.disc.impl.UnlimitedDiscCache;
 import com.nostra13.universalimageloader.cache.disc.naming.HashCodeFileNameGenerator;

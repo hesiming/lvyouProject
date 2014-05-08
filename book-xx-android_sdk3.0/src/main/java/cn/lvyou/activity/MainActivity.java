@@ -12,9 +12,9 @@ import cn.lvyou.fragment.main_left_menu.FavorFragment;
 import cn.lvyou.fragment.main_left_menu.NotificationFragment;
 import cn.lvyou.fragment.main_left_menu.OrderFragment;
 import cn.lvyou.fragment.main_left_menu.SettingFragment;
+import cn.lvyou.global_data_cache.GlobalDataCacheForMemorySingleton;
 import cn.lvyou.slidingmenu.SlidingMenu;
 import cn.lvyou.slidingmenu.app.SlidingFragmentActivity;
-import cn.retech.global_data_cache.GlobalDataCacheForMemorySingleton;
 
 public class MainActivity extends SlidingFragmentActivity {
 	private final LeftMenuFragment leftMenuFragment = new LeftMenuFragment();
