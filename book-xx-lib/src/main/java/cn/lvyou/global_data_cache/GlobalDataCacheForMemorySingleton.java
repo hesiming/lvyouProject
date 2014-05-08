@@ -68,7 +68,7 @@ public enum GlobalDataCacheForMemorySingleton {
     return isLogged;
   }
 
-  // 用户最后一次登录成功时的用户名/密码(企业账户/公共账户 登录成功都会保存在这里)
+  // 用户最后一次登录成功时的用户名/密码
   private String usernameForLastSuccessfulLogon;
 
   public String getUsernameForLastSuccessfulLogon() {

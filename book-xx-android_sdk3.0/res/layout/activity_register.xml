@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/base_background"
+    android:paddingTop="49dp" >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="35dp"
+        android:layout_marginRight="35dp"
+        android:background="@color/base_background"
+        android:orientation="vertical" >
+
+        <EditText
+            android:id="@+id/mail_EditText"
+            android:layout_width="fill_parent"
+            android:layout_height="50dp"
+            android:layout_marginTop="5dp"
+            android:background="@drawable/bg_edittext_selector"
+            android:ems="10"
+            android:hint="请填写真实邮箱"
+            android:paddingLeft="11dp"
+            android:singleLine="true"
+            android:textSize="16sp" >
+        </EditText>
+
+        <EditText
+            android:id="@+id/username_EditText"
+            android:layout_width="fill_parent"
+            android:layout_height="50dp"
+            android:layout_marginTop="5dp"
+            android:background="@drawable/bg_edittext_selector"
+            android:ems="10"
+            android:hint="请输入您的常用用户名"
+            android:paddingLeft="11dp"
+            android:singleLine="true"
+            android:textSize="16sp" />
+
+        <EditText
+            android:id="@+id/password_EditText"
+            android:layout_width="fill_parent"
+            android:layout_height="50dp"
+            android:layout_marginTop="5dp"
+            android:background="@drawable/bg_edittext_selector"
+            android:ems="10"
+            android:hint="请输入密码（不少于6位）"
+            android:inputType="textPassword"
+            android:paddingLeft="11dp"
+            android:singleLine="true"
+            android:textSize="16sp" />
+
+        <RelativeLayout
+            android:id="@+id/register_Button"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_marginTop="21dp"
+            android:background="@drawable/btn_login_selector" >
+
+            <TextView
+                android:id="@+id/register_text_TextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:text="注册"
+                android:textColor="#ffffff"
+                android:textSize="20sp" />
+
+            <ProgressBar
+                android:id="@+id/register_loading_ProgressBar"
+                style="@style/@android:style/Widget.ProgressBar.Small"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="5dp"
+                android:layout_toRightOf="@+id/register_text_TextView"
+                android:indeterminate="true"
+                android:visibility="invisible" />
+        </RelativeLayout>
+    </LinearLayout>
+
+</ScrollView>
