@@ -16,5 +16,11 @@
     <dimen name="dp_text_big">18dp</dimen>
     <dimen name="radio_width">60dp</dimen>
     <dimen name="main_deal_header_textview_h">33dp</dimen>
+    <!-- titlebar - titlebar中的文字最大size -->
+    <dimen name="dimen_for_titlebar_title_max_font_size">30sp</dimen>
+    <!-- titlebar - titlebar中的文字最小size -->
+    <dimen name="dimen_for_titlebar_title_min_font_size">15sp</dimen>
+    <!-- 所有窗口 titlebar 的高度 -->
+    <dimen name="dimen_for_titlebar_height">50dp</dimen>
 
 </resources>
