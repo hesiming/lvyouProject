@@ -1,5 +1,6 @@
 package cn.lvyou.activity;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -20,11 +21,14 @@ import cn.lvyou.toolutils.DebugLog;
 
 public class MainActivity extends SlidingFragmentActivity {
   private final String TAG = this.getClass().getSimpleName();
-  private final LeftMenuFragment leftMenuFragment = new LeftMenuFragment();
 
   private static enum IntentRequestCodeEnum {
     TO_LOGIN_ACTIVITY
   };
+
+  private final LeftMenuFragment leftMenuFragment = new LeftMenuFragment();
+
+  private LeftMenuIndexEnum currentMenuIndexEnum;
 
   private void initSlidingMenu() {
 
@@ -53,6 +57,12 @@ public class MainActivity extends SlidingFragmentActivity {
 
       @Override
       public void onItemClick(LeftMenuIndexEnum indexEnum) {
+        // 记录当前要跳转的菜单索引
+        currentMenuIndexEnum = indexEnum;
+
+        // 先收回 LeftMenuFragment
+        toggle();
+
         // 在切换左侧滑栏的菜单之前, 要先判断是否需要先登录
         if (isNeedToFirstLogin(indexEnum)) {
           // 如果需要先登录, 就跳转到登录界面
@@ -73,7 +83,7 @@ public class MainActivity extends SlidingFragmentActivity {
     setContentView(R.layout.main_activity_foreground_fragment_container);
     // 设置背景视图
     setBehindContentView(R.layout.main_activity_background_fragment_container);
-    
+
     initSlidingMenu();
     initLeftMenuFragment();
 
@@ -109,11 +119,17 @@ public class MainActivity extends SlidingFragmentActivity {
    * @param indexEnum
    */
   private boolean isNeedToFirstLogin(LeftMenuIndexEnum indexEnum) {
-    if (indexEnum == LeftMenuIndexEnum.Setting || indexEnum == LeftMenuIndexEnum.AllDiscount) {
-      if (!GlobalDataCacheForMemorySingleton.getInstance.isLogged()) {
-        return true;
+    do {
+      if (indexEnum == LeftMenuIndexEnum.Setting || indexEnum == LeftMenuIndexEnum.AllDiscount) {
+        break;
       }
-    }
+      if (GlobalDataCacheForMemorySingleton.getInstance.isLogged()) {
+        break;
+      }
+      return true;
+
+    } while (false);
+
     return false;
   }
 
@@ -161,6 +177,19 @@ public class MainActivity extends SlidingFragmentActivity {
   private void gotoLoginActivity() {
     Intent intent = new Intent(MainActivity.this, LoginActivity.class);
     startActivityForResult(intent, IntentRequestCodeEnum.TO_LOGIN_ACTIVITY.ordinal());
+
+    overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
   }
 
+  @Override
+  protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+    DebugLog.i(TAG, "onActivityResult");
+
+    if (requestCode == IntentRequestCodeEnum.TO_LOGIN_ACTIVITY.ordinal()) {
+      if (resultCode == Activity.RESULT_OK) {
+        // 登录成功, 直接跳转目标菜单
+        changeLeftMenuByIndex(currentMenuIndexEnum);
+      }
+    }
+  }
 }

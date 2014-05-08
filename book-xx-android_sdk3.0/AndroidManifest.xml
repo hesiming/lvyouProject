@@ -46,6 +46,10 @@
             android:launchMode="singleTask"
             android:screenOrientation="portrait"
             android:theme="@style/windownotitle" />
+        <activity
+            android:name="LoginActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/windownotitle" />
 
         <meta-data
             android:name="UMENG_APPKEY"

@@ -109,4 +109,10 @@ public class LoginActivity extends Activity {
     super.onStop();
   }
 
+  @Override
+  public void finish() {
+    overridePendingTransition(R.anim.slide_in_left, R.anim.slide_in_right);
+    super.finish();
+  }
+
 }
