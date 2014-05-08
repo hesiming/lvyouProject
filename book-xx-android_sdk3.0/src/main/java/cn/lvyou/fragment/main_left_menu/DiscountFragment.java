@@ -82,9 +82,6 @@ public class DiscountFragment extends Fragment {
 			List<ICategoryItem> categoryItems = Lists.newArrayList();
 
 			switch (v.getId()) {
-			case R.id.travel_date_layout:// 旅行时间
-				categoryItems = categoryNetRespondBean.getDates();
-				break;
 			case R.id.discount_type_layout:// 折扣类型
 				categoryItems = categoryNetRespondBean.getTypes();
 				break;
@@ -94,6 +91,9 @@ public class DiscountFragment extends Fragment {
 			case R.id.destination_place_layout:// 目的地
 				categoryItems = categoryNetRespondBean.getPlaces();
 				break;
+			case R.id.travel_date_layout:// 旅行时间
+        categoryItems = categoryNetRespondBean.getDates();
+        break;
 			}
 
 			final FilterAdapter adapter = new FilterAdapter(getActivity(), categoryItems);
@@ -102,7 +102,7 @@ public class DiscountFragment extends Fragment {
 
 				@Override
 				public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-					adapter.setSelectedPosition(position + "");
+					adapter.setSelectedPosition(position);
 				}
 			});
 			categoryPopupWindow.showAsDropDown(categoryLayout);

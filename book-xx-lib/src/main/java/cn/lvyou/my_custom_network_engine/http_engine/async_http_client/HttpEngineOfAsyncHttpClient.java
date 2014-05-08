@@ -35,7 +35,7 @@ public class HttpEngineOfAsyncHttpClient implements IHttpRequestForDomainBean, I
     // PersistentCookieStore类用于实现Apache HttpClient的CookieStore接口，
     // 可以自动的将cookie保存到Android设备的SharedPreferences中，如果你打算使用cookie来管理验证会话，
     // 这个非常有用，因为用户可以保持登录状态，不管关闭还是重新打开你的app
-    PersistentCookieStore myCookieStore = new PersistentCookieStore(GlobalDataCacheForMemorySingleton.getInstance.getApplication());
+    //PersistentCookieStore myCookieStore = new PersistentCookieStore(GlobalDataCacheForMemorySingleton.getInstance.getApplication());
   }
 
   @Override

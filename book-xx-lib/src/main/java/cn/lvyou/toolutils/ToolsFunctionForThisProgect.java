@@ -32,6 +32,7 @@ import cn.lvyou.global_data_cache.GlobalDataCacheForNeedSaveToFileSystem;
  */
 @SuppressLint("SimpleDateFormat")
 public final class ToolsFunctionForThisProgect {
+  private final static String TAG = "ToolsFunctionForThisProgect";
 
   private ToolsFunctionForThisProgect() {
 
@@ -128,12 +129,12 @@ public final class ToolsFunctionForThisProgect {
     PackageInfo packInfo = null;
     try {
       packInfo = packageManager.getPackageInfo(GlobalDataCacheForMemorySingleton.getInstance.getApplication().getPackageName(), 0);
+      String version = packInfo.versionName;
+      return version;
     } catch (NameNotFoundException e) {
-      // TODO Auto-generated catch block
-      e.printStackTrace();
+      DebugLog.e(TAG, e.getLocalizedMessage());
+      return "";
     }
-    String version = packInfo.versionName;
-    return version;
   }
 
   /**
@@ -146,12 +147,12 @@ public final class ToolsFunctionForThisProgect {
     try {
       appInfo = GlobalDataCacheForMemorySingleton.getInstance.getApplication().getPackageManager()
           .getApplicationInfo(GlobalDataCacheForMemorySingleton.getInstance.getApplication().getPackageName(), PackageManager.GET_META_DATA);
+      String msg = appInfo.metaData.getString("UMENG_CHANNEL");
+      return msg;
     } catch (NameNotFoundException e) {
-      // TODO Auto-generated catch block
-      e.printStackTrace();
+      DebugLog.e(TAG, e.getLocalizedMessage());
+      return "";
     }
-    String msg = appInfo.metaData.getString("UMENG_CHANNEL");
-    return msg;
   }
 
   /**

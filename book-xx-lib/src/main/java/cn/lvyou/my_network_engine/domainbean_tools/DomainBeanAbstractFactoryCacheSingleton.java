@@ -16,9 +16,11 @@ public enum DomainBeanAbstractFactoryCacheSingleton {
   getInstance;
 
   /**
-	 * 
-	 */
-  private DomainBeanHelperClassNameMapping strategyClassNameMapping = new DomainBeanHelperClassNameMapping();
+   * non-transient non-serializable instance field in serializable class 意思就是,
+   * 在一个可被序列化的类中, 定义了一个没有实现Serializable接口的属性. 所以我们使用 transient 来限制
+   * strategyClassNameMapping 属性不需要被序列化
+   */
+  private transient DomainBeanHelperClassNameMapping strategyClassNameMapping = new DomainBeanHelperClassNameMapping();
   /**
    * 缓存区
    */
