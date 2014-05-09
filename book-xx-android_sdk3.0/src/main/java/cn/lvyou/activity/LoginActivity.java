@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -11,6 +12,7 @@ import android.widget.ProgressBar;
 import android.widget.Toast;
 import cn.lvyou.domainbean_model.login.LoginNetRequestBean;
 import cn.lvyou.domainbean_model.login.LoginNetRespondBean;
+import cn.lvyou.global_data_cache.GlobalDataCacheForMemorySingleton;
 import cn.lvyou.my_network_engine.IDomainBeanAsyncHttpResponseListenerWithUIControl;
 import cn.lvyou.my_network_engine.INetRequestHandle;
 import cn.lvyou.my_network_engine.NetRequestHandleNilObject;
@@ -22,6 +24,11 @@ import cn.lvyou.toolutils.SimpleProgressDialog;
 
 public class LoginActivity extends Activity {
   private final String TAG = this.getClass().getSimpleName();
+
+  private static enum IntentRequestCodeEnum {
+    TO_REGISTER_ACTIVITY
+  };
+
   private INetRequestHandle netRequestHandleForLogin = new NetRequestHandleNilObject();
 
   private EditText qiongyouAccountUsername;
@@ -40,17 +47,57 @@ public class LoginActivity extends Activity {
     qiongyouAccountPassword = (EditText) findViewById(R.id.qiongyou_account_password);
     loginButton = findViewById(R.id.login_Button);
     loginButton.setOnClickListener(new View.OnClickListener() {
-      
+
+      @Override
+      public void onClick(View v) {
+        String errorMessage = "";
+        final String username = qiongyouAccountUsername.getText().toString().trim();
+        final String password = qiongyouAccountPassword.getText().toString().trim();
+        do {
+          if (TextUtils.isEmpty(username)) {
+            errorMessage = "用户名不能为空";
+            break;
+          }
+          if (TextUtils.isEmpty(password)) {
+            errorMessage = "密码不能为空";
+            break;
+          }
+
+          requestLogin(username, password);
+          return;
+        } while (false);
+
+        Toast.makeText(LoginActivity.this, errorMessage, Toast.LENGTH_SHORT).show();
+      }
+    });
+    registerButton = findViewById(R.id.register_Button);
+    registerButton.setOnClickListener(new View.OnClickListener() {
+
+      @Override
+      public void onClick(View v) {
+        gotoRegisterActivity();
+      }
+
+    });
+    loginProgressBar = (ProgressBar) findViewById(R.id.login_ProgressBar);
+    sinaTwitterLoginButton = (Button) findViewById(R.id.sina_twitter_login_Button);
+    sinaTwitterLoginButton.setOnClickListener(new View.OnClickListener() {
+
       @Override
       public void onClick(View v) {
         // TODO Auto-generated method stub
-        
+
       }
-    })
-    registerButton = findViewById(R.id.register_Button);
-    loginProgressBar = (ProgressBar) findViewById(R.id.login_ProgressBar);
-    sinaTwitterLoginButton = (Button) findViewById(R.id.sina_twitter_login_Button);
+    });
     qqLoginButton = (Button) findViewById(R.id.qq_login_Button);
+    qqLoginButton.setOnClickListener(new View.OnClickListener() {
+
+      @Override
+      public void onClick(View v) {
+        // TODO Auto-generated method stub
+
+      }
+    });
   }
 
   private void requestLogin(final String username, final String password) {
@@ -61,10 +108,9 @@ public class LoginActivity extends Activity {
       public void onSuccess(Object respondDomainBean) {
         LoginNetRespondBean loginNetRespondBean = (LoginNetRespondBean) respondDomainBean;
 
-        Toast.makeText(LoginActivity.this, "登录成功-->" + loginNetRespondBean.toString(), Toast.LENGTH_SHORT).show();
-        Intent intent = new Intent(LoginActivity.this, MainActivity.class);
-        startActivity(intent);
+        //GlobalDataCacheForMemorySingleton.getInstance.noteSignInSuccessfulInfo(loginNetRespondBean, username, password);
 
+        finishWithLoginBeenSuccessfully();
       }
 
       @Override
@@ -132,9 +178,27 @@ public class LoginActivity extends Activity {
   }
 
   @Override
-  public void finish() {
-    overridePendingTransition(R.anim.slide_in_left, R.anim.slide_in_right);
-    super.finish();
+  protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+    DebugLog.i(TAG, "onActivityResult");
+
+    if (requestCode == IntentRequestCodeEnum.TO_REGISTER_ACTIVITY.ordinal()) {
+      if (resultCode == Activity.RESULT_OK) {
+        // 注册成功, 登录成功, 返回上层界面
+        finishWithLoginBeenSuccessfully();
+      }
+    }
   }
 
+  /**
+   * 在登录已成功的状态下, 返回上层界面
+   */
+  private void finishWithLoginBeenSuccessfully() {
+    setResult(Activity.RESULT_OK);
+    finish();
+  }
+
+  private void gotoRegisterActivity() {
+    Intent intent = new Intent(LoginActivity.this, RegisterActivity.class);
+    startActivityForResult(intent, IntentRequestCodeEnum.TO_REGISTER_ACTIVITY.ordinal());
+  }
 }

@@ -3,6 +3,7 @@ package cn.lvyou.activity;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
@@ -25,6 +26,8 @@ public class MainActivity extends SlidingFragmentActivity {
   private static enum IntentRequestCodeEnum {
     TO_LOGIN_ACTIVITY
   };
+
+  private Handler handler = new Handler();
 
   private final LeftMenuFragment leftMenuFragment = new LeftMenuFragment();
 
@@ -188,7 +191,20 @@ public class MainActivity extends SlidingFragmentActivity {
     if (requestCode == IntentRequestCodeEnum.TO_LOGIN_ACTIVITY.ordinal()) {
       if (resultCode == Activity.RESULT_OK) {
         // 登录成功, 直接跳转目标菜单
-        changeLeftMenuByIndex(currentMenuIndexEnum);
+        handler.post(new Runnable() {
+
+          @Override
+          public void run() {
+            // 05-09 12:43:29.723: E/AndroidRuntime(6720): Caused by:
+            // java.lang.IllegalStateException: Can not perform this action
+            // after onSaveInstanceState
+            // TODO : 必须这样异步更换碎片视图, 否则就报上面的异常
+            changeLeftMenuByIndex(currentMenuIndexEnum);
+          }
+        });
+
+        // 返回 onActivityResult 时, 是在主线程的 Thread[main,5,main]
+        DebugLog.i(TAG, "当前线程 --> " + Thread.currentThread());
       }
     }
   }
