@@ -95,7 +95,7 @@ public class MainActivity extends SlidingFragmentActivity {
 		fragmentTransaction.replace(R.id.left_menu, leftMenuFragment);
 		fragmentTransaction.replace(R.id.content, new DiscountFragment());
 		fragmentTransaction.commit();
-//		TestNetRequestBean testNetRequestBean = new TestNetRequestBean();
+		// TestNetRequestBean testNetRequestBean = new TestNetRequestBean();
 		// 获取折扣列表接口
 		// testNetRequestBean.discountListNetRequestBean();
 		// 获取APP启动页面图片
@@ -106,9 +106,9 @@ public class MainActivity extends SlidingFragmentActivity {
 		// testNetRequestBean.getListByJNidNetRequestBean();
 		// 通过id字符串获取折扣列表
 		// testNetRequestBean.getListByidNetRequestBean();
-		// lastminute收藏列表
+		// lastminute提醒条件列表
 		// testNetRequestBean.favorListNetRequestBean();
-//		testNetRequestBean.subscribeListNetRequestBean();
+		// testNetRequestBean.subscribeListNetRequestBean();
 	}
 
 	@Override
