@@ -20,8 +20,8 @@ public final class DiscountListDonainBeanToolsFactory implements IDomainBeanAbst
 	@Override
 	public String getSpecialPath(Object netRequestDomainBean) {
 		// 折扣列表
-		// public static final String kUrlConstant_SpecialPath_DISCOUNT_LIST = "lastminute/get_lastminute_list";
-		return UrlConstantForThisProject.kUrlConstant_SpecialPath_DISCOUNT_LIST;
+		// public static final String kUrlConstant_SpecialPath_GET_LASTMINUTE_LIST = "lastminute/get_lastminute_list";
+		return UrlConstantForThisProject.kUrlConstant_SpecialPath_GET_LASTMINUTE_LIST;
 	}
 
 }
