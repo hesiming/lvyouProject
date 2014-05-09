@@ -139,7 +139,7 @@
                 android:textSize="20sp" />
 
             <ProgressBar
-                android:id="@+id/login_ProgressBar"
+                android:id="@+id/login_loading_ProgressBar"
                 style="@style/@android:style/Widget.ProgressBar.Small"
                 android:layout_width="30dp"
                 android:layout_height="30dp"

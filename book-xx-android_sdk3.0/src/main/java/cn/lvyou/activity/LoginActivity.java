@@ -1,7 +1,6 @@
 package cn.lvyou.activity;
 
 import android.app.Activity;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
@@ -20,7 +19,6 @@ import cn.lvyou.my_network_engine.SimpleNetworkEngineSingleton;
 import cn.lvyou.my_network_engine.SimpleNetworkEngineSingleton.NetRequestResultEnum;
 import cn.lvyou.my_network_engine.net_error_handle.MyNetRequestErrorBean;
 import cn.lvyou.toolutils.DebugLog;
-import cn.lvyou.toolutils.SimpleProgressDialog;
 
 public class LoginActivity extends Activity {
   private final String TAG = this.getClass().getSimpleName();
@@ -34,7 +32,7 @@ public class LoginActivity extends Activity {
   private EditText qiongyouAccountUsername;
   private EditText qiongyouAccountPassword;
   private View loginButton, registerButton;
-  private ProgressBar loginProgressBar;
+  private ProgressBar loginLoadingProgressBar;
   private Button sinaTwitterLoginButton, qqLoginButton;
 
   @Override
@@ -79,65 +77,28 @@ public class LoginActivity extends Activity {
       }
 
     });
-    loginProgressBar = (ProgressBar) findViewById(R.id.login_ProgressBar);
+
+    loginLoadingProgressBar = (ProgressBar) findViewById(R.id.login_loading_ProgressBar);
+
     sinaTwitterLoginButton = (Button) findViewById(R.id.sina_twitter_login_Button);
     sinaTwitterLoginButton.setOnClickListener(new View.OnClickListener() {
 
       @Override
       public void onClick(View v) {
-        // TODO Auto-generated method stub
+        // TODO 新浪微博登录
 
       }
     });
+
     qqLoginButton = (Button) findViewById(R.id.qq_login_Button);
     qqLoginButton.setOnClickListener(new View.OnClickListener() {
 
       @Override
       public void onClick(View v) {
-        // TODO Auto-generated method stub
+        // TODO QQ账号登录
 
       }
     });
-  }
-
-  private void requestLogin(final String username, final String password) {
-    LoginNetRequestBean netRequestBean = new LoginNetRequestBean.Builder(username, password).builder();
-    netRequestHandleForLogin = SimpleNetworkEngineSingleton.getInstance.requestDomainBean(netRequestBean, new IDomainBeanAsyncHttpResponseListenerWithUIControl() {
-
-      @Override
-      public void onSuccess(Object respondDomainBean) {
-        LoginNetRespondBean loginNetRespondBean = (LoginNetRespondBean) respondDomainBean;
-
-        //GlobalDataCacheForMemorySingleton.getInstance.noteSignInSuccessfulInfo(loginNetRespondBean, username, password);
-
-        finishWithLoginBeenSuccessfully();
-      }
-
-      @Override
-      public void onFailure(MyNetRequestErrorBean error) {
-        Toast.makeText(LoginActivity.this, "登录失败-->" + error.toString(), Toast.LENGTH_SHORT).show();
-
-      }
-
-      @Override
-      public void onEnd(final NetRequestResultEnum resultEnum) {
-        SimpleProgressDialog.dismiss(LoginActivity.this);
-      }
-
-      @Override
-      public void onBegin() {
-        SimpleProgressDialog.show(LoginActivity.this, new DialogInterface.OnCancelListener() {
-
-          @Override
-          public void onCancel(DialogInterface dialog) {
-            // 用户取消了本次网络请求
-            netRequestHandleForLogin.cancel();
-          }
-        });
-
-      }
-    });
-
   }
 
   @Override
@@ -162,7 +123,6 @@ public class LoginActivity extends Activity {
   protected void onResume() {
     DebugLog.i(TAG, "onResume");
     super.onResume();
-
   }
 
   @Override
@@ -175,6 +135,10 @@ public class LoginActivity extends Activity {
   protected void onStop() {
     DebugLog.i(TAG, "onStop");
     super.onStop();
+
+    if (netRequestHandleForLogin != null) {
+      netRequestHandleForLogin.cancel();
+    }
   }
 
   @Override
@@ -187,6 +151,51 @@ public class LoginActivity extends Activity {
         finishWithLoginBeenSuccessfully();
       }
     }
+  }
+
+  /**
+   * 控制登录按钮是否可用(不能重复发起登录请求)
+   * 
+   * @param enabled
+   */
+  private void enableLoginButton(boolean enabled) {
+    if (enabled) {
+      loginLoadingProgressBar.setVisibility(View.INVISIBLE);
+      loginButton.setEnabled(true);
+    } else {
+      loginLoadingProgressBar.setVisibility(View.VISIBLE);
+      loginButton.setEnabled(false);
+    }
+  }
+
+  private void requestLogin(final String username, final String password) {
+    LoginNetRequestBean netRequestBean = new LoginNetRequestBean.Builder(username, password).builder();
+    netRequestHandleForLogin = SimpleNetworkEngineSingleton.getInstance.requestDomainBean(netRequestBean, new IDomainBeanAsyncHttpResponseListenerWithUIControl() {
+
+      @Override
+      public void onSuccess(Object respondDomainBean) {
+        LoginNetRespondBean loginNetRespondBean = (LoginNetRespondBean) respondDomainBean;
+
+        GlobalDataCacheForMemorySingleton.getInstance.noteSignInSuccessfulInfo(loginNetRespondBean, username, password);
+
+        finishWithLoginBeenSuccessfully();
+      }
+
+      @Override
+      public void onFailure(MyNetRequestErrorBean error) {
+        Toast.makeText(LoginActivity.this, "登录失败-->" + error.toString(), Toast.LENGTH_SHORT).show();
+      }
+
+      @Override
+      public void onEnd(final NetRequestResultEnum resultEnum) {
+        enableLoginButton(true);
+      }
+
+      @Override
+      public void onBegin() {
+        enableLoginButton(false);
+      }
+    });
   }
 
   /**
