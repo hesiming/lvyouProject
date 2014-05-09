@@ -1,5 +1,11 @@
 package cn.lvyou.domainbean_model.get_detail;
 
+/**
+ * 获取折扣详情 枚举类
+ * 
+ * @author hesiming
+ * 
+ */
 public class GetDetailDatabaseFieldsConstant {
 	private GetDetailDatabaseFieldsConstant() {
 

@@ -5,7 +5,11 @@ import java.util.Map;
 
 import android.text.TextUtils;
 import cn.lvyou.my_network_engine.domainbean_tools.IParseDomainBeanToDataDictionary;
-
+/**
+ * 获取折扣详情
+ * @author hesiming
+ *
+ */
 public class GetDetailParseDomainBeanToDD implements IParseDomainBeanToDataDictionary {
 
 	@Override

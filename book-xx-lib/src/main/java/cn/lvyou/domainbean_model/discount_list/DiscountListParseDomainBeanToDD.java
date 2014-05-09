@@ -9,7 +9,7 @@ import cn.lvyou.my_network_engine.domainbean_tools.IParseDomainBeanToDataDiction
 import com.google.common.collect.Maps;
 
 /**
- * 将业务bean转成数据字典
+ * 获取折扣列表 将业务bean转成数据字典
  * 
  * @author hesiming
  * 

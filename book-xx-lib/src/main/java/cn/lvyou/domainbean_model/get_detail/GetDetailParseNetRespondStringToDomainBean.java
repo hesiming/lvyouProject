@@ -11,6 +11,12 @@ import cn.lvyou.domainbean_model.app_get_start_image.AppStartImageNetResondBean;
 import cn.lvyou.my_network_engine.domainbean_tools.IParseNetRespondDataToDomainBean;
 import cn.lvyou.toolutils.JSONTools;
 
+/**
+ * 获取折扣详情 将网络请求的数据解析成Bean
+ * 
+ * @author hesiming
+ * 
+ */
 public class GetDetailParseNetRespondStringToDomainBean implements IParseNetRespondDataToDomainBean {
 
 	@Override

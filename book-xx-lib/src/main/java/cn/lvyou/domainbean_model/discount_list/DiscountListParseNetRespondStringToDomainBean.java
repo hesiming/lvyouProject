@@ -10,7 +10,7 @@ import cn.lvyou.my_network_engine.domainbean_tools.IParseNetRespondDataToDomainB
 import cn.lvyou.toolutils.JSONTools;
 
 /**
- * 将Json串转成DomainBean
+ * 获取折扣列表 将Json串转成DomainBean
  * 
  * @author hesiming
  * 

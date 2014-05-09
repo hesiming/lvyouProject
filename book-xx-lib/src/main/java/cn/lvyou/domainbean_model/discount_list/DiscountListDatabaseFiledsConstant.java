@@ -1,7 +1,12 @@
 package cn.lvyou.domainbean_model.discount_list;
 
+/**
+ * 获取折扣列表 枚举类 这里的所有字段必须与后台的参数一样
+ * 
+ * @author hesiming
+ * 
+ */
 public final class DiscountListDatabaseFiledsConstant {
-
 	public DiscountListDatabaseFiledsConstant() {
 	}
 

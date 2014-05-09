@@ -2,6 +2,12 @@ package cn.lvyou.domainbean_model.get_detail;
 
 import java.util.List;
 
+/**
+ * 获取折扣详情
+ * 
+ * @author hesiming
+ * 
+ */
 public final class GetDetailNetRespondBean {
 	// ID
 	private int id;

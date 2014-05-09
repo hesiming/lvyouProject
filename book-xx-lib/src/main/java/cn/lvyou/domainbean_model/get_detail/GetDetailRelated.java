@@ -1,7 +1,7 @@
 package cn.lvyou.domainbean_model.get_detail;
 
 /**
- * 相关折扣
+ * 获取折扣详情
  * 
  * @author hesiming
  * 

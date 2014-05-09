@@ -7,6 +7,8 @@ import cn.lvyou.domainbean_model.discount_list.DiscountListBean;
 import cn.lvyou.domainbean_model.discount_list.DiscountListNetRequestBean;
 import cn.lvyou.domainbean_model.get_detail.GetDetailNetRequestBean;
 import cn.lvyou.domainbean_model.get_detail.GetDetailNetRespondBean;
+import cn.lvyou.domainbean_model.get_list_byjnid.GetListByJNidNetRequestBean;
+import cn.lvyou.domainbean_model.get_list_byjnid.GetListByJNidNetRespondBean;
 import cn.lvyou.my_network_engine.IDomainBeanAsyncHttpResponseListener;
 import cn.lvyou.my_network_engine.SimpleNetworkEngineSingleton;
 import cn.lvyou.my_network_engine.net_error_handle.MyNetRequestErrorBean;
@@ -59,6 +61,24 @@ public final class TestNetRequestBean {
 			@Override
 			public void onSuccess(Object respondDomainBean) {
 				GetDetailNetRespondBean getDetailNetRespondBean = (GetDetailNetRespondBean) respondDomainBean;
+
+			}
+
+			@Override
+			public void onFailure(MyNetRequestErrorBean error) {
+				DebugLog.e(TAG, error.getErrorMessage());
+			}
+		});
+	}
+
+	// 通过传锦囊id获取折扣列表
+	public void getListByJNidNetRequestBean() {
+		GetListByJNidNetRequestBean getDetailNetRequestBean = new GetListByJNidNetRequestBean();
+		SimpleNetworkEngineSingleton.getInstance.requestDomainBean(getDetailNetRequestBean, new IDomainBeanAsyncHttpResponseListener() {
+
+			@Override
+			public void onSuccess(Object respondDomainBean) {
+				GetListByJNidNetRespondBean getListByJNidNetRespondBean = (GetListByJNidNetRespondBean) respondDomainBean;
 
 			}
 

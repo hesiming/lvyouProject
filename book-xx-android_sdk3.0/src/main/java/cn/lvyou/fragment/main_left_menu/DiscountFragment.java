@@ -25,15 +25,11 @@ import cn.lvyou.adapter.FilterAdapter;
 import cn.lvyou.domainbean_model.categorys.CategorysNetRequestBean;
 import cn.lvyou.domainbean_model.categorys.CategorysNetRespondBean;
 import cn.lvyou.domainbean_model.categorys.categorybeans.ICategoryItem;
-import cn.lvyou.domainbean_model.discount_list.DiscountListBean;
 import cn.lvyou.domainbean_model.discount_list.DiscountListNetRequestBean;
 import cn.lvyou.domainbean_model.optionTop.OptionTopNetRequestBean;
 import cn.lvyou.domainbean_model.optionTop.OptionTopNetRespondBean;
-import cn.lvyou.my_network_engine.IDomainBeanAsyncHttpResponseListener;
 import cn.lvyou.my_network_engine.INetRequestHandle;
 import cn.lvyou.my_network_engine.NetRequestHandleNilObject;
-import cn.lvyou.my_network_engine.SimpleNetworkEngineSingleton;
-import cn.lvyou.my_network_engine.net_error_handle.MyNetRequestErrorBean;
 
 import com.google.common.collect.Lists;
 
@@ -92,8 +88,8 @@ public class DiscountFragment extends Fragment {
 				categoryItems = categoryNetRespondBean.getPlaces();
 				break;
 			case R.id.travel_date_layout:// 旅行时间
-        categoryItems = categoryNetRespondBean.getDates();
-        break;
+				categoryItems = categoryNetRespondBean.getDates();
+				break;
 			}
 
 			final FilterAdapter adapter = new FilterAdapter(getActivity(), categoryItems);
@@ -132,19 +128,19 @@ public class DiscountFragment extends Fragment {
 
 		View rootView = inflater.inflate(R.layout.fragment_home, container, false);
 		DiscountListNetRequestBean discountListNetRequestBean = new DiscountListNetRequestBean();
-		SimpleNetworkEngineSingleton.getInstance.requestDomainBean(discountListNetRequestBean, new IDomainBeanAsyncHttpResponseListener() {
-
-			@Override
-			public void onSuccess(Object respondDomainBean) {
-				DiscountListBean discountListBean = (DiscountListBean) respondDomainBean;
-
-			}
-
-			@Override
-			public void onFailure(MyNetRequestErrorBean error) {
-				// TODO 这里处理折扣列表返回错误的逻辑
-			}
-		});
+		// SimpleNetworkEngineSingleton.getInstance.requestDomainBean(discountListNetRequestBean, new IDomainBeanAsyncHttpResponseListener() {
+		//
+		// @Override
+		// public void onSuccess(Object respondDomainBean) {
+		// DiscountListBean discountListBean = (DiscountListBean) respondDomainBean;
+		//
+		// }
+		//
+		// @Override
+		// public void onFailure(MyNetRequestErrorBean error) {
+		// // TODO 这里处理折扣列表返回错误的逻辑
+		// }
+		// });
 		return rootView;
 	}
 
@@ -187,43 +183,43 @@ public class DiscountFragment extends Fragment {
 
 	private void requestCategroys() {
 		CategorysNetRequestBean categorysNetRequestBean = new CategorysNetRequestBean();
-		netRequestHandleForCategroys = SimpleNetworkEngineSingleton.getInstance.requestDomainBean(categorysNetRequestBean, new IDomainBeanAsyncHttpResponseListener() {
-			@Override
-			public void onFailure(MyNetRequestErrorBean error) {
-			}
-
-			@Override
-			public void onSuccess(Object respondDomainBean) {
-				categoryNetRespondBean = (CategorysNetRespondBean) respondDomainBean;
-
-				// categoryDatesTextView.setText("时间");
-				discountTypeLayout.setOnClickListener(onCategoryClickListener);
-
-				// categoryOriginPlaceTextView.setText("出发地");
-				departurePlaceLayout.setOnClickListener(onCategoryClickListener);
-
-				// categoryPlaceTextView.setText("目的地");
-				destinationPlaceLayout.setOnClickListener(onCategoryClickListener);
-
-				// categoryTypesTextView.setText("机票");
-				travelDateLayout.setOnClickListener(onCategoryClickListener);
-
-			}
-		});
+		// netRequestHandleForCategroys = SimpleNetworkEngineSingleton.getInstance.requestDomainBean(categorysNetRequestBean, new IDomainBeanAsyncHttpResponseListener() {
+		// @Override
+		// public void onFailure(MyNetRequestErrorBean error) {
+		// }
+		//
+		// @Override
+		// public void onSuccess(Object respondDomainBean) {
+		// categoryNetRespondBean = (CategorysNetRespondBean) respondDomainBean;
+		//
+		// // categoryDatesTextView.setText("时间");
+		// discountTypeLayout.setOnClickListener(onCategoryClickListener);
+		//
+		// // categoryOriginPlaceTextView.setText("出发地");
+		// departurePlaceLayout.setOnClickListener(onCategoryClickListener);
+		//
+		// // categoryPlaceTextView.setText("目的地");
+		// destinationPlaceLayout.setOnClickListener(onCategoryClickListener);
+		//
+		// // categoryTypesTextView.setText("机票");
+		// travelDateLayout.setOnClickListener(onCategoryClickListener);
+		//
+		// }
+		// });
 	}
 
 	private void requestOptionTop() {
 		OptionTopNetRequestBean optionTopNetRequestBean = new OptionTopNetRequestBean();
-		netRequestHandleForOptionTop = SimpleNetworkEngineSingleton.getInstance.requestDomainBean(optionTopNetRequestBean, new IDomainBeanAsyncHttpResponseListener() {
-			@Override
-			public void onFailure(MyNetRequestErrorBean error) {
-				// TODO Auto-generated method stub
-			}
-
-			@Override
-			public void onSuccess(Object respondDomainBean) {
-				optionTopNetRespondBean = (OptionTopNetRespondBean) respondDomainBean;
-			}
-		});
+		// netRequestHandleForOptionTop = SimpleNetworkEngineSingleton.getInstance.requestDomainBean(optionTopNetRequestBean, new IDomainBeanAsyncHttpResponseListener() {
+		// @Override
+		// public void onFailure(MyNetRequestErrorBean error) {
+		// // TODO Auto-generated method stub
+		// }
+		//
+		// @Override
+		// public void onSuccess(Object respondDomainBean) {
+		// optionTopNetRespondBean = (OptionTopNetRespondBean) respondDomainBean;
+		// }
+		// });
 	}
 }

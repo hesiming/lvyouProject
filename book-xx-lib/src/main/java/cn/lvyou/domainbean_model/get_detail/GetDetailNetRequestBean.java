@@ -1,5 +1,9 @@
 package cn.lvyou.domainbean_model.get_detail;
-
+/**
+ * 获取折扣详情
+ * @author hesiming
+ *
+ */
 public final class GetDetailNetRequestBean {
 	// 必选 折扣ID
 	private String id;

@@ -1,28 +1,25 @@
-package cn.lvyou.domainbean_model.get_detail;
+package cn.lvyou.domainbean_model.get_list_byjnid;
 
-/**
- * 获取折扣详情
- */
 import cn.lvyou.global_data_cache.UrlConstantForThisProject;
 import cn.lvyou.my_network_engine.domainbean_tools.IDomainBeanAbstractFactory;
 import cn.lvyou.my_network_engine.domainbean_tools.IParseDomainBeanToDataDictionary;
 import cn.lvyou.my_network_engine.domainbean_tools.IParseNetRespondDataToDomainBean;
 
-public class GetDetailDonainBeanToolsFactory implements IDomainBeanAbstractFactory {
+public final class GetListByJNidDonainBeanToolsFactory implements IDomainBeanAbstractFactory {
 
 	@Override
 	public IParseDomainBeanToDataDictionary getParseDomainBeanToDDStrategyObject() {
-		return new GetDetailParseDomainBeanToDD();
+		return new GetListByJNidParseDomainBeanToDD();
 	}
 
 	@Override
 	public IParseNetRespondDataToDomainBean getParseNetRespondDataToDomainBeanStrategyObject() {
-		return new GetDetailParseNetRespondStringToDomainBean();
+		return new GetListByJNidParseNetRespondStringToDomainBean();
 	}
 
 	@Override
 	public String getSpecialPath(Object netRequestDomainBean) {
-		return UrlConstantForThisProject.kUrlConstant_SpecialPath_GET_DETAIL;
+		return UrlConstantForThisProject.kUrlConstant_SpecialPath_GET_LIST_BYJNID;
 	}
 
 }
