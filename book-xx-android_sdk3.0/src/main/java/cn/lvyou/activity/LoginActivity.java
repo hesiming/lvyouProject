@@ -6,6 +6,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
+import android.widget.ProgressBar;
 import android.widget.Toast;
 import cn.lvyou.domainbean_model.login.LoginNetRequestBean;
 import cn.lvyou.domainbean_model.login.LoginNetRespondBean;
@@ -22,13 +24,33 @@ public class LoginActivity extends Activity {
   private final String TAG = this.getClass().getSimpleName();
   private INetRequestHandle netRequestHandleForLogin = new NetRequestHandleNilObject();
 
+  private EditText qiongyouAccountUsername;
+  private EditText qiongyouAccountPassword;
+  private View loginButton, registerButton;
+  private ProgressBar loginProgressBar;
+  private Button sinaTwitterLoginButton, qqLoginButton;
+
   @Override
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
 
     setContentView(R.layout.activity_login);
 
-     
+    qiongyouAccountUsername = (EditText) findViewById(R.id.qiongyou_account_username);
+    qiongyouAccountPassword = (EditText) findViewById(R.id.qiongyou_account_password);
+    loginButton = findViewById(R.id.login_Button);
+    loginButton.setOnClickListener(new View.OnClickListener() {
+      
+      @Override
+      public void onClick(View v) {
+        // TODO Auto-generated method stub
+        
+      }
+    })
+    registerButton = findViewById(R.id.register_Button);
+    loginProgressBar = (ProgressBar) findViewById(R.id.login_ProgressBar);
+    sinaTwitterLoginButton = (Button) findViewById(R.id.sina_twitter_login_Button);
+    qqLoginButton = (Button) findViewById(R.id.qq_login_Button);
   }
 
   private void requestLogin(final String username, final String password) {
