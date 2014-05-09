@@ -1,4 +1,4 @@
-package cn.lvyou.domainbean_model.get_list_byid;
+package cn.lvyou.domainbean_model.favor_list;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -6,19 +6,20 @@ import java.util.List;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
+import cn.lvyou.domainbean_model.get_list_byid.GetListByidDatabaseFieldsConstant;
 import cn.lvyou.my_network_engine.domainbean_tools.IParseNetRespondDataToDomainBean;
 import cn.lvyou.toolutils.JSONTools;
 
-public final class GetListByidParseNetRespondStringToDomainBean implements IParseNetRespondDataToDomainBean {
+public final class FavorListParseNetRespondStringToDomainBean implements IParseNetRespondDataToDomainBean {
 
 	@Override
 	public Object parseNetRespondDataToDomainBean(Object netRespondData) throws Exception {
 		final String netRespondString = (String) netRespondData;
 		JSONObject jsonRootObject = new JSONObject(netRespondString);
-		List<ByIdBean> list = new ArrayList<ByIdBean>();
+		List<FavorItem> list = new ArrayList<FavorItem>();
 		// 获取ArrayObject
-		if (jsonRootObject.has(GetListByidDatabaseFieldsConstant.RespondBean.data.name())) {
-			JSONArray discountListArray = jsonRootObject.getJSONArray(GetListByidDatabaseFieldsConstant.RespondBean.data.name());
+		if (jsonRootObject.has(FavorListDatabaseFieldsConstant.RespondBean.data.name())) {
+			JSONArray discountListArray = jsonRootObject.getJSONArray(FavorListDatabaseFieldsConstant.RespondBean.data.name());
 			for (int i = 0; i < discountListArray.length(); i++) {
 				JSONObject jsonObject = discountListArray.getJSONObject(i);
 				// int ID
@@ -37,15 +38,13 @@ public final class GetListByidParseNetRespondStringToDomainBean implements IPars
 				boolean self_use = JSONTools.safeParseJSONObjectForValueIsBoolean(jsonObject, GetListByidDatabaseFieldsConstant.RespondBean.self_use.name(), false);
 				// 是否穷游首发1-是0-否
 				boolean first_pub = JSONTools.safeParseJSONObjectForValueIsBoolean(jsonObject, GetListByidDatabaseFieldsConstant.RespondBean.first_pub.name(), false);
-				// 原价
-				int list_price = JSONTools.safeParseJSONObjectForValueIsInteger(jsonObject, GetListByidDatabaseFieldsConstant.RespondBean.list_price.name(), 0);
 
-				ByIdBean byIdBean = new ByIdBean(id, pic, title, detail, price, end_date, self_use, first_pub, list_price);
+				FavorItem favorItem = new FavorItem(id, pic, title, detail, price, end_date, self_use, first_pub);
 
-				list.add(byIdBean);
+				list.add(favorItem);
 			}
 		}
-		return new GetListByidNetRespondBean(list);
+		return new FavorListNetRespondBean(list);
 	}
 
 }

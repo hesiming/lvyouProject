@@ -5,6 +5,8 @@ import cn.lvyou.domainbean_model.app_get_start_image.AppStartImageNetRequestBean
 import cn.lvyou.domainbean_model.app_get_start_image.AppStartImageNetResondBean;
 import cn.lvyou.domainbean_model.discount_list.DiscountListBean;
 import cn.lvyou.domainbean_model.discount_list.DiscountListNetRequestBean;
+import cn.lvyou.domainbean_model.favor_list.FavorListNetRequestBean;
+import cn.lvyou.domainbean_model.favor_list.FavorListNetRespondBean;
 import cn.lvyou.domainbean_model.get_detail.GetDetailNetRequestBean;
 import cn.lvyou.domainbean_model.get_detail.GetDetailNetRespondBean;
 import cn.lvyou.domainbean_model.get_list_byid.GetListByidNetRequestBean;
@@ -99,6 +101,24 @@ public final class TestNetRequestBean {
 			@Override
 			public void onSuccess(Object respondDomainBean) {
 				GetListByidNetRespondBean getListByidNetRespondBean = (GetListByidNetRespondBean) respondDomainBean;
+
+			}
+
+			@Override
+			public void onFailure(MyNetRequestErrorBean error) {
+				DebugLog.e(TAG, error.getErrorMessage());
+			}
+		});
+	}
+
+	// lastminute收藏列表
+	public void favorListNetRequestBean() {
+		FavorListNetRequestBean getDetailNetRequestBean = new FavorListNetRequestBean("e96b3418be731ff64281ca5f35aa3441");
+		SimpleNetworkEngineSingleton.getInstance.requestDomainBean(getDetailNetRequestBean, new IDomainBeanAsyncHttpResponseListener() {
+
+			@Override
+			public void onSuccess(Object respondDomainBean) {
+				FavorListNetRespondBean favorListNetRespondBean = (FavorListNetRespondBean) respondDomainBean;
 
 			}
 

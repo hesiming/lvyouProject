@@ -1,25 +1,25 @@
-package cn.lvyou.domainbean_model.get_list_byid;
+package cn.lvyou.domainbean_model.favor_list;
 
 import cn.lvyou.global_data_cache.UrlConstantForThisProject;
 import cn.lvyou.my_network_engine.domainbean_tools.IDomainBeanAbstractFactory;
 import cn.lvyou.my_network_engine.domainbean_tools.IParseDomainBeanToDataDictionary;
 import cn.lvyou.my_network_engine.domainbean_tools.IParseNetRespondDataToDomainBean;
 
-public final class GetListByidDomainBeanToolsFactory implements IDomainBeanAbstractFactory {
+public class FavorListDomainBeanToolsFactory implements IDomainBeanAbstractFactory {
 
 	@Override
 	public IParseDomainBeanToDataDictionary getParseDomainBeanToDDStrategyObject() {
-		return new GetListByidParseDomainBeanToDD();
+		return new FavorListParseDomainBeanToDD();
 	}
 
 	@Override
 	public IParseNetRespondDataToDomainBean getParseNetRespondDataToDomainBeanStrategyObject() {
-		return new GetListByidParseNetRespondStringToDomainBean();
+		return new FavorListParseNetRespondStringToDomainBean();
 	}
 
 	@Override
 	public String getSpecialPath(Object netRequestDomainBean) {
-		return UrlConstantForThisProject.kUrlConstant_SpecialPath_GET_LIST_BYID;
+		return UrlConstantForThisProject.kUrlConstant_SpecialPath_FAVOR_LIST;
 	}
 
 }

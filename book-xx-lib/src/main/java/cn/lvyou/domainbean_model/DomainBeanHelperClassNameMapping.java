@@ -6,6 +6,8 @@ import cn.lvyou.domainbean_model.categorys.CategorysDomainBeanToolsFactory;
 import cn.lvyou.domainbean_model.categorys.CategorysNetRequestBean;
 import cn.lvyou.domainbean_model.discount_list.DiscountListDonainBeanToolsFactory;
 import cn.lvyou.domainbean_model.discount_list.DiscountListNetRequestBean;
+import cn.lvyou.domainbean_model.favor_list.FavorListDomainBeanToolsFactory;
+import cn.lvyou.domainbean_model.favor_list.FavorListNetRequestBean;
 import cn.lvyou.domainbean_model.get_detail.GetDetailDonainBeanToolsFactory;
 import cn.lvyou.domainbean_model.get_detail.GetDetailNetRequestBean;
 import cn.lvyou.domainbean_model.get_list_byid.GetListByidDomainBeanToolsFactory;
@@ -68,5 +70,9 @@ public final class DomainBeanHelperClassNameMapping extends StrategyClassNameMap
 		 * 通过id字符串获取折扣列表
 		 */
 		strategyClassesNameMappingList.put(GetListByidNetRequestBean.class.getName(), GetListByidDomainBeanToolsFactory.class.getName());
+		/**
+		 * lastminute收藏列表
+		 */
+		strategyClassesNameMappingList.put(FavorListNetRequestBean.class.getName(), FavorListDomainBeanToolsFactory.class.getName());
 	}
 }

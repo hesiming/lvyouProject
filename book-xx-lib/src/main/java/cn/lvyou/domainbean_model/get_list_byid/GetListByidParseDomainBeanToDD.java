@@ -6,7 +6,7 @@ import java.util.Map;
 import android.text.TextUtils;
 import cn.lvyou.my_network_engine.domainbean_tools.IParseDomainBeanToDataDictionary;
 
-public class GetListByidParseDomainBeanToDD implements IParseDomainBeanToDataDictionary {
+public final class GetListByidParseDomainBeanToDD implements IParseDomainBeanToDataDictionary {
 
 	@Override
 	public Map<String, String> parseDomainBeanToDataDictionary(Object netRequestDomainBean) {
