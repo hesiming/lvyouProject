@@ -7,6 +7,8 @@ import cn.lvyou.domainbean_model.discount_list.DiscountListBean;
 import cn.lvyou.domainbean_model.discount_list.DiscountListNetRequestBean;
 import cn.lvyou.domainbean_model.get_detail.GetDetailNetRequestBean;
 import cn.lvyou.domainbean_model.get_detail.GetDetailNetRespondBean;
+import cn.lvyou.domainbean_model.get_list_byid.GetListByidNetRequestBean;
+import cn.lvyou.domainbean_model.get_list_byid.GetListByidNetRespondBean;
 import cn.lvyou.domainbean_model.get_list_byjnid.GetListByJNidNetRequestBean;
 import cn.lvyou.domainbean_model.get_list_byjnid.GetListByJNidNetRespondBean;
 import cn.lvyou.my_network_engine.IDomainBeanAsyncHttpResponseListener;
@@ -79,6 +81,24 @@ public final class TestNetRequestBean {
 			@Override
 			public void onSuccess(Object respondDomainBean) {
 				GetListByJNidNetRespondBean getListByJNidNetRespondBean = (GetListByJNidNetRespondBean) respondDomainBean;
+
+			}
+
+			@Override
+			public void onFailure(MyNetRequestErrorBean error) {
+				DebugLog.e(TAG, error.getErrorMessage());
+			}
+		});
+	}
+
+	// 通过id字符串获取折扣列表
+	public void getListByidNetRequestBean() {
+		GetListByidNetRequestBean getDetailNetRequestBean = new GetListByidNetRequestBean("3661,3564,3763,3786,3794,3707,3771,3803,3683,3188");
+		SimpleNetworkEngineSingleton.getInstance.requestDomainBean(getDetailNetRequestBean, new IDomainBeanAsyncHttpResponseListener() {
+
+			@Override
+			public void onSuccess(Object respondDomainBean) {
+				GetListByidNetRespondBean getListByidNetRespondBean = (GetListByidNetRespondBean) respondDomainBean;
 
 			}
 

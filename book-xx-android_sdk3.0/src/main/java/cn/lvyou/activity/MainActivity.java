@@ -104,6 +104,8 @@ public class MainActivity extends SlidingFragmentActivity {
 		// testNetRequestBean.getDetailNetRequestBean();
 		// 通过传锦囊id获取折扣列表
 		// testNetRequestBean.getListByJNidNetRequestBean();
+		// 通过id字符串获取折扣列表
+		// testNetRequestBean.getListByidNetRequestBean();
 	}
 
 	@Override
