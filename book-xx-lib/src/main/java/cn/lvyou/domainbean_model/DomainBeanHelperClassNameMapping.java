@@ -48,5 +48,9 @@ public final class DomainBeanHelperClassNameMapping extends StrategyClassNameMap
      * 折扣列表
      */
     strategyClassesNameMappingList.put(DiscountListNetRequestBean.class.getName(), DiscountListDonainBeanToolsFactory.class.getName());
+    /**
+	 * 获取APP启动页面图片
+	 */
+
   }
 }
