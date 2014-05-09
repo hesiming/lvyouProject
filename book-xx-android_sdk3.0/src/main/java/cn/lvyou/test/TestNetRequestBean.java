@@ -13,6 +13,8 @@ import cn.lvyou.domainbean_model.get_list_byid.GetListByidNetRequestBean;
 import cn.lvyou.domainbean_model.get_list_byid.GetListByidNetRespondBean;
 import cn.lvyou.domainbean_model.get_list_byjnid.GetListByJNidNetRequestBean;
 import cn.lvyou.domainbean_model.get_list_byjnid.GetListByJNidNetRespondBean;
+import cn.lvyou.domainbean_model.subscribe_list.SubscribeListNetRequestBean;
+import cn.lvyou.domainbean_model.subscribe_list.SubscribeListNetRespondBean;
 import cn.lvyou.my_network_engine.IDomainBeanAsyncHttpResponseListener;
 import cn.lvyou.my_network_engine.SimpleNetworkEngineSingleton;
 import cn.lvyou.my_network_engine.net_error_handle.MyNetRequestErrorBean;
@@ -119,6 +121,24 @@ public final class TestNetRequestBean {
 			@Override
 			public void onSuccess(Object respondDomainBean) {
 				FavorListNetRespondBean favorListNetRespondBean = (FavorListNetRespondBean) respondDomainBean;
+
+			}
+
+			@Override
+			public void onFailure(MyNetRequestErrorBean error) {
+				DebugLog.e(TAG, error.getErrorMessage());
+			}
+		});
+	}
+
+	// lastminute提醒条件列表
+	public void subscribeListNetRequestBean() {
+		SubscribeListNetRequestBean subscribeListNetRequestBean = new SubscribeListNetRequestBean("e96b3418be731ff64281ca5f35aa3441");
+		SimpleNetworkEngineSingleton.getInstance.requestDomainBean(subscribeListNetRequestBean, new IDomainBeanAsyncHttpResponseListener() {
+
+			@Override
+			public void onSuccess(Object respondDomainBean) {
+				SubscribeListNetRespondBean subscribeListNetRespondBean = (SubscribeListNetRespondBean) respondDomainBean;
 
 			}
 

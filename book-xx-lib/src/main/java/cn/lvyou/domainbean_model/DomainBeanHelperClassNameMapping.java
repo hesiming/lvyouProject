@@ -20,6 +20,8 @@ import cn.lvyou.domainbean_model.optionTop.OptionTopDomainBeanToolsFactory;
 import cn.lvyou.domainbean_model.optionTop.OptionTopNetRequestBean;
 import cn.lvyou.domainbean_model.register.RegisterDomainBeanToolsFactory;
 import cn.lvyou.domainbean_model.register.RegisterNetRequestBean;
+import cn.lvyou.domainbean_model.subscribe_list.SubscribeListDomainBeanToolsFactory;
+import cn.lvyou.domainbean_model.subscribe_list.SubscribeListNetRequestBean;
 import cn.lvyou.my_network_engine.domainbean_strategy_mapping.StrategyClassNameMappingBase;
 
 /**
@@ -74,5 +76,9 @@ public final class DomainBeanHelperClassNameMapping extends StrategyClassNameMap
 		 * lastminute收藏列表
 		 */
 		strategyClassesNameMappingList.put(FavorListNetRequestBean.class.getName(), FavorListDomainBeanToolsFactory.class.getName());
+		/**
+		 * lastminute提醒条件列表
+		 */
+		strategyClassesNameMappingList.put(SubscribeListNetRequestBean.class.getName(), SubscribeListDomainBeanToolsFactory.class.getName());
 	}
 }
