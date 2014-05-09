@@ -1,5 +1,7 @@
 package cn.lvyou.domainbean_model;
 
+import cn.lvyou.domainbean_model.app_get_start_image.AppStartImageDonainBeanToolsFactory;
+import cn.lvyou.domainbean_model.app_get_start_image.AppStartImageNetRequestBean;
 import cn.lvyou.domainbean_model.categorys.CategorysDomainBeanToolsFactory;
 import cn.lvyou.domainbean_model.categorys.CategorysNetRequestBean;
 import cn.lvyou.domainbean_model.discount_list.DiscountListDonainBeanToolsFactory;
@@ -47,6 +49,6 @@ public final class DomainBeanHelperClassNameMapping extends StrategyClassNameMap
 		/**
 		 * 获取APP启动页面图片
 		 */
-
+		strategyClassesNameMappingList.put(AppStartImageNetRequestBean.class.getName(), AppStartImageDonainBeanToolsFactory.class.getName());
 	}
 }
