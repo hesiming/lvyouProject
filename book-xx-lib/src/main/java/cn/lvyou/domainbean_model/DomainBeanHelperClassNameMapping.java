@@ -25,33 +25,28 @@ public final class DomainBeanHelperClassNameMapping extends StrategyClassNameMap
 	// Value : 是该网络接口对应的抽象工厂类
 	public DomainBeanHelperClassNameMapping() {
 		/**
-		 * 用户登录 //模拟提交冲突
+		 * 用户登录
 		 */
 		strategyClassesNameMappingList.put(LoginNetRequestBean.class.getName(), LoginDomainBeanToolsFactory.class.getName());
-		// 模拟提交冲突
 		/**
-		 * 用户注册 //模拟提交冲突
+		 * 用户注册
 		 */
 		strategyClassesNameMappingList.put(RegisterNetRequestBean.class.getName(), RegisterDomainBeanToolsFactory.class.getName());
-		// 模拟提交冲突
 		/**
 		 * 筛选分类
 		 */
 		strategyClassesNameMappingList.put(CategorysNetRequestBean.class.getName(), CategorysDomainBeanToolsFactory.class.getName());
-		// 模拟提交冲突
 		/**
-		 * 顶部索引图片 //模拟提交冲突
+		 * 顶部索引图片
 		 */
 		strategyClassesNameMappingList.put(OptionTopNetRequestBean.class.getName(), OptionTopDomainBeanToolsFactory.class.getName());
-		// 模拟提交冲突
 		/**
-		 * 折扣列表 //模拟提交冲突
+		 * 折扣列表
 		 */
 		strategyClassesNameMappingList.put(DiscountListNetRequestBean.class.getName(), DiscountListDonainBeanToolsFactory.class.getName());
 		/**
 		 * 获取APP启动页面图片
 		 */
 
-		// 模拟提交冲突
 	}
 }
