@@ -1,7 +1,5 @@
 package cn.lvyou.domainbean_model;
 
-import cn.lvyou.domainbean_model.app_get_start_image.AppStartImageDonainBeanToolsFactory;
-import cn.lvyou.domainbean_model.app_get_start_image.AppStartImageNetRequestBean;
 import cn.lvyou.domainbean_model.categorys.CategorysDomainBeanToolsFactory;
 import cn.lvyou.domainbean_model.categorys.CategorysNetRequestBean;
 import cn.lvyou.domainbean_model.discount_list.DiscountListDonainBeanToolsFactory;
@@ -26,36 +24,34 @@ public final class DomainBeanHelperClassNameMapping extends StrategyClassNameMap
 	// Key : 网络请求业务Bean
 	// Value : 是该网络接口对应的抽象工厂类
 	public DomainBeanHelperClassNameMapping() {
-		// 配合模拟提交冲突
 		/**
-		 * 用户登录 配合模拟提交冲突
+		 * 用户登录 //模拟提交冲突
 		 */
 		strategyClassesNameMappingList.put(LoginNetRequestBean.class.getName(), LoginDomainBeanToolsFactory.class.getName());
-		// 配合模拟提交冲突
+		// 模拟提交冲突
 		/**
-		 * 用户注册 配合模拟提交冲突
+		 * 用户注册 //模拟提交冲突
 		 */
 		strategyClassesNameMappingList.put(RegisterNetRequestBean.class.getName(), RegisterDomainBeanToolsFactory.class.getName());
-		// 配合模拟提交冲突
+		// 模拟提交冲突
 		/**
-		 * 筛选分类 配合模拟提交冲突
+		 * 筛选分类
 		 */
 		strategyClassesNameMappingList.put(CategorysNetRequestBean.class.getName(), CategorysDomainBeanToolsFactory.class.getName());
-		// 配合模拟提交冲突
+		// 模拟提交冲突
 		/**
-		 * 顶部索引图片 配合模拟提交冲突
+		 * 顶部索引图片 //模拟提交冲突
 		 */
 		strategyClassesNameMappingList.put(OptionTopNetRequestBean.class.getName(), OptionTopDomainBeanToolsFactory.class.getName());
-
+		// 模拟提交冲突
 		/**
-		 * 折扣列表 配合模拟提交冲突
+		 * 折扣列表 //模拟提交冲突
 		 */
 		strategyClassesNameMappingList.put(DiscountListNetRequestBean.class.getName(), DiscountListDonainBeanToolsFactory.class.getName());
-		// 配合模拟提交冲突
 		/**
-		 * 获取APP启动页面图片 配合模拟提交冲突
+		 * 获取APP启动页面图片
 		 */
-		strategyClassesNameMappingList.put(AppStartImageNetRequestBean.class.getName(), AppStartImageDonainBeanToolsFactory.class.getName());
 
+		// 模拟提交冲突
 	}
 }
