@@ -6,6 +6,8 @@ import cn.lvyou.domainbean_model.categorys.CategorysDomainBeanToolsFactory;
 import cn.lvyou.domainbean_model.categorys.CategorysNetRequestBean;
 import cn.lvyou.domainbean_model.discount_list.DiscountListDonainBeanToolsFactory;
 import cn.lvyou.domainbean_model.discount_list.DiscountListNetRequestBean;
+import cn.lvyou.domainbean_model.get_detail.GetDetailDonainBeanToolsFactory;
+import cn.lvyou.domainbean_model.get_detail.GetDetailNetRequestBean;
 import cn.lvyou.domainbean_model.login.LoginDomainBeanToolsFactory;
 import cn.lvyou.domainbean_model.login.LoginNetRequestBean;
 import cn.lvyou.domainbean_model.optionTop.OptionTopDomainBeanToolsFactory;
@@ -50,5 +52,9 @@ public final class DomainBeanHelperClassNameMapping extends StrategyClassNameMap
 		 * 获取APP启动页面图片
 		 */
 		strategyClassesNameMappingList.put(AppStartImageNetRequestBean.class.getName(), AppStartImageDonainBeanToolsFactory.class.getName());
+		/**
+		 * 获取折扣详情
+		 */
+		strategyClassesNameMappingList.put(GetDetailNetRequestBean.class.getName(), GetDetailDonainBeanToolsFactory.class.getName());
 	}
 }
