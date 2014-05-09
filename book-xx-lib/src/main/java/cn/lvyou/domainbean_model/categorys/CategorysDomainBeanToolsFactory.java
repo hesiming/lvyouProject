@@ -21,9 +21,6 @@ public final class CategorysDomainBeanToolsFactory implements IDomainBeanAbstrac
 
   @Override
   public String getSpecialPath(final Object netRequestDomainBean) {
-    // public static final String kUrlConstant_SpecialPath_CATEGORYS =
-    // "lastminute/get_all_categorys";
-
     return UrlConstantForThisProject.kUrlConstant_SpecialPath_CATEGORYS;
   }
 }

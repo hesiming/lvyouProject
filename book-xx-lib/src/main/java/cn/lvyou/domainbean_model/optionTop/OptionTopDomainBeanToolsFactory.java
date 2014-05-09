@@ -21,8 +21,6 @@ public final class OptionTopDomainBeanToolsFactory implements IDomainBeanAbstrac
 
   @Override
   public String getSpecialPath(final Object netRequestDomainBean) {
-    // public static final String kUrlConstant_SpecialPath_OPERATION_TOP = "operation/get_top";
-
     return UrlConstantForThisProject.kUrlConstant_SpecialPath_OPERATION_TOP;
   }
 }

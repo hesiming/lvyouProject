@@ -7,21 +7,20 @@ import cn.lvyou.my_network_engine.domainbean_tools.IParseNetRespondDataToDomainB
 
 public final class DiscountListDonainBeanToolsFactory implements IDomainBeanAbstractFactory {
 
-	@Override
-	public IParseDomainBeanToDataDictionary getParseDomainBeanToDDStrategyObject() {
-		return new DiscountListParseDomainBeanToDD();
-	}
+  @Override
+  public IParseDomainBeanToDataDictionary getParseDomainBeanToDDStrategyObject() {
+    return new DiscountListParseDomainBeanToDD();
+  }
 
-	@Override
-	public IParseNetRespondDataToDomainBean getParseNetRespondDataToDomainBeanStrategyObject() {
-		return new DiscountListParseNetRespondStringToDomainBean();
-	}
+  @Override
+  public IParseNetRespondDataToDomainBean getParseNetRespondDataToDomainBeanStrategyObject() {
+    return new DiscountListParseNetRespondStringToDomainBean();
+  }
 
-	@Override
-	public String getSpecialPath(Object netRequestDomainBean) {
-		// 折扣列表
-		// public static final String kUrlConstant_SpecialPath_DISCOUNT_LIST = "lastminute/get_lastminute_list";
-		return UrlConstantForThisProject.kUrlConstant_SpecialPath_DISCOUNT_LIST;
-	}
+  @Override
+  public String getSpecialPath(Object netRequestDomainBean) {
+    // 折扣列表
+    return UrlConstantForThisProject.kUrlConstant_SpecialPath_GET_LASTMINUTE_LIST;
+  }
 
 }
