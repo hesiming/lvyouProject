@@ -152,6 +152,7 @@ public enum SimpleNetworkEngineSingleton {
 							error.setErrorMessage("解析服务器端返回的实体数据失败.");
 							break;
 						}
+						DebugLog.i(TAG, "netUnpackedData-->" + netUnpackedData.toString());
 						// ------------------------------------- >>>
 
 						// ------------------------------------- >>>
@@ -201,7 +202,7 @@ public enum SimpleNetworkEngineSingleton {
 							// 一切OK
 							return;
 						} catch (Exception e) {
-							DebugLog.e(TAG, "创建 网络响应业务Bean失败, 出现这种情况的业务Bean是 --> " + abstractFactoryMappingKey);
+							DebugLog.e(TAG, "创建 网络响应业务Bean失败, 出现这种情况的业务Bean是 --> " + abstractFactoryMappingKey + ", 原因-->" + e.getLocalizedMessage());
 							error.setErrorCodeEnum(MyNetErrorCodeEnum.kNetErrorCodeEnum_Server_ParseNetRespondStringToDomainBeanFailed);
 							error.setErrorMessage("将网络返回的数据字符串解析成业务Bean失败.");
 						}

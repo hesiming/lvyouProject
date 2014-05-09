@@ -22,7 +22,7 @@ public final class RegisterParseDomainBeanToDD implements IParseDomainBeanToData
     }
 
     RegisterNetRequestBean requestBean = (RegisterNetRequestBean) netRequestDomainBean;
-    String email = requestBean.getMail();
+    String email = requestBean.getEmail();
     String username = requestBean.getUsername();
     String password = requestBean.getPassword();
     if (TextUtils.isEmpty(email) || TextUtils.isEmpty(username) || TextUtils.isEmpty(password)) {

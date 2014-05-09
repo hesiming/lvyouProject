@@ -32,7 +32,8 @@ public final class LoginParseNetRespondStringToDomainBean implements IParseNetRe
 
     JSONObject jsonObjectOfUserInfo = JSONTools.safeParseJSONObjectForValueIsJSONObject(jsonRootObject, LoginDatabaseFieldsConstant.RespondBean.user_info.name());
     if (JSONTools.isEmpty(jsonObjectOfUserInfo, LoginDatabaseFieldsConstant.RespondBean.uid.name())) {
-      throw new IllegalArgumentException("is not find 'uid' field ! ");
+      // TODO : 发现新注册的用户, 登录成功后, 这个uid就是空的
+      //throw new IllegalArgumentException("is not find 'uid' field ! ");
     }
     String uid = JSONTools.safeParseJSONObjectForValueIsString(jsonObjectOfUserInfo, LoginDatabaseFieldsConstant.RespondBean.uid.name(), "");
     String userName = JSONTools.safeParseJSONObjectForValueIsString(jsonObjectOfUserInfo, LoginDatabaseFieldsConstant.RespondBean.userName.name(), "");
