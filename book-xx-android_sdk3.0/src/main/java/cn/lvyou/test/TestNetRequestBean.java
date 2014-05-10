@@ -9,6 +9,8 @@ import cn.lvyou.domainbean_model.app_get_productsinfo.ProductsInfoNetRespondBean
 import cn.lvyou.domainbean_model.app_get_start_image.AppStartImageDatabaseFieldsConstant;
 import cn.lvyou.domainbean_model.app_get_start_image.AppStartImageNetRequestBean;
 import cn.lvyou.domainbean_model.app_get_start_image.AppStartImageNetResondBean;
+import cn.lvyou.domainbean_model.app_get_userorderformlist.UserOrderNetRequestBean;
+import cn.lvyou.domainbean_model.app_get_userorderformlist.UserOrderNetRespondBean;
 import cn.lvyou.domainbean_model.discount_list.DiscountListBean;
 import cn.lvyou.domainbean_model.discount_list.DiscountListNetRequestBean;
 import cn.lvyou.domainbean_model.favor_list.FavorListNetRequestBean;
@@ -239,6 +241,24 @@ public final class TestNetRequestBean {
 			@Override
 			public void onSuccess(Object respondDomainBean) {
 				OrderforminfoNetRespondBean orderforminfoNetRespondBean = (OrderforminfoNetRespondBean) respondDomainBean;
+
+			}
+
+			@Override
+			public void onFailure(MyNetRequestErrorBean error) {
+				DebugLog.e(TAG, error.getErrorMessage());
+			}
+		});
+	}
+
+	// APP获取用户订单列表
+	public void userOrderNetRequestBean() {
+		UserOrderNetRequestBean userOrderNetRequestBean = new UserOrderNetRequestBean("e96b3418be731ff64281ca5f35aa3441");
+		SimpleNetworkEngineSingleton.getInstance.requestDomainBean(userOrderNetRequestBean, new IDomainBeanAsyncHttpResponseListener() {
+
+			@Override
+			public void onSuccess(Object respondDomainBean) {
+				UserOrderNetRespondBean userOrderNetRespondBean = (UserOrderNetRespondBean) respondDomainBean;
 
 			}
 

@@ -8,6 +8,8 @@ import cn.lvyou.domainbean_model.app_get_productsinfo.ProductsInfoDonainBeanTool
 import cn.lvyou.domainbean_model.app_get_productsinfo.ProductsInfoNetRequestBean;
 import cn.lvyou.domainbean_model.app_get_start_image.AppStartImageDonainBeanToolsFactory;
 import cn.lvyou.domainbean_model.app_get_start_image.AppStartImageNetRequestBean;
+import cn.lvyou.domainbean_model.app_get_userorderformlist.UserOrderDonainBeanToolsFactory;
+import cn.lvyou.domainbean_model.app_get_userorderformlist.UserOrderNetRequestBean;
 import cn.lvyou.domainbean_model.categorys.CategorysDomainBeanToolsFactory;
 import cn.lvyou.domainbean_model.categorys.CategorysNetRequestBean;
 import cn.lvyou.domainbean_model.discount_list.DiscountListDonainBeanToolsFactory;
@@ -110,5 +112,9 @@ public final class DomainBeanHelperClassNameMapping extends StrategyClassNameMap
 		 * APP获取订单信息
 		 */
 		strategyClassesNameMappingList.put(OrderforminfoNetRequestBean.class.getName(), OrderforminfoDonainBeanToolsFactory.class.getName());
+		/**
+		 * APP获取用户订单列表
+		 */
+		strategyClassesNameMappingList.put(UserOrderNetRequestBean.class.getName(), UserOrderDonainBeanToolsFactory.class.getName());
 	}
 }

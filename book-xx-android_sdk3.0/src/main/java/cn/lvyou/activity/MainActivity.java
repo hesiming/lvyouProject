@@ -121,6 +121,8 @@ public class MainActivity extends SlidingFragmentActivity {
 		// testNetRequestBean.productsInfoNetRequestBean();
 		// APP获取订单信息
 		// testNetRequestBean.orderforminfoNetRequestBean();
+		// APP获取用户订单列表
+		testNetRequestBean.userOrderNetRequestBean();
 	}
 
 	@Override
