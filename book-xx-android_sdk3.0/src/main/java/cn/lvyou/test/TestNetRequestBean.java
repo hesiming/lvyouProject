@@ -13,6 +13,8 @@ import cn.lvyou.domainbean_model.get_list_byid.GetListByidNetRequestBean;
 import cn.lvyou.domainbean_model.get_list_byid.GetListByidNetRespondBean;
 import cn.lvyou.domainbean_model.get_list_byjnid.GetListByJNidNetRequestBean;
 import cn.lvyou.domainbean_model.get_list_byjnid.GetListByJNidNetRespondBean;
+import cn.lvyou.domainbean_model.hot_country.HotCountryNetRequestBean;
+import cn.lvyou.domainbean_model.hot_country.HotCountryParseNetRespondStringToDomainBean;
 import cn.lvyou.domainbean_model.subscribe_list.SubscribeListNetRequestBean;
 import cn.lvyou.domainbean_model.subscribe_list.SubscribeListNetRespondBean;
 import cn.lvyou.domainbean_model.subscribe_push.SubscribePushNetRequestBean;
@@ -159,6 +161,24 @@ public final class TestNetRequestBean {
 			@Override
 			public void onSuccess(Object respondDomainBean) {
 				SubscribeListNetRespondBean subscribeListNetRespondBean = (SubscribeListNetRespondBean) respondDomainBean;
+
+			}
+
+			@Override
+			public void onFailure(MyNetRequestErrorBean error) {
+				DebugLog.e(TAG, error.getErrorMessage());
+			}
+		});
+	}
+
+	// 获取折扣热门国家
+	public void hotCountryNetRequestBean() {
+		HotCountryNetRequestBean hotCountryNetRequestBean = new HotCountryNetRequestBean();
+		SimpleNetworkEngineSingleton.getInstance.requestDomainBean(hotCountryNetRequestBean, new IDomainBeanAsyncHttpResponseListener() {
+
+			@Override
+			public void onSuccess(Object respondDomainBean) {
+				HotCountryParseNetRespondStringToDomainBean hotCountryParseNetRespondStringToDomainBean = (HotCountryParseNetRespondStringToDomainBean) respondDomainBean;
 
 			}
 

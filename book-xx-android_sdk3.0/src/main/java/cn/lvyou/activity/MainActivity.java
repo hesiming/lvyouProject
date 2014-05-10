@@ -112,6 +112,8 @@ public class MainActivity extends SlidingFragmentActivity {
 		// testNetRequestBean.subscribeListNetRequestBean();
 		// 折扣提醒推送
 		// testNetRequestBean.subscribePushNetRequestBean();
+		// 获取折扣热门国家
+		// testNetRequestBean.hotCountryNetRequestBean();
 	}
 
 	@Override
