@@ -108,7 +108,10 @@ public class MainActivity extends SlidingFragmentActivity {
 		// testNetRequestBean.getListByidNetRequestBean();
 		// lastminute提醒条件列表
 		// testNetRequestBean.favorListNetRequestBean();
+		// lastminute收藏列表
 		// testNetRequestBean.subscribeListNetRequestBean();
+		// 折扣提醒推送
+		// testNetRequestBean.subscribePushNetRequestBean();
 	}
 
 	@Override

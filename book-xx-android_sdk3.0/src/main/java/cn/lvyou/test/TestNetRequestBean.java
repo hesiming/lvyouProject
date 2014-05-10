@@ -15,6 +15,8 @@ import cn.lvyou.domainbean_model.get_list_byjnid.GetListByJNidNetRequestBean;
 import cn.lvyou.domainbean_model.get_list_byjnid.GetListByJNidNetRespondBean;
 import cn.lvyou.domainbean_model.subscribe_list.SubscribeListNetRequestBean;
 import cn.lvyou.domainbean_model.subscribe_list.SubscribeListNetRespondBean;
+import cn.lvyou.domainbean_model.subscribe_push.SubscribePushNetRequestBean;
+import cn.lvyou.domainbean_model.subscribe_push.SubscribePushNetRespondBean;
 import cn.lvyou.my_network_engine.IDomainBeanAsyncHttpResponseListener;
 import cn.lvyou.my_network_engine.SimpleNetworkEngineSingleton;
 import cn.lvyou.my_network_engine.net_error_handle.MyNetRequestErrorBean;
@@ -121,6 +123,24 @@ public final class TestNetRequestBean {
 			@Override
 			public void onSuccess(Object respondDomainBean) {
 				FavorListNetRespondBean favorListNetRespondBean = (FavorListNetRespondBean) respondDomainBean;
+
+			}
+
+			@Override
+			public void onFailure(MyNetRequestErrorBean error) {
+				DebugLog.e(TAG, error.getErrorMessage());
+			}
+		});
+	}
+
+	// 折扣提醒推送
+	public void subscribePushNetRequestBean() {
+		SubscribePushNetRequestBean subscribePushNetRequestBean = new SubscribePushNetRequestBean("e96b3418be731ff64281ca5f35aa3441");
+		SimpleNetworkEngineSingleton.getInstance.requestDomainBean(subscribePushNetRequestBean, new IDomainBeanAsyncHttpResponseListener() {
+
+			@Override
+			public void onSuccess(Object respondDomainBean) {
+				SubscribePushNetRespondBean subscribePushNetRespondBean = (SubscribePushNetRespondBean) respondDomainBean;
 
 			}
 
