@@ -1,5 +1,11 @@
 package cn.lvyou.domainbean_model.app_get_bookinfo;
 
+/**
+ * APP获取折扣预定基础信息
+ * 
+ * @author hesiming
+ * 
+ */
 // 还有个字段stock,但是测试为--->"stock":null 不知道什么意思
 public final class BookInfoNetRespondBean {
 	// int 折扣ID

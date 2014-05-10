@@ -18,6 +18,7 @@ import cn.lvyou.fragment.main_left_menu.SettingFragment;
 import cn.lvyou.global_data_cache.GlobalDataCacheForMemorySingleton;
 import cn.lvyou.slidingmenu.SlidingMenu;
 import cn.lvyou.slidingmenu.app.SlidingFragmentActivity;
+import cn.lvyou.test.TestNetRequestBean;
 import cn.lvyou.toolutils.DebugLog;
 
 public class MainActivity extends SlidingFragmentActivity {
@@ -95,7 +96,7 @@ public class MainActivity extends SlidingFragmentActivity {
 		fragmentTransaction.replace(R.id.left_menu, leftMenuFragment);
 		fragmentTransaction.replace(R.id.content, new DiscountFragment());
 		fragmentTransaction.commit();
-		// TestNetRequestBean testNetRequestBean = new TestNetRequestBean();
+		TestNetRequestBean testNetRequestBean = new TestNetRequestBean();
 		// 获取折扣列表接口
 		// testNetRequestBean.discountListNetRequestBean();
 		// 获取APP启动页面图片
@@ -116,6 +117,10 @@ public class MainActivity extends SlidingFragmentActivity {
 		// testNetRequestBean.hotCountryNetRequestBean();
 		// APP获取折扣预定基础信息
 		// testNetRequestBean.bookInfoNetRequestBean();
+		// APP获取折扣预定基础信息
+		// testNetRequestBean.productsInfoNetRequestBean();
+		// APP获取订单信息
+		// testNetRequestBean.orderforminfoNetRequestBean();
 	}
 
 	@Override

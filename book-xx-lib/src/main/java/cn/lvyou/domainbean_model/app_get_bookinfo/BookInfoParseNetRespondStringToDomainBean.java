@@ -2,7 +2,6 @@ package cn.lvyou.domainbean_model.app_get_bookinfo;
 
 import org.json.JSONObject;
 
-import cn.lvyou.domainbean_model.hot_country.HotCountryDatabaseFieldsConstant;
 import cn.lvyou.my_network_engine.domainbean_tools.IParseNetRespondDataToDomainBean;
 import cn.lvyou.toolutils.JSONTools;
 
@@ -14,8 +13,8 @@ public class BookInfoParseNetRespondStringToDomainBean implements IParseNetRespo
 		JSONObject jsonRootObject = new JSONObject(netRespondString);
 		BookInfoNetRespondBean bookInfoNetRespondBean = new BookInfoNetRespondBean();
 		// 获取ArrayObject
-		if (jsonRootObject.has(HotCountryDatabaseFieldsConstant.RespondBean.data.name())) {
-			JSONObject continentObject = jsonRootObject.getJSONObject(HotCountryDatabaseFieldsConstant.RespondBean.data.name());
+		if (jsonRootObject.has(BookInfoDatabaseFieldsConstant.RespondBean.data.name())) {
+			JSONObject continentObject = jsonRootObject.getJSONObject(BookInfoDatabaseFieldsConstant.RespondBean.data.name());
 			// int 折扣ID
 			bookInfoNetRespondBean.setId(JSONTools.safeParseJSONObjectForValueIsInteger(continentObject, BookInfoDatabaseFieldsConstant.RespondBean.id.name(), 0));
 			// string 折扣H5页地址

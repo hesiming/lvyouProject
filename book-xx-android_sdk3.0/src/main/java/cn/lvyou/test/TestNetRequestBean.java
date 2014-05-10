@@ -2,6 +2,10 @@ package cn.lvyou.test;
 
 import cn.lvyou.domainbean_model.app_get_bookinfo.BookInfoNetRequestBean;
 import cn.lvyou.domainbean_model.app_get_bookinfo.BookInfoNetRespondBean;
+import cn.lvyou.domainbean_model.app_get_orderforminfo.OrderforminfoNetRequestBean;
+import cn.lvyou.domainbean_model.app_get_orderforminfo.OrderforminfoNetRespondBean;
+import cn.lvyou.domainbean_model.app_get_productsinfo.ProductsInfoNetRequestBean;
+import cn.lvyou.domainbean_model.app_get_productsinfo.ProductsInfoNetRespondBean;
 import cn.lvyou.domainbean_model.app_get_start_image.AppStartImageDatabaseFieldsConstant;
 import cn.lvyou.domainbean_model.app_get_start_image.AppStartImageNetRequestBean;
 import cn.lvyou.domainbean_model.app_get_start_image.AppStartImageNetResondBean;
@@ -199,6 +203,42 @@ public final class TestNetRequestBean {
 			@Override
 			public void onSuccess(Object respondDomainBean) {
 				BookInfoNetRespondBean bookInfoNetRespondBean = (BookInfoNetRespondBean) respondDomainBean;
+
+			}
+
+			@Override
+			public void onFailure(MyNetRequestErrorBean error) {
+				DebugLog.e(TAG, error.getErrorMessage());
+			}
+		});
+	}
+
+	// APP获取折扣预定基础信息
+	public void productsInfoNetRequestBean() {
+		ProductsInfoNetRequestBean productsInfoNetRequestBean = new ProductsInfoNetRequestBean("4249", "e96b3418be731ff64281ca5f35aa3441");
+		SimpleNetworkEngineSingleton.getInstance.requestDomainBean(productsInfoNetRequestBean, new IDomainBeanAsyncHttpResponseListener() {
+
+			@Override
+			public void onSuccess(Object respondDomainBean) {
+				ProductsInfoNetRespondBean productsInfoNetRespondBean = (ProductsInfoNetRespondBean) respondDomainBean;
+
+			}
+
+			@Override
+			public void onFailure(MyNetRequestErrorBean error) {
+				DebugLog.e(TAG, error.getErrorMessage());
+			}
+		});
+	}
+
+	// APP获取订单信息
+	public void orderforminfoNetRequestBean() {
+		OrderforminfoNetRequestBean orderforminfoNetRequestBean = new OrderforminfoNetRequestBean("12123");
+		SimpleNetworkEngineSingleton.getInstance.requestDomainBean(orderforminfoNetRequestBean, new IDomainBeanAsyncHttpResponseListener() {
+
+			@Override
+			public void onSuccess(Object respondDomainBean) {
+				OrderforminfoNetRespondBean orderforminfoNetRespondBean = (OrderforminfoNetRespondBean) respondDomainBean;
 
 			}
 

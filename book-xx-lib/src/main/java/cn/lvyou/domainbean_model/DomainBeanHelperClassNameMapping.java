@@ -2,6 +2,10 @@ package cn.lvyou.domainbean_model;
 
 import cn.lvyou.domainbean_model.app_get_bookinfo.BookInfoDonainBeanToolsFactory;
 import cn.lvyou.domainbean_model.app_get_bookinfo.BookInfoNetRequestBean;
+import cn.lvyou.domainbean_model.app_get_orderforminfo.OrderforminfoDonainBeanToolsFactory;
+import cn.lvyou.domainbean_model.app_get_orderforminfo.OrderforminfoNetRequestBean;
+import cn.lvyou.domainbean_model.app_get_productsinfo.ProductsInfoDonainBeanToolsFactory;
+import cn.lvyou.domainbean_model.app_get_productsinfo.ProductsInfoNetRequestBean;
 import cn.lvyou.domainbean_model.app_get_start_image.AppStartImageDonainBeanToolsFactory;
 import cn.lvyou.domainbean_model.app_get_start_image.AppStartImageNetRequestBean;
 import cn.lvyou.domainbean_model.categorys.CategorysDomainBeanToolsFactory;
@@ -98,5 +102,13 @@ public final class DomainBeanHelperClassNameMapping extends StrategyClassNameMap
 		 * APP获取折扣预定基础信息
 		 */
 		strategyClassesNameMappingList.put(BookInfoNetRequestBean.class.getName(), BookInfoDonainBeanToolsFactory.class.getName());
+		/**
+		 * APP获取折扣预定基础信息
+		 */
+		strategyClassesNameMappingList.put(ProductsInfoNetRequestBean.class.getName(), ProductsInfoDonainBeanToolsFactory.class.getName());
+		/**
+		 * APP获取订单信息
+		 */
+		strategyClassesNameMappingList.put(OrderforminfoNetRequestBean.class.getName(), OrderforminfoDonainBeanToolsFactory.class.getName());
 	}
 }
