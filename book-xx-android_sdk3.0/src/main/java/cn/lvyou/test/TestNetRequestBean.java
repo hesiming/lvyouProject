@@ -1,5 +1,7 @@
 package cn.lvyou.test;
 
+import cn.lvyou.domainbean_model.app_get_bookinfo.BookInfoNetRequestBean;
+import cn.lvyou.domainbean_model.app_get_bookinfo.BookInfoNetRespondBean;
 import cn.lvyou.domainbean_model.app_get_start_image.AppStartImageDatabaseFieldsConstant;
 import cn.lvyou.domainbean_model.app_get_start_image.AppStartImageNetRequestBean;
 import cn.lvyou.domainbean_model.app_get_start_image.AppStartImageNetResondBean;
@@ -179,6 +181,24 @@ public final class TestNetRequestBean {
 			@Override
 			public void onSuccess(Object respondDomainBean) {
 				HotCountryParseNetRespondStringToDomainBean hotCountryParseNetRespondStringToDomainBean = (HotCountryParseNetRespondStringToDomainBean) respondDomainBean;
+
+			}
+
+			@Override
+			public void onFailure(MyNetRequestErrorBean error) {
+				DebugLog.e(TAG, error.getErrorMessage());
+			}
+		});
+	}
+
+	// APP获取折扣预定基础信息
+	public void bookInfoNetRequestBean() {
+		BookInfoNetRequestBean bookInfoNetRequestBean = new BookInfoNetRequestBean("2831");
+		SimpleNetworkEngineSingleton.getInstance.requestDomainBean(bookInfoNetRequestBean, new IDomainBeanAsyncHttpResponseListener() {
+
+			@Override
+			public void onSuccess(Object respondDomainBean) {
+				BookInfoNetRespondBean bookInfoNetRespondBean = (BookInfoNetRespondBean) respondDomainBean;
 
 			}
 

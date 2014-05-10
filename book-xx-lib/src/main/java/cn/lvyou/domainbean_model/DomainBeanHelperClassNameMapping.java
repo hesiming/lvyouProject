@@ -1,5 +1,7 @@
 package cn.lvyou.domainbean_model;
 
+import cn.lvyou.domainbean_model.app_get_bookinfo.BookInfoDonainBeanToolsFactory;
+import cn.lvyou.domainbean_model.app_get_bookinfo.BookInfoNetRequestBean;
 import cn.lvyou.domainbean_model.app_get_start_image.AppStartImageDonainBeanToolsFactory;
 import cn.lvyou.domainbean_model.app_get_start_image.AppStartImageNetRequestBean;
 import cn.lvyou.domainbean_model.categorys.CategorysDomainBeanToolsFactory;
@@ -92,5 +94,9 @@ public final class DomainBeanHelperClassNameMapping extends StrategyClassNameMap
 		 * 获取折扣热门国家
 		 */
 		strategyClassesNameMappingList.put(HotCountryNetRequestBean.class.getName(), HotCountryDonainBeanToolsFactory.class.getName());
+		/**
+		 * APP获取折扣预定基础信息
+		 */
+		strategyClassesNameMappingList.put(BookInfoNetRequestBean.class.getName(), BookInfoDonainBeanToolsFactory.class.getName());
 	}
 }
