@@ -25,7 +25,9 @@ public class UserOrderParseNetRespondStringToDomainBean implements IParseNetResp
 			JSONObject orderforminfo = jsonRootObject.getJSONObject(UserOrderDatabaseFieldsConstant.RespondBean.data.name());
 
 			orderforminfoNetRespondBean.setPager(JSONTools.safeParseJSONObjectForValueIsString(orderforminfo, UserOrderDatabaseFieldsConstant.RespondBean.pager.name(), ""));
-			orderforminfoNetRespondBean.setCounts(JSONTools.safeParseJSONObjectForValueIsString(orderforminfo, UserOrderDatabaseFieldsConstant.RespondBean.counts.name(), ""));
+			String counts = JSONTools.safeParseJSONObjectForValueIsString(orderforminfo, UserOrderDatabaseFieldsConstant.RespondBean.counts.name(), "");
+			orderforminfoNetRespondBean.setCounts(counts);
+			int count = Integer.parseInt(counts);
 			if (orderforminfo.has(UserOrderDatabaseFieldsConstant.RespondBean.res.name())) {
 				JSONArray jsonArray = orderforminfo.getJSONArray(UserOrderDatabaseFieldsConstant.RespondBean.res.name());
 				List<UserorderformResBean> resList = new ArrayList<UserorderformResBean>();

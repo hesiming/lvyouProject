@@ -27,13 +27,19 @@ public class UserOrderParseDomainBeanToDD implements IParseDomainBeanToDataDicti
 			throw new IllegalArgumentException("必须的数据字段不完整 ! ");
 		}
 
-		count = requestBean.getCount();
-		page = requestBean.getPage();
 		Map<String, String> params = new HashMap<String, String>();
 		// 必须参数
 		params.put(UserOrderDatabaseFieldsConstant.RequestBean.oauth_token.name(), oauth_token);
-		params.put(UserOrderDatabaseFieldsConstant.RequestBean.count.name(), count);
-		params.put(UserOrderDatabaseFieldsConstant.RequestBean.page.name(), page);
+
+		count = requestBean.getCount();
+		if (!TextUtils.isEmpty(count)) {
+			params.put(UserOrderDatabaseFieldsConstant.RequestBean.count.name(), count);
+		}
+
+		page = requestBean.getPage();
+		if (!TextUtils.isEmpty(page)) {
+			params.put(UserOrderDatabaseFieldsConstant.RequestBean.page.name(), page);
+		}
 		return params;
 	}
 }

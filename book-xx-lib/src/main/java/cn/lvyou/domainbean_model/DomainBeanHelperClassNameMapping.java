@@ -10,6 +10,8 @@ import cn.lvyou.domainbean_model.app_get_start_image.AppStartImageDonainBeanTool
 import cn.lvyou.domainbean_model.app_get_start_image.AppStartImageNetRequestBean;
 import cn.lvyou.domainbean_model.app_get_userorderformlist.UserOrderDonainBeanToolsFactory;
 import cn.lvyou.domainbean_model.app_get_userorderformlist.UserOrderNetRequestBean;
+import cn.lvyou.domainbean_model.app_query.AppQueryDonainBeanToolsFactory;
+import cn.lvyou.domainbean_model.app_query.AppQueryNetRequestBean;
 import cn.lvyou.domainbean_model.categorys.CategorysDomainBeanToolsFactory;
 import cn.lvyou.domainbean_model.categorys.CategorysNetRequestBean;
 import cn.lvyou.domainbean_model.discount_list.DiscountListDonainBeanToolsFactory;
@@ -105,7 +107,7 @@ public final class DomainBeanHelperClassNameMapping extends StrategyClassNameMap
 		 */
 		strategyClassesNameMappingList.put(BookInfoNetRequestBean.class.getName(), BookInfoDonainBeanToolsFactory.class.getName());
 		/**
-		 * APP获取折扣预定基础信息
+		 * APP获取折扣类型信息
 		 */
 		strategyClassesNameMappingList.put(ProductsInfoNetRequestBean.class.getName(), ProductsInfoDonainBeanToolsFactory.class.getName());
 		/**
@@ -116,5 +118,9 @@ public final class DomainBeanHelperClassNameMapping extends StrategyClassNameMap
 		 * APP获取用户订单列表
 		 */
 		strategyClassesNameMappingList.put(UserOrderNetRequestBean.class.getName(), UserOrderDonainBeanToolsFactory.class.getName());
+		/**
+		 * APP主动查询支付宝
+		 */
+		strategyClassesNameMappingList.put(AppQueryNetRequestBean.class.getName(), AppQueryDonainBeanToolsFactory.class.getName());
 	}
 }

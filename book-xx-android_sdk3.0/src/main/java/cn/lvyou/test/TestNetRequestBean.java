@@ -11,6 +11,8 @@ import cn.lvyou.domainbean_model.app_get_start_image.AppStartImageNetRequestBean
 import cn.lvyou.domainbean_model.app_get_start_image.AppStartImageNetResondBean;
 import cn.lvyou.domainbean_model.app_get_userorderformlist.UserOrderNetRequestBean;
 import cn.lvyou.domainbean_model.app_get_userorderformlist.UserOrderNetRespondBean;
+import cn.lvyou.domainbean_model.app_query.AppQueryNetRequestBean;
+import cn.lvyou.domainbean_model.app_query.AppQueryNetRespondBean;
 import cn.lvyou.domainbean_model.discount_list.DiscountListBean;
 import cn.lvyou.domainbean_model.discount_list.DiscountListNetRequestBean;
 import cn.lvyou.domainbean_model.favor_list.FavorListNetRequestBean;
@@ -260,6 +262,23 @@ public final class TestNetRequestBean {
 			public void onSuccess(Object respondDomainBean) {
 				UserOrderNetRespondBean userOrderNetRespondBean = (UserOrderNetRespondBean) respondDomainBean;
 
+			}
+
+			@Override
+			public void onFailure(MyNetRequestErrorBean error) {
+				DebugLog.e(TAG, error.getErrorMessage());
+			}
+		});
+	}
+
+	// APP主动查询支付宝
+	public void appQueryNetRequestBean() {
+		AppQueryNetRequestBean appQueryNetRequestBean = new AppQueryNetRequestBean("1212");
+		SimpleNetworkEngineSingleton.getInstance.requestDomainBean(appQueryNetRequestBean, new IDomainBeanAsyncHttpResponseListener() {
+
+			@Override
+			public void onSuccess(Object respondDomainBean) {
+				AppQueryNetRespondBean appQueryNetRespondBean = (AppQueryNetRespondBean) respondDomainBean;
 			}
 
 			@Override
