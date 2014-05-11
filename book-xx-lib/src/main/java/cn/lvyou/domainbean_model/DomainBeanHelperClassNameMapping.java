@@ -2,6 +2,8 @@ package cn.lvyou.domainbean_model;
 
 import cn.lvyou.domainbean_model.add_favor.AddFavorDonainBeanToolsFactory;
 import cn.lvyou.domainbean_model.add_favor.AddFavorNetRequestBean;
+import cn.lvyou.domainbean_model.add_subscribe.AddSubscribeDonainBeanToolsFactory;
+import cn.lvyou.domainbean_model.add_subscribe.AddSubscribeNetRequestBean;
 import cn.lvyou.domainbean_model.app_get_bookinfo.BookInfoDonainBeanToolsFactory;
 import cn.lvyou.domainbean_model.app_get_bookinfo.BookInfoNetRequestBean;
 import cn.lvyou.domainbean_model.app_get_orderforminfo.OrderforminfoDonainBeanToolsFactory;
@@ -18,6 +20,8 @@ import cn.lvyou.domainbean_model.categorys.CategorysDomainBeanToolsFactory;
 import cn.lvyou.domainbean_model.categorys.CategorysNetRequestBean;
 import cn.lvyou.domainbean_model.del_favor.DelFavorDonainBeanToolsFactory;
 import cn.lvyou.domainbean_model.del_favor.DelFavorNetRequestBean;
+import cn.lvyou.domainbean_model.del_subscribe.DelSubscribeDonainBeanToolsFactory;
+import cn.lvyou.domainbean_model.del_subscribe.DelSubscribeNetRequestBean;
 import cn.lvyou.domainbean_model.discount_list.DiscountListDonainBeanToolsFactory;
 import cn.lvyou.domainbean_model.discount_list.DiscountListNetRequestBean;
 import cn.lvyou.domainbean_model.favor_list.FavorListDomainBeanToolsFactory;
@@ -137,5 +141,13 @@ public final class DomainBeanHelperClassNameMapping extends StrategyClassNameMap
 		 * lastminute取消收藏
 		 */
 		strategyClassesNameMappingList.put(DelFavorNetRequestBean.class.getName(), DelFavorDonainBeanToolsFactory.class.getName());
+		/**
+		 * lastminute添加提醒条件
+		 */
+		strategyClassesNameMappingList.put(AddSubscribeNetRequestBean.class.getName(), AddSubscribeDonainBeanToolsFactory.class.getName());
+		/**
+		 * lastminute取消提醒条件
+		 */
+		strategyClassesNameMappingList.put(DelSubscribeNetRequestBean.class.getName(), DelSubscribeDonainBeanToolsFactory.class.getName());
 	}
 }
