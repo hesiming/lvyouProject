@@ -17,6 +17,8 @@ import cn.lvyou.domainbean_model.app_get_userorderformlist.UserOrderNetRequestBe
 import cn.lvyou.domainbean_model.app_get_userorderformlist.UserOrderNetRespondBean;
 import cn.lvyou.domainbean_model.app_query.AppQueryNetRequestBean;
 import cn.lvyou.domainbean_model.app_query.AppQueryNetRespondBean;
+import cn.lvyou.domainbean_model.bind_uid.BindUidNetRequestBean;
+import cn.lvyou.domainbean_model.bind_uid.BindUidNetRespondBean;
 import cn.lvyou.domainbean_model.del_favor.DelFavorNetRequestBean;
 import cn.lvyou.domainbean_model.del_favor.DelFavorNetRespondBean;
 import cn.lvyou.domainbean_model.del_subscribe.DelSubscribeNetRequestBean;
@@ -37,6 +39,8 @@ import cn.lvyou.domainbean_model.subscribe_list.SubscribeListNetRequestBean;
 import cn.lvyou.domainbean_model.subscribe_list.SubscribeListNetRespondBean;
 import cn.lvyou.domainbean_model.subscribe_push.SubscribePushNetRequestBean;
 import cn.lvyou.domainbean_model.subscribe_push.SubscribePushNetRespondBean;
+import cn.lvyou.domainbean_model.unbind_uid.UnBindUidNetRequestBean;
+import cn.lvyou.domainbean_model.unbind_uid.UnBindUidNetRespondBean;
 import cn.lvyou.my_network_engine.IDomainBeanAsyncHttpResponseListener;
 import cn.lvyou.my_network_engine.SimpleNetworkEngineSingleton;
 import cn.lvyou.my_network_engine.net_error_handle.MyNetRequestErrorBean;
@@ -298,7 +302,7 @@ public final class TestNetRequestBean {
 
 	// lastminute添加收藏
 	public void addFavorNetRequestBean() {
-		AddFavorNetRequestBean addFavorNetRequestBean = new AddFavorNetRequestBean("1212", "ca31af3ce212c484f6d6d008971e5c49");
+		AddFavorNetRequestBean addFavorNetRequestBean = new AddFavorNetRequestBean("ca31af3ce212c484f6d6d008971e5c49", "1212");
 		SimpleNetworkEngineSingleton.getInstance.requestDomainBean(addFavorNetRequestBean, new IDomainBeanAsyncHttpResponseListener() {
 
 			@Override
@@ -355,6 +359,40 @@ public final class TestNetRequestBean {
 			@Override
 			public void onSuccess(Object respondDomainBean) {
 				DelSubscribeNetRespondBean delSubscribeNetRespondBean = (DelSubscribeNetRespondBean) respondDomainBean;
+			}
+
+			@Override
+			public void onFailure(MyNetRequestErrorBean error) {
+				DebugLog.e(TAG, error.getErrorMessage());
+			}
+		});
+	}
+
+	// 绑定用户到应用设备
+	public void bindUidNetRequestBean() {
+		BindUidNetRequestBean bindUidNetRequestBean = new BindUidNetRequestBean("ca31af3ce212c484f6d6d008971e5c49", "1212");
+		SimpleNetworkEngineSingleton.getInstance.requestDomainBean(bindUidNetRequestBean, new IDomainBeanAsyncHttpResponseListener() {
+
+			@Override
+			public void onSuccess(Object respondDomainBean) {
+				BindUidNetRespondBean bindUidNetRespondBean = (BindUidNetRespondBean) respondDomainBean;
+			}
+
+			@Override
+			public void onFailure(MyNetRequestErrorBean error) {
+				DebugLog.e(TAG, error.getErrorMessage());
+			}
+		});
+	}
+
+	// 从应用设备解绑用户
+	public void unBindUidNetRequestBean() {
+		UnBindUidNetRequestBean unBindUidNetRequestBean = new UnBindUidNetRequestBean("ca31af3ce212c484f6d6d008971e5c49", "1212");
+		SimpleNetworkEngineSingleton.getInstance.requestDomainBean(unBindUidNetRequestBean, new IDomainBeanAsyncHttpResponseListener() {
+
+			@Override
+			public void onSuccess(Object respondDomainBean) {
+				UnBindUidNetRespondBean unBindUidNetRespondBean = (UnBindUidNetRespondBean) respondDomainBean;
 			}
 
 			@Override

@@ -133,6 +133,10 @@ public class MainActivity extends SlidingFragmentActivity {
 		// testNetRequestBean.addSubscribeNetRequestBean();
 		// lastminute添加提醒条件
 		// testNetRequestBean.delSubscribeNetRequestBean();
+		// 绑定用户到应用设备
+		// testNetRequestBean.bindUidNetRequestBean();
+		// 从应用设备解绑用户
+		// testNetRequestBean.unBindUidNetRequestBean();
 
 	}
 

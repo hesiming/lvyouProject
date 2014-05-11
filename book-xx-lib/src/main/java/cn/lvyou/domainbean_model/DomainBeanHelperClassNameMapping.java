@@ -16,6 +16,8 @@ import cn.lvyou.domainbean_model.app_get_userorderformlist.UserOrderDonainBeanTo
 import cn.lvyou.domainbean_model.app_get_userorderformlist.UserOrderNetRequestBean;
 import cn.lvyou.domainbean_model.app_query.AppQueryDonainBeanToolsFactory;
 import cn.lvyou.domainbean_model.app_query.AppQueryNetRequestBean;
+import cn.lvyou.domainbean_model.bind_uid.BindUidDonainBeanToolsFactory;
+import cn.lvyou.domainbean_model.bind_uid.BindUidNetRequestBean;
 import cn.lvyou.domainbean_model.categorys.CategorysDomainBeanToolsFactory;
 import cn.lvyou.domainbean_model.categorys.CategorysNetRequestBean;
 import cn.lvyou.domainbean_model.del_favor.DelFavorDonainBeanToolsFactory;
@@ -44,6 +46,8 @@ import cn.lvyou.domainbean_model.subscribe_list.SubscribeListDomainBeanToolsFact
 import cn.lvyou.domainbean_model.subscribe_list.SubscribeListNetRequestBean;
 import cn.lvyou.domainbean_model.subscribe_push.SubscribePushDonainBeanToolsFactory;
 import cn.lvyou.domainbean_model.subscribe_push.SubscribePushNetRequestBean;
+import cn.lvyou.domainbean_model.unbind_uid.UnBindUidDonainBeanToolsFactory;
+import cn.lvyou.domainbean_model.unbind_uid.UnBindUidNetRequestBean;
 import cn.lvyou.my_network_engine.domainbean_strategy_mapping.StrategyClassNameMappingBase;
 
 /**
@@ -149,5 +153,13 @@ public final class DomainBeanHelperClassNameMapping extends StrategyClassNameMap
 		 * lastminute取消提醒条件
 		 */
 		strategyClassesNameMappingList.put(DelSubscribeNetRequestBean.class.getName(), DelSubscribeDonainBeanToolsFactory.class.getName());
+		/**
+		 * 绑定用户到应用设备
+		 */
+		strategyClassesNameMappingList.put(BindUidNetRequestBean.class.getName(), BindUidDonainBeanToolsFactory.class.getName());
+		/**
+		 * 从应用设备解绑用户
+		 */
+		strategyClassesNameMappingList.put(UnBindUidNetRequestBean.class.getName(), UnBindUidDonainBeanToolsFactory.class.getName());
 	}
 }
