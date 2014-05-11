@@ -14,6 +14,12 @@ import cn.lvyou.domainbean_model.app_get_start_image.AppStartImageDonainBeanTool
 import cn.lvyou.domainbean_model.app_get_start_image.AppStartImageNetRequestBean;
 import cn.lvyou.domainbean_model.app_get_userorderformlist.UserOrderDonainBeanToolsFactory;
 import cn.lvyou.domainbean_model.app_get_userorderformlist.UserOrderNetRequestBean;
+import cn.lvyou.domainbean_model.app_post_del_orderform.DelOrderformDonainBeanToolsFactory;
+import cn.lvyou.domainbean_model.app_post_del_orderform.DelOrderformNetRequestBean;
+import cn.lvyou.domainbean_model.app_post_orderform.PostOrderformDonainBeanToolsFactory;
+import cn.lvyou.domainbean_model.app_post_orderform.PostOrderformNetRequestBean;
+import cn.lvyou.domainbean_model.app_post_second_orderform.PostSecondOrderformDonainBeanToolsFactory;
+import cn.lvyou.domainbean_model.app_post_second_orderform.PostSecondOrderformNetRequestBean;
 import cn.lvyou.domainbean_model.app_query.AppQueryDonainBeanToolsFactory;
 import cn.lvyou.domainbean_model.app_query.AppQueryNetRequestBean;
 import cn.lvyou.domainbean_model.bind_uid.BindUidDonainBeanToolsFactory;
@@ -161,5 +167,17 @@ public final class DomainBeanHelperClassNameMapping extends StrategyClassNameMap
 		 * 从应用设备解绑用户
 		 */
 		strategyClassesNameMappingList.put(UnBindUidNetRequestBean.class.getName(), UnBindUidDonainBeanToolsFactory.class.getName());
+		/**
+		 * APP提交订单
+		 */
+		strategyClassesNameMappingList.put(PostOrderformNetRequestBean.class.getName(), PostOrderformDonainBeanToolsFactory.class.getName());
+		/**
+		 * APP删除订单
+		 */
+		strategyClassesNameMappingList.put(DelOrderformNetRequestBean.class.getName(), DelOrderformDonainBeanToolsFactory.class.getName());
+		/**
+		 * APP生成尾单
+		 */
+		strategyClassesNameMappingList.put(PostSecondOrderformNetRequestBean.class.getName(), PostSecondOrderformDonainBeanToolsFactory.class.getName());
 	}
 }

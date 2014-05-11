@@ -15,6 +15,12 @@ import cn.lvyou.domainbean_model.app_get_start_image.AppStartImageNetRequestBean
 import cn.lvyou.domainbean_model.app_get_start_image.AppStartImageNetResondBean;
 import cn.lvyou.domainbean_model.app_get_userorderformlist.UserOrderNetRequestBean;
 import cn.lvyou.domainbean_model.app_get_userorderformlist.UserOrderNetRespondBean;
+import cn.lvyou.domainbean_model.app_post_del_orderform.DelOrderformNetRequestBean;
+import cn.lvyou.domainbean_model.app_post_del_orderform.DelOrderformNetRespondBean;
+import cn.lvyou.domainbean_model.app_post_orderform.PostOrderformNetRequestBean;
+import cn.lvyou.domainbean_model.app_post_orderform.PostOrderformNetRespondBean;
+import cn.lvyou.domainbean_model.app_post_second_orderform.PostSecondOrderformNetRequestBean;
+import cn.lvyou.domainbean_model.app_post_second_orderform.PostSecondOrderformNetRespondBean;
 import cn.lvyou.domainbean_model.app_query.AppQueryNetRequestBean;
 import cn.lvyou.domainbean_model.app_query.AppQueryNetRespondBean;
 import cn.lvyou.domainbean_model.bind_uid.BindUidNetRequestBean;
@@ -393,6 +399,57 @@ public final class TestNetRequestBean {
 			@Override
 			public void onSuccess(Object respondDomainBean) {
 				UnBindUidNetRespondBean unBindUidNetRespondBean = (UnBindUidNetRespondBean) respondDomainBean;
+			}
+
+			@Override
+			public void onFailure(MyNetRequestErrorBean error) {
+				DebugLog.e(TAG, error.getErrorMessage());
+			}
+		});
+	}
+
+	// APP提交订单
+	public void postOrderformNetRequestBean() {
+		PostOrderformNetRequestBean postOrderformNetRequestBean = new PostOrderformNetRequestBean("ca31af3ce212c484f6d6d008971e5c49", "1212", "1212", "1212", "1212", "1212", "1212");
+		SimpleNetworkEngineSingleton.getInstance.requestDomainBean(postOrderformNetRequestBean, new IDomainBeanAsyncHttpResponseListener() {
+
+			@Override
+			public void onSuccess(Object respondDomainBean) {
+				PostOrderformNetRespondBean postOrderformNetRespondBean = (PostOrderformNetRespondBean) respondDomainBean;
+			}
+
+			@Override
+			public void onFailure(MyNetRequestErrorBean error) {
+				DebugLog.e(TAG, error.getErrorMessage());
+			}
+		});
+	}
+
+	// APP删除订单
+	public void delOrderformNetRequestBean() {
+		DelOrderformNetRequestBean delOrderformNetRequestBean = new DelOrderformNetRequestBean("ca31af3ce212c484f6d6d008971e5c49", "1212");
+		SimpleNetworkEngineSingleton.getInstance.requestDomainBean(delOrderformNetRequestBean, new IDomainBeanAsyncHttpResponseListener() {
+
+			@Override
+			public void onSuccess(Object respondDomainBean) {
+				DelOrderformNetRespondBean postOrderformNetRespondBean = (DelOrderformNetRespondBean) respondDomainBean;
+			}
+
+			@Override
+			public void onFailure(MyNetRequestErrorBean error) {
+				DebugLog.e(TAG, error.getErrorMessage());
+			}
+		});
+	}
+
+	// APP生成尾单
+	public void postSecondOrderformNetRequestBean() {
+		PostSecondOrderformNetRequestBean postSecondOrderformNetRequestBean = new PostSecondOrderformNetRequestBean("ca31af3ce212c484f6d6d008971e5c49", "1212");
+		SimpleNetworkEngineSingleton.getInstance.requestDomainBean(postSecondOrderformNetRequestBean, new IDomainBeanAsyncHttpResponseListener() {
+
+			@Override
+			public void onSuccess(Object respondDomainBean) {
+				PostSecondOrderformNetRespondBean postSecondOrderformNetRespondBean = (PostSecondOrderformNetRespondBean) respondDomainBean;
 			}
 
 			@Override

@@ -137,7 +137,12 @@ public class MainActivity extends SlidingFragmentActivity {
 		// testNetRequestBean.bindUidNetRequestBean();
 		// 从应用设备解绑用户
 		// testNetRequestBean.unBindUidNetRequestBean();
-
+		// APP提交订单
+		// testNetRequestBean.postOrderformNetRequestBean();
+		// APP删除订单
+		// testNetRequestBean.delOrderformNetRequestBean();
+		// APP生成尾单
+		// testNetRequestBean.postSecondOrderformNetRequestBean();
 	}
 
 	@Override
