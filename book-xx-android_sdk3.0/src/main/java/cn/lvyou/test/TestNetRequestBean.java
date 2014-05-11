@@ -1,5 +1,7 @@
 package cn.lvyou.test;
 
+import cn.lvyou.domainbean_model.add_favor.AddFavorNetRequestBean;
+import cn.lvyou.domainbean_model.add_favor.AddFavorNetRespondBean;
 import cn.lvyou.domainbean_model.app_get_bookinfo.BookInfoNetRequestBean;
 import cn.lvyou.domainbean_model.app_get_bookinfo.BookInfoNetRespondBean;
 import cn.lvyou.domainbean_model.app_get_orderforminfo.OrderforminfoNetRequestBean;
@@ -279,6 +281,23 @@ public final class TestNetRequestBean {
 			@Override
 			public void onSuccess(Object respondDomainBean) {
 				AppQueryNetRespondBean appQueryNetRespondBean = (AppQueryNetRespondBean) respondDomainBean;
+			}
+
+			@Override
+			public void onFailure(MyNetRequestErrorBean error) {
+				DebugLog.e(TAG, error.getErrorMessage());
+			}
+		});
+	}
+
+	// lastminute添加收藏
+	public void addFavorNetRequestBean() {
+		AddFavorNetRequestBean addFavorNetRequestBean = new AddFavorNetRequestBean("1212", "ca31af3ce212c484f6d6d008971e5c49");
+		SimpleNetworkEngineSingleton.getInstance.requestDomainBean(addFavorNetRequestBean, new IDomainBeanAsyncHttpResponseListener() {
+
+			@Override
+			public void onSuccess(Object respondDomainBean) {
+				AddFavorNetRespondBean addFavorNetRespondBean = (AddFavorNetRespondBean) respondDomainBean;
 			}
 
 			@Override

@@ -1,5 +1,7 @@
 package cn.lvyou.domainbean_model;
 
+import cn.lvyou.domainbean_model.add_favor.AddFavorDonainBeanToolsFactory;
+import cn.lvyou.domainbean_model.add_favor.AddFavorNetRequestBean;
 import cn.lvyou.domainbean_model.app_get_bookinfo.BookInfoDonainBeanToolsFactory;
 import cn.lvyou.domainbean_model.app_get_bookinfo.BookInfoNetRequestBean;
 import cn.lvyou.domainbean_model.app_get_orderforminfo.OrderforminfoDonainBeanToolsFactory;
@@ -50,6 +52,7 @@ public final class DomainBeanHelperClassNameMapping extends StrategyClassNameMap
 	// Key : 网络请求业务Bean
 	// Value : 是该网络接口对应的抽象工厂类
 	public DomainBeanHelperClassNameMapping() {
+		// --------------------------------------------------------------------------------------------读取接口---------------------------------------------------------------------//
 		/**
 		 * 用户登录
 		 */
@@ -122,5 +125,11 @@ public final class DomainBeanHelperClassNameMapping extends StrategyClassNameMap
 		 * APP主动查询支付宝
 		 */
 		strategyClassesNameMappingList.put(AppQueryNetRequestBean.class.getName(), AppQueryDonainBeanToolsFactory.class.getName());
+		// --------------------------------------------------------------------------------------------写入接口---------------------------------------------------------------------//
+
+		/**
+		 * lastminute添加收藏
+		 */
+		strategyClassesNameMappingList.put(AddFavorNetRequestBean.class.getName(), AddFavorDonainBeanToolsFactory.class.getName());
 	}
 }
