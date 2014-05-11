@@ -1,7 +1,7 @@
-package cn.lvyou.domainbean_model.add_favor;
+package cn.lvyou.domainbean_model.del_favor;
 
-public final class AddFavorDatabaseFieldsConstant {
-	private AddFavorDatabaseFieldsConstant() {
+public final class DelFavorDatabaseFieldsConstant {
+	private DelFavorDatabaseFieldsConstant() {
 
 	}
 

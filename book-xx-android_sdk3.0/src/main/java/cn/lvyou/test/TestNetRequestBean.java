@@ -15,6 +15,8 @@ import cn.lvyou.domainbean_model.app_get_userorderformlist.UserOrderNetRequestBe
 import cn.lvyou.domainbean_model.app_get_userorderformlist.UserOrderNetRespondBean;
 import cn.lvyou.domainbean_model.app_query.AppQueryNetRequestBean;
 import cn.lvyou.domainbean_model.app_query.AppQueryNetRespondBean;
+import cn.lvyou.domainbean_model.del_favor.DelFavorNetRequestBean;
+import cn.lvyou.domainbean_model.del_favor.DelFavorNetRespondBean;
 import cn.lvyou.domainbean_model.discount_list.DiscountListBean;
 import cn.lvyou.domainbean_model.discount_list.DiscountListNetRequestBean;
 import cn.lvyou.domainbean_model.favor_list.FavorListNetRequestBean;
@@ -298,6 +300,23 @@ public final class TestNetRequestBean {
 			@Override
 			public void onSuccess(Object respondDomainBean) {
 				AddFavorNetRespondBean addFavorNetRespondBean = (AddFavorNetRespondBean) respondDomainBean;
+			}
+
+			@Override
+			public void onFailure(MyNetRequestErrorBean error) {
+				DebugLog.e(TAG, error.getErrorMessage());
+			}
+		});
+	}
+
+	// lastminute取消收藏
+	public void delFavorNetRequestBean() {
+		DelFavorNetRequestBean delFavorNetRequestBean = new DelFavorNetRequestBean("1212", "ca31af3ce212c484f6d6d008971e5c49");
+		SimpleNetworkEngineSingleton.getInstance.requestDomainBean(delFavorNetRequestBean, new IDomainBeanAsyncHttpResponseListener() {
+
+			@Override
+			public void onSuccess(Object respondDomainBean) {
+				DelFavorNetRespondBean addFavorNetRespondBean = (DelFavorNetRespondBean) respondDomainBean;
 			}
 
 			@Override

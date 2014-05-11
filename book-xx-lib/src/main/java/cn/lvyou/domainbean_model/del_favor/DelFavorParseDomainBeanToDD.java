@@ -1,4 +1,4 @@
-package cn.lvyou.domainbean_model.add_favor;
+package cn.lvyou.domainbean_model.del_favor;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -6,7 +6,7 @@ import java.util.Map;
 import android.text.TextUtils;
 import cn.lvyou.my_network_engine.domainbean_tools.IParseDomainBeanToDataDictionary;
 
-public final class AddFavorParseDomainBeanToDD implements IParseDomainBeanToDataDictionary {
+public final class DelFavorParseDomainBeanToDD implements IParseDomainBeanToDataDictionary {
 
 	@Override
 	public Map<String, String> parseDomainBeanToDataDictionary(Object netRequestDomainBean) {
@@ -15,12 +15,12 @@ public final class AddFavorParseDomainBeanToDD implements IParseDomainBeanToData
 			throw new IllegalArgumentException("netRequestDomainBean is null!");
 		}
 
-		boolean isRightObjectType = netRequestDomainBean instanceof AddFavorNetRequestBean;
+		boolean isRightObjectType = netRequestDomainBean instanceof DelFavorNetRequestBean;
 		if (!isRightObjectType) {
 			throw new IllegalArgumentException("传入的业务Bean的类型不符 !");
 		}
 
-		AddFavorNetRequestBean requestBean = (AddFavorNetRequestBean) netRequestDomainBean;
+		DelFavorNetRequestBean requestBean = (DelFavorNetRequestBean) netRequestDomainBean;
 		String oauth_token = requestBean.getOauth_token();
 		String id = requestBean.getId();
 		if (TextUtils.isEmpty(oauth_token) || TextUtils.isEmpty(id)) {
@@ -28,8 +28,8 @@ public final class AddFavorParseDomainBeanToDD implements IParseDomainBeanToData
 		}
 		Map<String, String> params = new HashMap<String, String>();
 		// 必须参数
-		params.put(AddFavorDatabaseFieldsConstant.RequestBean.id.name(), id);
-		params.put(AddFavorDatabaseFieldsConstant.RequestBean.oauth_token.name(), id);
+		params.put(DelFavorDatabaseFieldsConstant.RequestBean.id.name(), id);
+		params.put(DelFavorDatabaseFieldsConstant.RequestBean.oauth_token.name(), id);
 		return params;
 	}
 }

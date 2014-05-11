@@ -127,6 +127,8 @@ public class MainActivity extends SlidingFragmentActivity {
 		// testNetRequestBean.appQueryNetRequestBean();
 		// lastminute添加收藏
 		// testNetRequestBean.addFavorNetRequestBean();
+		// lastminute取消收藏
+		// testNetRequestBean.delFavorNetRequestBean();
 
 	}
 
