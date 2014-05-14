@@ -1,5 +1,6 @@
 package cn.lvyou.fragment.main_left_menu;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import android.graphics.drawable.BitmapDrawable;
@@ -22,18 +23,27 @@ import android.widget.Toast;
 import cn.lvyou.activity.MainActivity;
 import cn.lvyou.activity.R;
 import cn.lvyou.adapter.FilterAdapter;
+import cn.lvyou.controls.Billboard;
+import cn.lvyou.controls.Billboard.onBillboardClickListener;
 import cn.lvyou.domainbean_model.categorys.CategorysNetRequestBean;
 import cn.lvyou.domainbean_model.categorys.CategorysNetRespondBean;
 import cn.lvyou.domainbean_model.categorys.categorybeans.ICategoryItem;
+import cn.lvyou.domainbean_model.discount_list.DiscountListBean;
 import cn.lvyou.domainbean_model.discount_list.DiscountListNetRequestBean;
 import cn.lvyou.domainbean_model.optionTop.OptionTopNetRequestBean;
 import cn.lvyou.domainbean_model.optionTop.OptionTopNetRespondBean;
+import cn.lvyou.my_network_engine.IDomainBeanAsyncHttpResponseListener;
 import cn.lvyou.my_network_engine.INetRequestHandle;
 import cn.lvyou.my_network_engine.NetRequestHandleNilObject;
+import cn.lvyou.my_network_engine.SimpleNetworkEngineSingleton;
+import cn.lvyou.my_network_engine.net_error_handle.MyNetRequestErrorBean;
+import cn.lvyou.toolutils.DebugLog;
 
 import com.google.common.collect.Lists;
 
 public class DiscountFragment extends Fragment {
+
+	private static final String TAG = "DiscountFragment";
 	private INetRequestHandle netRequestHandleForCategroys = new NetRequestHandleNilObject();
 	private INetRequestHandle netRequestHandleForOptionTop = new NetRequestHandleNilObject();
 	private CategorysNetRespondBean categoryNetRespondBean;
@@ -59,6 +69,8 @@ public class DiscountFragment extends Fragment {
 	private RelativeLayout destinationPlaceLayout;
 	// 旅行时间
 	private RelativeLayout travelDateLayout;
+
+	private Billboard billboard;
 
 	private final OnClickListener onCategoryClickListener = new OnClickListener() {
 		@Override
@@ -127,20 +139,21 @@ public class DiscountFragment extends Fragment {
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
 		View rootView = inflater.inflate(R.layout.fragment_home, container, false);
+		billboard = (Billboard) rootView.findViewById(R.id.billboard);
+		// 获取折扣列表
 		DiscountListNetRequestBean discountListNetRequestBean = new DiscountListNetRequestBean();
-		// SimpleNetworkEngineSingleton.getInstance.requestDomainBean(discountListNetRequestBean, new IDomainBeanAsyncHttpResponseListener() {
-		//
-		// @Override
-		// public void onSuccess(Object respondDomainBean) {
-		// DiscountListBean discountListBean = (DiscountListBean) respondDomainBean;
-		//
-		// }
-		//
-		// @Override
-		// public void onFailure(MyNetRequestErrorBean error) {
-		// // TODO 这里处理折扣列表返回错误的逻辑
-		// }
-		// });
+		SimpleNetworkEngineSingleton.getInstance.requestDomainBean(discountListNetRequestBean, new IDomainBeanAsyncHttpResponseListener() {
+
+			@Override
+			public void onSuccess(Object respondDomainBean) {
+				DiscountListBean discountListBean = (DiscountListBean) respondDomainBean;
+			}
+
+			@Override
+			public void onFailure(MyNetRequestErrorBean error) {
+				// TODO 这里处理折扣列表返回错误的逻辑
+			}
+		});
 		return rootView;
 	}
 
@@ -183,43 +196,56 @@ public class DiscountFragment extends Fragment {
 
 	private void requestCategroys() {
 		CategorysNetRequestBean categorysNetRequestBean = new CategorysNetRequestBean();
-		// netRequestHandleForCategroys = SimpleNetworkEngineSingleton.getInstance.requestDomainBean(categorysNetRequestBean, new IDomainBeanAsyncHttpResponseListener() {
-		// @Override
-		// public void onFailure(MyNetRequestErrorBean error) {
-		// }
-		//
-		// @Override
-		// public void onSuccess(Object respondDomainBean) {
-		// categoryNetRespondBean = (CategorysNetRespondBean) respondDomainBean;
-		//
-		// // categoryDatesTextView.setText("时间");
-		// discountTypeLayout.setOnClickListener(onCategoryClickListener);
-		//
-		// // categoryOriginPlaceTextView.setText("出发地");
-		// departurePlaceLayout.setOnClickListener(onCategoryClickListener);
-		//
-		// // categoryPlaceTextView.setText("目的地");
-		// destinationPlaceLayout.setOnClickListener(onCategoryClickListener);
-		//
-		// // categoryTypesTextView.setText("机票");
-		// travelDateLayout.setOnClickListener(onCategoryClickListener);
-		//
-		// }
-		// });
+		netRequestHandleForCategroys = SimpleNetworkEngineSingleton.getInstance.requestDomainBean(categorysNetRequestBean, new IDomainBeanAsyncHttpResponseListener() {
+			@Override
+			public void onFailure(MyNetRequestErrorBean error) {
+			}
+
+			@Override
+			public void onSuccess(Object respondDomainBean) {
+				categoryNetRespondBean = (CategorysNetRespondBean) respondDomainBean;
+
+				// categoryDatesTextView.setText("时间");
+				discountTypeLayout.setOnClickListener(onCategoryClickListener);
+
+				// categoryOriginPlaceTextView.setText("出发地");
+				departurePlaceLayout.setOnClickListener(onCategoryClickListener);
+
+				// categoryPlaceTextView.setText("目的地");
+				destinationPlaceLayout.setOnClickListener(onCategoryClickListener);
+
+				// categoryTypesTextView.setText("机票");
+				travelDateLayout.setOnClickListener(onCategoryClickListener);
+
+			}
+		});
 	}
 
 	private void requestOptionTop() {
 		OptionTopNetRequestBean optionTopNetRequestBean = new OptionTopNetRequestBean();
-		// netRequestHandleForOptionTop = SimpleNetworkEngineSingleton.getInstance.requestDomainBean(optionTopNetRequestBean, new IDomainBeanAsyncHttpResponseListener() {
-		// @Override
-		// public void onFailure(MyNetRequestErrorBean error) {
-		// // TODO Auto-generated method stub
-		// }
-		//
-		// @Override
-		// public void onSuccess(Object respondDomainBean) {
-		// optionTopNetRespondBean = (OptionTopNetRespondBean) respondDomainBean;
-		// }
-		// });
+		netRequestHandleForOptionTop = SimpleNetworkEngineSingleton.getInstance.requestDomainBean(optionTopNetRequestBean, new IDomainBeanAsyncHttpResponseListener() {
+			@Override
+			public void onFailure(MyNetRequestErrorBean error) {
+			}
+
+			@Override
+			public void onSuccess(Object respondDomainBean) {
+				optionTopNetRespondBean = (OptionTopNetRespondBean) respondDomainBean;
+				List<String> list = new ArrayList<String>();
+				for (int i = 0; i < optionTopNetRespondBean.getOperationList().size(); i++) {
+					list.add(optionTopNetRespondBean.getOperationList().get(i).getBigPic());
+					DebugLog.e(TAG, optionTopNetRespondBean.getOperationList().get(i).getBigPic());
+				}
+				billboard.setbillboards(list);
+				billboard.onBillboardClickListener(new onBillboardClickListener() {
+
+					@Override
+					public void onClickListener(String id) {
+						DebugLog.e(TAG, id);
+
+					}
+				});
+			}
+		});
 	}
 }
