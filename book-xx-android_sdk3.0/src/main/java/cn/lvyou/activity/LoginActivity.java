@@ -1,5 +1,7 @@
 package cn.lvyou.activity;
 
+import roboguice.activity.RoboActivity;
+import roboguice.inject.InjectView;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
@@ -20,194 +22,198 @@ import cn.lvyou.my_network_engine.SimpleNetworkEngineSingleton.NetRequestResultE
 import cn.lvyou.my_network_engine.net_error_handle.MyNetRequestErrorBean;
 import cn.lvyou.toolutils.DebugLog;
 
-public class LoginActivity extends Activity {
-  private final String TAG = this.getClass().getSimpleName();
+public class LoginActivity extends RoboActivity {
+	private final String TAG = this.getClass().getSimpleName();
 
-  private static enum IntentRequestCodeEnum {
-    TO_REGISTER_ACTIVITY
-  };
+	private static enum IntentRequestCodeEnum {
+		TO_REGISTER_ACTIVITY
+	};
 
-  private INetRequestHandle netRequestHandleForLogin = new NetRequestHandleNilObject();
+	private INetRequestHandle netRequestHandleForLogin = new NetRequestHandleNilObject();
 
-  private EditText qiongyouAccountUsername;
-  private EditText qiongyouAccountPassword;
-  private View loginButton, registerButton;
-  private ProgressBar loginLoadingProgressBar;
-  private Button sinaTwitterLoginButton, qqLoginButton;
+	@InjectView(R.id.qiongyou_account_username)
+	private EditText qiongyouAccountUsername;
 
-  @Override
-  protected void onCreate(Bundle savedInstanceState) {
-    super.onCreate(savedInstanceState);
+	@InjectView(R.id.qiongyou_account_password)
+	private EditText qiongyouAccountPassword;
 
-    setContentView(R.layout.activity_login);
+	@InjectView(R.id.login_Button)
+	private View loginButton;
 
-    qiongyouAccountUsername = (EditText) findViewById(R.id.qiongyou_account_username);
-    qiongyouAccountPassword = (EditText) findViewById(R.id.qiongyou_account_password);
-    loginButton = findViewById(R.id.login_Button);
-    loginButton.setOnClickListener(new View.OnClickListener() {
+	@InjectView(R.id.register_Button)
+	private View registerButton;
 
-      @Override
-      public void onClick(View v) {
-        String errorMessage = "";
-        final String username = qiongyouAccountUsername.getText().toString().trim();
-        final String password = qiongyouAccountPassword.getText().toString().trim();
-        do {
-          if (TextUtils.isEmpty(username)) {
-            errorMessage = "用户名不能为空";
-            break;
-          }
-          if (TextUtils.isEmpty(password)) {
-            errorMessage = "密码不能为空";
-            break;
-          }
+	@InjectView(R.id.login_loading_ProgressBar)
+	private ProgressBar loginLoadingProgressBar;
 
-          requestLogin(username, password);
-          return;
-        } while (false);
+	@InjectView(R.id.sina_twitter_login_Button)
+	private Button sinaTwitterLoginButton;
 
-        Toast.makeText(LoginActivity.this, errorMessage, Toast.LENGTH_SHORT).show();
-      }
-    });
-    registerButton = findViewById(R.id.register_Button);
-    registerButton.setOnClickListener(new View.OnClickListener() {
+	@InjectView(R.id.qq_login_Button)
+	private Button qqLoginButton;
 
-      @Override
-      public void onClick(View v) {
-        gotoRegisterActivity();
-      }
+	@Override
+	protected void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+		setContentView(R.layout.activity_login);
 
-    });
+		loginButton.setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				String errorMessage = "";
+				final String username = qiongyouAccountUsername.getText().toString().trim();
+				final String password = qiongyouAccountPassword.getText().toString().trim();
+				do {
+					if (TextUtils.isEmpty(username)) {
+						errorMessage = "用户名不能为空";
+						break;
+					}
+					if (TextUtils.isEmpty(password)) {
+						errorMessage = "密码不能为空";
+						break;
+					}
 
-    loginLoadingProgressBar = (ProgressBar) findViewById(R.id.login_loading_ProgressBar);
+					requestLogin(username, password);
+					return;
+				} while (false);
 
-    sinaTwitterLoginButton = (Button) findViewById(R.id.sina_twitter_login_Button);
-    sinaTwitterLoginButton.setOnClickListener(new View.OnClickListener() {
+				Toast.makeText(LoginActivity.this, errorMessage, Toast.LENGTH_SHORT).show();
+			}
+		});
 
-      @Override
-      public void onClick(View v) {
-        // TODO 新浪微博登录
+		registerButton.setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				gotoRegisterActivity();
+			}
 
-      }
-    });
+		});
 
-    qqLoginButton = (Button) findViewById(R.id.qq_login_Button);
-    qqLoginButton.setOnClickListener(new View.OnClickListener() {
+		sinaTwitterLoginButton.setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				// TODO 新浪微博登录
 
-      @Override
-      public void onClick(View v) {
-        // TODO QQ账号登录
+			}
+		});
 
-      }
-    });
-  }
+		qqLoginButton.setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				// TODO QQ账号登录
 
-  @Override
-  protected void onDestroy() {
-    DebugLog.i(TAG, "onDestroy");
-    super.onDestroy();
-  }
+			}
+		});
+	}
 
-  @Override
-  protected void onPause() {
-    DebugLog.i(TAG, "onPause");
-    super.onPause();
-  }
+	@Override
+	protected void onDestroy() {
+		DebugLog.i(TAG, "onDestroy");
+		super.onDestroy();
+	}
 
-  @Override
-  protected void onRestart() {
-    DebugLog.i(TAG, "onRestart");
-    super.onRestart();
-  }
+	@Override
+	protected void onPause() {
+		DebugLog.i(TAG, "onPause");
+		super.onPause();
+	}
 
-  @Override
-  protected void onResume() {
-    DebugLog.i(TAG, "onResume");
-    super.onResume();
-  }
+	@Override
+	protected void onRestart() {
+		DebugLog.i(TAG, "onRestart");
+		super.onRestart();
+	}
 
-  @Override
-  protected void onStart() {
-    DebugLog.i(TAG, "onStart");
-    super.onStart();
-  }
+	@Override
+	protected void onResume() {
+		DebugLog.i(TAG, "onResume");
+		super.onResume();
+	}
 
-  @Override
-  protected void onStop() {
-    DebugLog.i(TAG, "onStop");
-    super.onStop();
+	@Override
+	protected void onStart() {
+		DebugLog.i(TAG, "onStart");
+		super.onStart();
+	}
 
-    if (netRequestHandleForLogin != null) {
-      netRequestHandleForLogin.cancel();
-    }
-  }
+	@Override
+	protected void onStop() {
+		DebugLog.i(TAG, "onStop");
+		super.onStop();
 
-  @Override
-  protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-    DebugLog.i(TAG, "onActivityResult");
+		if (netRequestHandleForLogin != null) {
+			netRequestHandleForLogin.cancel();
+		}
+	}
 
-    if (requestCode == IntentRequestCodeEnum.TO_REGISTER_ACTIVITY.ordinal()) {
-      if (resultCode == Activity.RESULT_OK) {
-        // 注册成功, 登录成功, 返回上层界面
-        finishWithLoginBeenSuccessfully();
-      }
-    }
-  }
+	@Override
+	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+		DebugLog.i(TAG, "onActivityResult");
 
-  /**
-   * 控制登录按钮是否可用(不能重复发起登录请求)
-   * 
-   * @param enabled
-   */
-  private void enableLoginButton(boolean enabled) {
-    if (enabled) {
-      loginLoadingProgressBar.setVisibility(View.INVISIBLE);
-      loginButton.setEnabled(true);
-    } else {
-      loginLoadingProgressBar.setVisibility(View.VISIBLE);
-      loginButton.setEnabled(false);
-    }
-  }
+		if (requestCode == IntentRequestCodeEnum.TO_REGISTER_ACTIVITY.ordinal()) {
+			if (resultCode == Activity.RESULT_OK) {
+				// 注册成功, 登录成功, 返回上层界面
+				finishWithLoginBeenSuccessfully();
+			}
+		}
+	}
 
-  private void requestLogin(final String username, final String password) {
-    LoginNetRequestBean netRequestBean = new LoginNetRequestBean.Builder(username, password).builder();
-    netRequestHandleForLogin = SimpleNetworkEngineSingleton.getInstance.requestDomainBean(netRequestBean, new IDomainBeanAsyncHttpResponseListenerWithUIControl() {
+	/**
+	 * 控制登录按钮是否可用(不能重复发起登录请求)
+	 * 
+	 * @param enabled
+	 */
+	private void enableLoginButton(boolean enabled) {
+		if (enabled) {
+			loginLoadingProgressBar.setVisibility(View.INVISIBLE);
+			loginButton.setEnabled(true);
+		} else {
+			loginLoadingProgressBar.setVisibility(View.VISIBLE);
+			loginButton.setEnabled(false);
+		}
+	}
 
-      @Override
-      public void onSuccess(Object respondDomainBean) {
-        LoginNetRespondBean loginNetRespondBean = (LoginNetRespondBean) respondDomainBean;
+	private void requestLogin(final String username, final String password) {
+		LoginNetRequestBean netRequestBean = new LoginNetRequestBean.Builder(username, password).builder();
+		netRequestHandleForLogin = SimpleNetworkEngineSingleton.getInstance.requestDomainBean(netRequestBean,
+				new IDomainBeanAsyncHttpResponseListenerWithUIControl() {
 
-        GlobalDataCacheForMemorySingleton.getInstance.noteSignInSuccessfulInfo(loginNetRespondBean, username, password);
+					@Override
+					public void onSuccess(Object respondDomainBean) {
+						LoginNetRespondBean loginNetRespondBean = (LoginNetRespondBean) respondDomainBean;
 
-        finishWithLoginBeenSuccessfully();
-      }
+						GlobalDataCacheForMemorySingleton.getInstance.noteSignInSuccessfulInfo(loginNetRespondBean, username, password);
 
-      @Override
-      public void onFailure(MyNetRequestErrorBean error) {
-        Toast.makeText(LoginActivity.this, "登录失败-->" + error.toString(), Toast.LENGTH_SHORT).show();
-      }
+						finishWithLoginBeenSuccessfully();
+					}
 
-      @Override
-      public void onEnd(final NetRequestResultEnum resultEnum) {
-        enableLoginButton(true);
-      }
+					@Override
+					public void onFailure(MyNetRequestErrorBean error) {
+						Toast.makeText(LoginActivity.this, "登录失败-->" + error.toString(), Toast.LENGTH_SHORT).show();
+					}
 
-      @Override
-      public void onBegin() {
-        enableLoginButton(false);
-      }
-    });
-  }
+					@Override
+					public void onEnd(final NetRequestResultEnum resultEnum) {
+						enableLoginButton(true);
+					}
 
-  /**
-   * 在登录已成功的状态下, 返回上层界面
-   */
-  private void finishWithLoginBeenSuccessfully() {
-    setResult(Activity.RESULT_OK);
-    finish();
-  }
+					@Override
+					public void onBegin() {
+						enableLoginButton(false);
+					}
+				});
+	}
 
-  private void gotoRegisterActivity() {
-    Intent intent = new Intent(LoginActivity.this, RegisterActivity.class);
-    startActivityForResult(intent, IntentRequestCodeEnum.TO_REGISTER_ACTIVITY.ordinal());
-  }
+	/**
+	 * 在登录已成功的状态下, 返回上层界面
+	 */
+	private void finishWithLoginBeenSuccessfully() {
+		setResult(Activity.RESULT_OK);
+		finish();
+	}
+
+	private void gotoRegisterActivity() {
+		Intent intent = new Intent(LoginActivity.this, RegisterActivity.class);
+		startActivityForResult(intent, IntentRequestCodeEnum.TO_REGISTER_ACTIVITY.ordinal());
+	}
 }
