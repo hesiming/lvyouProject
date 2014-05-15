@@ -97,8 +97,52 @@ public class MainActivity extends SlidingFragmentActivity {
 		fragmentTransaction.replace(R.id.content, new DiscountFragment());
 		fragmentTransaction.commit();
 		TestNetRequestBean testNetRequestBean = new TestNetRequestBean();
-		testNetRequestBean.discountListNetRequestBean();
-		testNetRequestBean.appStartImageNetRequestBean();
+		// 获取折扣列表接口
+		// testNetRequestBean.discountListNetRequestBean();
+		// 获取APP启动页面图片
+		// testNetRequestBean.appStartImageNetRequestBean();
+		// 获取折扣详情
+		// testNetRequestBean.getDetailNetRequestBean();
+		// 通过传锦囊id获取折扣列表
+		// testNetRequestBean.getListByJNidNetRequestBean();
+		// 通过id字符串获取折扣列表
+		// testNetRequestBean.getListByidNetRequestBean();
+		// lastminute提醒条件列表
+		// testNetRequestBean.favorListNetRequestBean();
+		// lastminute收藏列表
+		// testNetRequestBean.subscribeListNetRequestBean();
+		// 折扣提醒推送
+		// testNetRequestBean.subscribePushNetRequestBean();
+		// 获取折扣热门国家
+		// testNetRequestBean.hotCountryNetRequestBean();
+		// APP获取折扣预定基础信息
+		// testNetRequestBean.bookInfoNetRequestBean();
+		// APP获取折扣预定基础信息
+		// testNetRequestBean.productsInfoNetRequestBean();
+		// APP获取订单信息
+		// testNetRequestBean.orderforminfoNetRequestBean();
+		// APP获取用户订单列表
+		// testNetRequestBean.userOrderNetRequestBean();
+		// APP主动查询支付宝
+		// testNetRequestBean.appQueryNetRequestBean();
+		// lastminute添加收藏
+		// testNetRequestBean.addFavorNetRequestBean();
+		// lastminute取消收藏
+		// testNetRequestBean.delFavorNetRequestBean();
+		// lastminute取消提醒条件
+		// testNetRequestBean.addSubscribeNetRequestBean();
+		// lastminute添加提醒条件
+		// testNetRequestBean.delSubscribeNetRequestBean();
+		// 绑定用户到应用设备
+		// testNetRequestBean.bindUidNetRequestBean();
+		// 从应用设备解绑用户
+		// testNetRequestBean.unBindUidNetRequestBean();
+		// APP提交订单
+		// testNetRequestBean.postOrderformNetRequestBean();
+		// APP删除订单
+		// testNetRequestBean.delOrderformNetRequestBean();
+		// APP生成尾单
+		// testNetRequestBean.postSecondOrderformNetRequestBean();
 	}
 
 	@Override

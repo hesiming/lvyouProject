@@ -49,7 +49,7 @@
         android:id="@+id/filter_layout"
         android:layout_width="match_parent"
         android:layout_height="50dip"
-        android:layout_below="@+id/titlebar"
+        android:layout_below="@id/titlebar"
         android:background="@drawable/bg_selection_bar_normal"
         android:orientation="horizontal" >
 
@@ -178,5 +178,21 @@
         </RelativeLayout>
     </LinearLayout>
     <!-- 筛选列表 -->
+    <!-- 广告控件 -->
+
+    <LinearLayout
+        android:id="@+id/billboard_layout"
+        android:layout_width="match_parent"
+        android:layout_height="120dip"
+        android:layout_below="@id/filter_layout"
+        android:orientation="horizontal" >
+
+        <cn.lvyou.controls.Billboard
+            android:id="@+id/billboard"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:background="@android:color/black" />
+    </LinearLayout>
+    <!-- 广告控件 -->
 
 </RelativeLayout>

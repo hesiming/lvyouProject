@@ -32,66 +32,66 @@ import com.nostra13.universalimageloader.core.assist.QueueProcessingType;
  * 
  */
 public class MyApplication extends Application {
-  private final String TAG = this.getClass().getSimpleName();
+	private final String TAG = this.getClass().getSimpleName();
 
-  // Application 类对外的接口
-  private static MyApplication self;
+	// Application 类对外的接口
+	private static MyApplication self;
 
-  public static Application getApplication() {
-    return self;
-  }
+	public static Application getApplication() {
+		return self;
+	}
 
-  @Override
-  public void onCreate() {
+	@Override
+	public void onCreate() {
 
-    DebugLog.i(TAG, "onCreate");
-    super.onCreate();
+		DebugLog.i(TAG, "onCreate");
+		super.onCreate();
 
-    // 必须在第一个行的位置
-    self = this;
+		// 必须在第一个行的位置
+		self = this;
 
-    GlobalDataCacheForMemorySingleton.getInstance.setApplication(self);
-    // 创建本地缓存目录
-    LocalCacheDataPathConstant.createLocalCacheDirectories();
-    // 配置ImageLoader
-    DisplayImageOptions optionsOfDisplayImageOptions = new DisplayImageOptions.Builder().cacheInMemory(true) // default
-        .cacheOnDisc(true) // default
-        .build();
-    File cacheDirForImageLoader = LocalCacheDataPathConstant.thumbnailCachePathInDevice();
-    ImageLoaderConfiguration config = new ImageLoaderConfiguration.Builder(getApplicationContext()).memoryCacheExtraOptions(480, 800).discCacheExtraOptions(480, 800, CompressFormat.JPEG, 75, null)
-        .threadPoolSize(1)
-        // default
-        .threadPriority(Thread.NORM_PRIORITY - 1)
-        // default
-        .tasksProcessingOrder(QueueProcessingType.FIFO)
-        // default
-        .denyCacheImageMultipleSizesInMemory().memoryCache(new LruMemoryCache(2 * 1024 * 1024)).memoryCacheSize(2 * 1024 * 1024).memoryCacheSizePercentage(13) // default
-        .discCache(new UnlimitedDiscCache(cacheDirForImageLoader)) // default
-        .discCacheSize(50 * 1024 * 1024).discCacheFileCount(100).discCacheFileNameGenerator(new HashCodeFileNameGenerator()) // default
-        .defaultDisplayImageOptions(optionsOfDisplayImageOptions) // default
-        .writeDebugLogs().imageDownloader(new MyImageDownloader(getApplicationContext())).build();
-    ImageLoader.getInstance().init(config);
+		GlobalDataCacheForMemorySingleton.getInstance.setApplication(self);
+		// 创建本地缓存目录
+		LocalCacheDataPathConstant.createLocalCacheDirectories();
+		// 配置ImageLoader
+		DisplayImageOptions optionsOfDisplayImageOptions = new DisplayImageOptions.Builder().cacheInMemory(true) // default
+				.cacheOnDisc(true) // default
+				.build();
+		File cacheDirForImageLoader = LocalCacheDataPathConstant.thumbnailCachePathInDevice();
+		ImageLoaderConfiguration config = new ImageLoaderConfiguration.Builder(getApplicationContext()).memoryCacheExtraOptions(480, 800)
+				.discCacheExtraOptions(480, 800, CompressFormat.JPEG, 75, null).threadPoolSize(1)
+				// default
+				.threadPriority(Thread.NORM_PRIORITY - 1)
+				// default
+				.tasksProcessingOrder(QueueProcessingType.FIFO)
+				// default
+				.denyCacheImageMultipleSizesInMemory().memoryCache(new LruMemoryCache(2 * 1024 * 1024)).memoryCacheSize(2 * 1024 * 1024).memoryCacheSizePercentage(13) // default
+				.discCache(new UnlimitedDiscCache(cacheDirForImageLoader)) // default
+				.discCacheSize(50 * 1024 * 1024).discCacheFileCount(100).discCacheFileNameGenerator(new HashCodeFileNameGenerator()) // default
+				.defaultDisplayImageOptions(optionsOfDisplayImageOptions) // default
+				.writeDebugLogs().imageDownloader(new MyImageDownloader(getApplicationContext())).build();
+		ImageLoader.getInstance().init(config);
 
-    // 读取本地缓存的重要数据
-    GlobalDataCacheForNeedSaveToFileSystem.readAllCacheData();
-  }
+		// 读取本地缓存的重要数据
+		GlobalDataCacheForNeedSaveToFileSystem.readAllCacheData();
+	}
 
-  @Override
-  public void onTerminate() {
-    DebugLog.d(TAG, "onTerminate");
-    // 父类方法, 必须调用
-    super.onTerminate();
-  }
+	@Override
+	public void onTerminate() {
+		DebugLog.d(TAG, "onTerminate");
+		// 父类方法, 必须调用
+		super.onTerminate();
+	}
 
-  @Override
-  public void onConfigurationChanged(Configuration newConfig) {
-    DebugLog.i(TAG, "onConfigurationChanged");
-    super.onConfigurationChanged(newConfig);
-  }
+	@Override
+	public void onConfigurationChanged(Configuration newConfig) {
+		DebugLog.i(TAG, "onConfigurationChanged");
+		super.onConfigurationChanged(newConfig);
+	}
 
-  @Override
-  public void onLowMemory() {
-    DebugLog.i(TAG, "onLowMemory");
-    super.onLowMemory();
-  }
+	@Override
+	public void onLowMemory() {
+		DebugLog.i(TAG, "onLowMemory");
+		super.onLowMemory();
+	}
 }

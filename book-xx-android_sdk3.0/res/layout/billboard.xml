@@ -1,0 +1,34 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/fl_billboard"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    tools:context=".MainActivity" >
+
+    <!-- android:background="@drawable/hemailistbg" -->
+
+    <cn.lvyou.controls.BannerLayout
+        android:id="@+id/bannerLayout"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent" >
+    </cn.lvyou.controls.BannerLayout>
+    <!-- android:background="@drawable/bt_close" -->
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        android:background="#33000000"
+        android:gravity="center"
+        android:orientation="horizontal" >
+
+        <cn.lvyou.controls.RingletChangeLight
+            android:id="@+id/ringlet"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentLeft="true" >
+        </cn.lvyou.controls.RingletChangeLight>
+    </LinearLayout>
+
+</FrameLayout>
