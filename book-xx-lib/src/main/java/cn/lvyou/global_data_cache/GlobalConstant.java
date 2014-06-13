@@ -1,5 +1,6 @@
 package cn.lvyou.global_data_cache;
 
+
 public final class GlobalConstant {
 
   private GlobalConstant() {
@@ -45,5 +46,4 @@ public final class GlobalConstant {
       return Null;
     }
   }
-
 }
