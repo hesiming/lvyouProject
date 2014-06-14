@@ -13,6 +13,9 @@ public final class LoginNetRespondBean implements Serializable, Cloneable {
 
   private UserInfo userInfo;
 
+  public LoginNetRespondBean() {
+    
+  }
   public LoginNetRespondBean(AccessToken accessToken, UserInfo userInfo) {
     this.accessToken = accessToken;
     this.userInfo = userInfo;

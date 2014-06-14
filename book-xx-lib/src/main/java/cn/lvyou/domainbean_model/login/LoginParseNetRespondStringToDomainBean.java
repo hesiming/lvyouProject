@@ -13,7 +13,6 @@ public final class LoginParseNetRespondStringToDomainBean implements IParseNetRe
   public Object parseNetRespondDataToDomainBean(final Object netRespondData) throws Exception {
 
     final String netRespondString = (String) netRespondData;
-
     JSONObject jsonRootObject = new JSONObject(netRespondString);
     // 关键数据完整性检测
     if (JSONTools.isEmpty(jsonRootObject, LoginDatabaseFieldsConstant.RespondBean.access_token.name())) {
