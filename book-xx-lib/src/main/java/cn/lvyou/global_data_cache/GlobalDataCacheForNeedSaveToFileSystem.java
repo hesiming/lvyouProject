@@ -46,7 +46,7 @@ public final class GlobalDataCacheForNeedSaveToFileSystem {
   public static synchronized void readAppConfingInfo() {
     //
     DebugLog.i(TAG, "start loading --> isFirstStartApp");
-    SharedPreferences sharedPreferences = GlobalDataCacheForMemorySingleton.getInstance.getApplication().getSharedPreferences(GlobalConstant.APP_GLOBAL_SHARED_PREFERENCES, Context.MODE_PRIVATE);
+    SharedPreferences sharedPreferences = GlobalDataCacheForMemorySingleton.getInstance.getApplication().getSharedPreferences(GlobalConstant.APP_NAME, Context.MODE_PRIVATE);
     GlobalDataCacheForMemorySingleton.getInstance.setFirstStartApp(sharedPreferences.getBoolean(CacheDataNameForSaveToFile.FirstStartApp.name(), true));
   }
 
@@ -56,7 +56,7 @@ public final class GlobalDataCacheForNeedSaveToFileSystem {
   public static void readUserLoginInfoToGlobalDataCacheForMemorySingleton() {
     // 用户登录相关信息
     DebugLog.i(TAG, "start loading --> 用户登录信息");
-    SharedPreferences sharedPreferences = GlobalDataCacheForMemorySingleton.getInstance.getApplication().getSharedPreferences(GlobalConstant.APP_GLOBAL_SHARED_PREFERENCES, Context.MODE_PRIVATE);
+    SharedPreferences sharedPreferences = GlobalDataCacheForMemorySingleton.getInstance.getApplication().getSharedPreferences(GlobalConstant.APP_NAME, Context.MODE_PRIVATE);
     boolean isLogged = sharedPreferences.getBoolean(CacheDataNameForSaveToFile.IsLogged.name(), false);
     if (isLogged) {
       String usernameForLastSuccessfulLogon = sharedPreferences.getString(CacheDataNameForSaveToFile.UsernameForLastSuccessfulLogon.name(), null);
@@ -83,7 +83,7 @@ public final class GlobalDataCacheForNeedSaveToFileSystem {
   public static synchronized void writeAppConfigInfo() {
     //
     final boolean isFirstStartApp = GlobalDataCacheForMemorySingleton.getInstance.isFirstStartApp();
-    SharedPreferences sharedPreferences = GlobalDataCacheForMemorySingleton.getInstance.getApplication().getSharedPreferences(GlobalConstant.APP_GLOBAL_SHARED_PREFERENCES, Context.MODE_PRIVATE);
+    SharedPreferences sharedPreferences = GlobalDataCacheForMemorySingleton.getInstance.getApplication().getSharedPreferences(GlobalConstant.APP_NAME, Context.MODE_PRIVATE);
     Editor editor = sharedPreferences.edit();
     editor.putBoolean(CacheDataNameForSaveToFile.FirstStartApp.name(), isFirstStartApp);
     editor.commit();
@@ -93,7 +93,7 @@ public final class GlobalDataCacheForNeedSaveToFileSystem {
    * 保存用户登录信息到设备文件系统中
    */
   public static void writeUserLoginInfoToFileSystem() {
-    SharedPreferences sharedPreferences = GlobalDataCacheForMemorySingleton.getInstance.getApplication().getSharedPreferences(GlobalConstant.APP_GLOBAL_SHARED_PREFERENCES, Context.MODE_PRIVATE);
+    SharedPreferences sharedPreferences = GlobalDataCacheForMemorySingleton.getInstance.getApplication().getSharedPreferences(GlobalConstant.APP_NAME, Context.MODE_PRIVATE);
     Editor editor = sharedPreferences.edit();
     editor.putBoolean(CacheDataNameForSaveToFile.IsLogged.name(), GlobalDataCacheForMemorySingleton.getInstance.isLogged());
     if (GlobalDataCacheForMemorySingleton.getInstance.isLogged()) {
