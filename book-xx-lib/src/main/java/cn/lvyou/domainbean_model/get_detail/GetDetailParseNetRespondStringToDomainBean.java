@@ -8,7 +8,7 @@ import org.json.JSONObject;
 
 import cn.lvyou.domainbean_model.app_get_start_image.AppStartImageDatabaseFieldsConstant;
 import cn.lvyou.domainbean_model.app_get_start_image.AppStartImageNetResondBean;
-import cn.lvyou.my_network_engine.domainbean_tools.IParseNetRespondDataToDomainBean;
+import cn.lvyou.my_network_engine.domainbean_helper.IParseNetRespondDataToDomainBean;
 import cn.lvyou.toolutils.JSONTools;
 
 /**

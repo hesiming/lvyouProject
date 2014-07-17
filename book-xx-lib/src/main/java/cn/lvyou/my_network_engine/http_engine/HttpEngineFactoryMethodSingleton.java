@@ -1,11 +1,11 @@
 package cn.lvyou.my_network_engine.http_engine;
 
 import java.io.File;
-import java.util.Map;
 
+import cn.lvyou.global_data_cache.GlobalDataCacheForMemorySingleton;
 import cn.lvyou.my_custom_network_engine.http_engine.async_http_client.HttpEngineOfAsyncHttpClient;
-import cn.lvyou.my_custom_network_engine.http_engine.volley.HttpEngineOfVolley;
 import cn.lvyou.my_network_engine.INetRequestHandle;
+import cn.lvyou.toolutils.DebugLog;
 
 import com.loopj.android.http.AsyncHttpClient;
 
@@ -29,7 +29,8 @@ public enum HttpEngineFactoryMethodSingleton implements IHttpRequestForDomainBea
 
   private final static HttpEngineOfAsyncHttpClient httpEngineOfAsyncHttpClient = new HttpEngineOfAsyncHttpClient();
 
-  private final static HttpEngineOfVolley httpEngineOfVolley = new HttpEngineOfVolley();
+  // private final static HttpEngineOfVolley httpEngineOfVolley = new
+  // HttpEngineOfVolley();
 
   /**
    * 对外提供一个共享的 AsyncHttpClient
@@ -41,13 +42,16 @@ public enum HttpEngineFactoryMethodSingleton implements IHttpRequestForDomainBea
   }
 
   @Override
-  public INetRequestHandle requestDomainBean(final String url, final Map<String, String> dataDictionary, final IDomainBeanRequestAsyncHttpResponseListener domainBeanRequestAsyncHttpResponseListener) {
-    return httpEngineOfAsyncHttpClient.requestDomainBean(url, dataDictionary, domainBeanRequestAsyncHttpResponseListener);
+  public INetRequestHandle requestDomainBean(final String url, final String requestMethod, final Object requestParams,
+      final IDomainBeanRequestAsyncHttpResponseListener domainBeanRequestAsyncHttpResponseListener) {
+    DebugLog.e("HttpEngineFactoryMethodSingleton", "cookieStore--->" + GlobalDataCacheForMemorySingleton.getInstance.getCookieStore().getCookies().toString());
+    return httpEngineOfAsyncHttpClient.requestDomainBean(url, requestMethod, requestParams, domainBeanRequestAsyncHttpResponseListener);
   }
 
   @Override
-  public INetRequestHandle requestFile(final String url, final boolean isNeedContinuingly, final Map<String, String> dataDictionary, final File downLoadFile,
+  public INetRequestHandle requestFile(final String url, final boolean isNeedContinuingly, final String requestMethod, final Object requestParams, final File downLoadFile,
       final IFileRequestAsyncHttpResponseListener fileRequestAsyncHttpResponseListener) {
-    return httpEngineOfAsyncHttpClient.requestFile(url, isNeedContinuingly, dataDictionary, downLoadFile, fileRequestAsyncHttpResponseListener);
+    DebugLog.e("HttpEngineFactoryMethodSingleton", "cookieStore--->" + GlobalDataCacheForMemorySingleton.getInstance.getCookieStore().getCookies().toString());
+    return httpEngineOfAsyncHttpClient.requestFile(url, isNeedContinuingly, requestMethod, requestParams, downLoadFile, fileRequestAsyncHttpResponseListener);
   }
 }

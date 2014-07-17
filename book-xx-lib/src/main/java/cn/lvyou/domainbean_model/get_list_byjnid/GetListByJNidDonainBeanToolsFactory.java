@@ -1,11 +1,11 @@
 package cn.lvyou.domainbean_model.get_list_byjnid;
 
 import cn.lvyou.global_data_cache.UrlConstantForThisProject;
-import cn.lvyou.my_network_engine.domainbean_tools.IDomainBeanAbstractFactory;
-import cn.lvyou.my_network_engine.domainbean_tools.IParseDomainBeanToDataDictionary;
-import cn.lvyou.my_network_engine.domainbean_tools.IParseNetRespondDataToDomainBean;
+import cn.lvyou.my_network_engine.domainbean_helper.IDomainBeanHelper;
+import cn.lvyou.my_network_engine.domainbean_helper.IParseDomainBeanToDataDictionary;
+import cn.lvyou.my_network_engine.domainbean_helper.IParseNetRespondDataToDomainBean;
 
-public final class GetListByJNidDonainBeanToolsFactory implements IDomainBeanAbstractFactory {
+public final class GetListByJNidDonainBeanToolsFactory implements IDomainBeanHelper {
 
 	@Override
 	public IParseDomainBeanToDataDictionary getParseDomainBeanToDDStrategyObject() {

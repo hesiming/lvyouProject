@@ -1,6 +1,6 @@
 package cn.lvyou.domainbean_model.login;
 
-import cn.lvyou.my_network_engine.domainbean_tools.DomainBeanNullValueDefine;
+import cn.lvyou.my_network_engine.domainbean_helper.DomainBeanNullValueDefine;
 
 public final class LoginNetRequestBean {
 	// 登录名

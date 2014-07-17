@@ -4,7 +4,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import android.text.TextUtils;
-import cn.lvyou.my_network_engine.domainbean_tools.IParseDomainBeanToDataDictionary;
+import cn.lvyou.my_network_engine.domainbean_helper.IParseDomainBeanToDataDictionary;
 /**
  * 获取折扣详情
  * @author hesiming

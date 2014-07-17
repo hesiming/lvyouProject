@@ -12,7 +12,7 @@ import cn.lvyou.domainbean_model.categorys.categorybeans.CategoryPlace;
 import cn.lvyou.domainbean_model.categorys.categorybeans.CategoryPlaceCountry;
 import cn.lvyou.domainbean_model.categorys.categorybeans.CategoryType;
 import cn.lvyou.domainbean_model.categorys.categorybeans.ICategoryItem;
-import cn.lvyou.my_network_engine.domainbean_tools.IParseNetRespondDataToDomainBean;
+import cn.lvyou.my_network_engine.domainbean_helper.IParseNetRespondDataToDomainBean;
 
 public class CategorysParseNetRespondStringToDomainBean implements IParseNetRespondDataToDomainBean {
 

@@ -62,6 +62,9 @@
         <meta-data
             android:name="UMENG_CHANNEL"
             android:value="taobao" />
+
+        <!-- 在后台加载相关数据的服务 -->
+        <service android:name="PreLoadedDataService" />
     </application>
 
 </manifest>

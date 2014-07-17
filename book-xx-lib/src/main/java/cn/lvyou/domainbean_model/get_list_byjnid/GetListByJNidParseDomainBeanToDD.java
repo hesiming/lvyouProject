@@ -3,7 +3,7 @@ package cn.lvyou.domainbean_model.get_list_byjnid;
 import java.util.HashMap;
 import java.util.Map;
 
-import cn.lvyou.my_network_engine.domainbean_tools.IParseDomainBeanToDataDictionary;
+import cn.lvyou.my_network_engine.domainbean_helper.IParseDomainBeanToDataDictionary;
 
 public final class GetListByJNidParseDomainBeanToDD implements IParseDomainBeanToDataDictionary {
 

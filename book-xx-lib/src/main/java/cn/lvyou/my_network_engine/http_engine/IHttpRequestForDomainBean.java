@@ -1,7 +1,5 @@
 package cn.lvyou.my_network_engine.http_engine;
 
-import java.util.Map;
-
 import cn.lvyou.my_network_engine.INetRequestHandle;
 
 public interface IHttpRequestForDomainBean {
@@ -10,11 +8,14 @@ public interface IHttpRequestForDomainBean {
    * 
    * @param url
    *          完整的URL
-   * @param dataDictionary
-   *          数据字典
+   * @param requestMethod
+   *          http 请求方法(GET/POST)
+   * @param requestParams
+   *          请求参数
    * @param shortConnectionAsyncHttpResponseListener
    *          http异步响应监听
    * @return
    */
-  public INetRequestHandle requestDomainBean(final String url, final Map<String, String> dataDictionary, final IDomainBeanRequestAsyncHttpResponseListener domainBeanRequestAsyncHttpResponseListener);
+  public INetRequestHandle requestDomainBean(final String url, final String requestMethod, final Object requestParams,
+      final IDomainBeanRequestAsyncHttpResponseListener domainBeanRequestAsyncHttpResponseListener);
 }

@@ -10,7 +10,7 @@ import cn.lvyou.domainbean_model.app_get_orderforminfo.order_info_item.Lastminut
 import cn.lvyou.domainbean_model.app_get_orderforminfo.order_info_item.OrderformBean;
 import cn.lvyou.domainbean_model.app_get_orderforminfo.order_info_item.ProductsBean;
 import cn.lvyou.domainbean_model.app_get_orderforminfo.order_info_item.SupplierBean;
-import cn.lvyou.my_network_engine.domainbean_tools.IParseNetRespondDataToDomainBean;
+import cn.lvyou.my_network_engine.domainbean_helper.IParseNetRespondDataToDomainBean;
 import cn.lvyou.toolutils.JSONTools;
 
 public class UserOrderParseNetRespondStringToDomainBean implements IParseNetRespondDataToDomainBean {

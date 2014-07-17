@@ -4,7 +4,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import android.text.TextUtils;
-import cn.lvyou.my_network_engine.domainbean_tools.IParseDomainBeanToDataDictionary;
+import cn.lvyou.my_network_engine.domainbean_helper.IParseDomainBeanToDataDictionary;
 import cn.lvyou.toolutils.ToolsFunctionForThisProgect;
 
 public final class LoginParseDomainBeanToDD implements IParseDomainBeanToDataDictionary {

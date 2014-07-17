@@ -54,7 +54,7 @@ import cn.lvyou.domainbean_model.subscribe_push.SubscribePushDonainBeanToolsFact
 import cn.lvyou.domainbean_model.subscribe_push.SubscribePushNetRequestBean;
 import cn.lvyou.domainbean_model.unbind_uid.UnBindUidDonainBeanToolsFactory;
 import cn.lvyou.domainbean_model.unbind_uid.UnBindUidNetRequestBean;
-import cn.lvyou.my_network_engine.domainbean_strategy_mapping.StrategyClassNameMappingBase;
+import cn.lvyou.my_network_engine.domainbean_helper.StrategyClassNameMappingBase;
 
 /**
  * 所有业务接口, 要在这里完成NetRequestBean和DomainBeanToolsFactory的映射

@@ -9,23 +9,23 @@ import cn.lvyou.my_network_engine.net_error_handle.MyNetRequestErrorBean;
  * 
  */
 public interface IDomainBeanAsyncHttpResponseListener {
-  /**
-   * 成功
-   * 
-   * @param respondDomainBean
-   *          一个符合要求的业务Bean
-   */
-  public void onSuccess(final Object respondDomainBean);
+	/**
+	 * 成功
+	 * 
+	 * @param respondDomainBean
+	 *            一个符合要求的业务Bean
+	 */
+	public void onSuccess(final Object respondDomainBean);
 
-  /**
-   * 失败
-   * 
-   * @param error
-   */
-  public void onFailure(final MyNetRequestErrorBean error);
+	/**
+	 * 失败
+	 * 
+	 * @param error
+	 */
+	public void onFailure(final MyNetRequestErrorBean error);
 
-  /**
-   * 取消
-   */
-  //public void onCancel();
+	/**
+	 * 取消
+	 */
+	// public void onCancel();
 }

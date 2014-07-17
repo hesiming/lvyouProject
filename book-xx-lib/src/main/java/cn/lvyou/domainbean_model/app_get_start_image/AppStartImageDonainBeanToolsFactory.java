@@ -1,11 +1,11 @@
 package cn.lvyou.domainbean_model.app_get_start_image;
 
 import cn.lvyou.global_data_cache.UrlConstantForThisProject;
-import cn.lvyou.my_network_engine.domainbean_tools.IDomainBeanAbstractFactory;
-import cn.lvyou.my_network_engine.domainbean_tools.IParseDomainBeanToDataDictionary;
-import cn.lvyou.my_network_engine.domainbean_tools.IParseNetRespondDataToDomainBean;
+import cn.lvyou.my_network_engine.domainbean_helper.IDomainBeanHelper;
+import cn.lvyou.my_network_engine.domainbean_helper.IParseDomainBeanToDataDictionary;
+import cn.lvyou.my_network_engine.domainbean_helper.IParseNetRespondDataToDomainBean;
 
-public final class AppStartImageDonainBeanToolsFactory implements IDomainBeanAbstractFactory {
+public final class AppStartImageDonainBeanToolsFactory implements IDomainBeanHelper {
 
 	@Override
 	public IParseDomainBeanToDataDictionary getParseDomainBeanToDDStrategyObject() {

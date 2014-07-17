@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
-import cn.lvyou.my_network_engine.domainbean_tools.IParseNetRespondDataToDomainBean;
+import cn.lvyou.my_network_engine.domainbean_helper.IParseNetRespondDataToDomainBean;
 import cn.lvyou.toolutils.JSONTools;
 
 public class OptionTopParseNetRespondStringToDomainBean implements IParseNetRespondDataToDomainBean {

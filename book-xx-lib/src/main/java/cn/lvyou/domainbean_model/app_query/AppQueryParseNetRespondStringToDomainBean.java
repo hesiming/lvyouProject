@@ -2,7 +2,7 @@ package cn.lvyou.domainbean_model.app_query;
 
 import org.json.JSONObject;
 
-import cn.lvyou.my_network_engine.domainbean_tools.IParseNetRespondDataToDomainBean;
+import cn.lvyou.my_network_engine.domainbean_helper.IParseNetRespondDataToDomainBean;
 
 public class AppQueryParseNetRespondStringToDomainBean implements IParseNetRespondDataToDomainBean {
 

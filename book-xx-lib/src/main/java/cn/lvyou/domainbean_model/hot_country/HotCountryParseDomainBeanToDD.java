@@ -2,7 +2,7 @@ package cn.lvyou.domainbean_model.hot_country;
 
 import java.util.Map;
 
-import cn.lvyou.my_network_engine.domainbean_tools.IParseDomainBeanToDataDictionary;
+import cn.lvyou.my_network_engine.domainbean_helper.IParseDomainBeanToDataDictionary;
 
 import com.google.common.collect.Maps;
 

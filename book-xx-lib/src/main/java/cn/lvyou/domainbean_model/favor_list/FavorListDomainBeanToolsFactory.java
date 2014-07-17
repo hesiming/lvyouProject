@@ -1,11 +1,11 @@
 package cn.lvyou.domainbean_model.favor_list;
 
 import cn.lvyou.global_data_cache.UrlConstantForThisProject;
-import cn.lvyou.my_network_engine.domainbean_tools.IDomainBeanAbstractFactory;
-import cn.lvyou.my_network_engine.domainbean_tools.IParseDomainBeanToDataDictionary;
-import cn.lvyou.my_network_engine.domainbean_tools.IParseNetRespondDataToDomainBean;
+import cn.lvyou.my_network_engine.domainbean_helper.IDomainBeanHelper;
+import cn.lvyou.my_network_engine.domainbean_helper.IParseDomainBeanToDataDictionary;
+import cn.lvyou.my_network_engine.domainbean_helper.IParseNetRespondDataToDomainBean;
 
-public class FavorListDomainBeanToolsFactory implements IDomainBeanAbstractFactory {
+public class FavorListDomainBeanToolsFactory implements IDomainBeanHelper {
 
 	@Override
 	public IParseDomainBeanToDataDictionary getParseDomainBeanToDDStrategyObject() {

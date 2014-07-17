@@ -1,5 +1,7 @@
 package cn.lvyou.global_data_cache;
 
+import org.apache.http.client.CookieStore;
+
 import android.app.Application;
 import android.text.TextUtils;
 import cn.lvyou.domainbean_model.login.LoginNetRespondBean;
@@ -15,15 +17,24 @@ public enum GlobalDataCacheForMemorySingleton {
   private Application application;
 
   public Application getApplication() {
-    return application;
+    assert this.application != null : "getApplication() 返回null, application还未初始化完成.";
+    return this.application;
   }
 
   public void setApplication(Application application) {
-    if (this.application != null) {
-      // 只给用户设置application属性一次的机会, 这样用户就无法随意的修改application属性了.
-      return;
-    }
+    assert application == null : "不能重复调用setApplication()方法";
     this.application = application;
+  }
+
+  // 用来保存cookieStore
+  private CookieStore cookieStore;
+
+  public CookieStore getCookieStore() {
+    return cookieStore;
+  }
+
+  public void setCookieStore(CookieStore cookieStore) {
+    this.cookieStore = cookieStore;
   }
 
   // 是否是第一次启动App的标志位

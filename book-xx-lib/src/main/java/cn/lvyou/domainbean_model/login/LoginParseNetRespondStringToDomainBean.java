@@ -4,7 +4,7 @@ import org.json.JSONObject;
 
 import android.text.TextUtils;
 import cn.lvyou.global_data_cache.GlobalConstant.SexEnum;
-import cn.lvyou.my_network_engine.domainbean_tools.IParseNetRespondDataToDomainBean;
+import cn.lvyou.my_network_engine.domainbean_helper.IParseNetRespondDataToDomainBean;
 import cn.lvyou.toolutils.JSONTools;
 
 public final class LoginParseNetRespondStringToDomainBean implements IParseNetRespondDataToDomainBean {

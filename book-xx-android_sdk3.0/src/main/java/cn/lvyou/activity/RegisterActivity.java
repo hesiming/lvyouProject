@@ -16,7 +16,6 @@ import cn.lvyou.my_network_engine.IDomainBeanAsyncHttpResponseListenerWithUICont
 import cn.lvyou.my_network_engine.INetRequestHandle;
 import cn.lvyou.my_network_engine.NetRequestHandleNilObject;
 import cn.lvyou.my_network_engine.SimpleNetworkEngineSingleton;
-import cn.lvyou.my_network_engine.SimpleNetworkEngineSingleton.NetRequestResultEnum;
 import cn.lvyou.my_network_engine.net_error_handle.MyNetRequestErrorBean;
 import cn.lvyou.toolutils.DebugLog;
 
@@ -163,7 +162,7 @@ public class RegisterActivity extends Activity {
       }
 
       @Override
-      public void onEnd(final NetRequestResultEnum resultEnum) {
+      public void onEnd() {
 
       }
 
@@ -208,7 +207,7 @@ public class RegisterActivity extends Activity {
       }
 
       @Override
-      public void onEnd(final NetRequestResultEnum resultEnum) {
+      public void onEnd() {
         enableRegisterButton(true);
       }
 

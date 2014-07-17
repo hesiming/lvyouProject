@@ -4,7 +4,7 @@ import com.google.common.collect.Maps;
 
 import java.util.Map;
 
-import cn.lvyou.my_network_engine.domainbean_tools.IParseDomainBeanToDataDictionary;
+import cn.lvyou.my_network_engine.domainbean_helper.IParseDomainBeanToDataDictionary;
 
 public class OptionTopParseDomainBeanToDD implements IParseDomainBeanToDataDictionary {
 
